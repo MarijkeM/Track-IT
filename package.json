@@ -1,0 +1,34 @@
+{
+  "name": "mean-cvs",
+  "version": "1.0.0",
+  "description": "MEAN stack app for people with CVS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarijkeM/MEAN-CVS.git"
+  },
+  "keywords": [
+    "CVS",
+    "MEAN"
+  ],
+  "author": "Marijke Meersman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarijkeM/MEAN-CVS/issues"
+  },
+  "homepage": "https://github.com/MarijkeM/MEAN-CVS#readme"
+}
