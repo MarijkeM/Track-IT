@@ -26,12 +26,10 @@ mongoose.connection.on('error', function (error) {
 const app = express();
 
 //dit gaat naar de map routes en daaronder de file user
-const user = require('./routes/user')
-//'/user" moet overeenkomen met de js file onder routes
-app.use('/user', user)
+const user = require('./routes/user');
 
 //poort nummer voor front end
-const port = 4200;
+const port = 3000;
 
 //CORS gebruiken
 app.use(cors());
@@ -40,8 +38,12 @@ app.use(cors());
 // zou die meteen naar daar gaan
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 //Body parser middleware
 app.use(bodyparser.json());
+
+//'/user" moet overeenkomen met de js file onder routes
+app.use('/user', user);
 
 
 //route van de index
@@ -53,3 +55,5 @@ app.get('/', function (req,res) {
 app.listen(port, (function () {
     console.log("Server is opgestart op poort " + port)
 }));
+
+
