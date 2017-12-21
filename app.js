@@ -42,18 +42,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Body parser middleware
 app.use(bodyparser.json());
 
+//paswoord middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+
 //'/user" moet overeenkomen met de js file onder routes
 app.use('/user', user);
 
 
 //route van de index
 app.get('/', function (req,res) {
-    res.send('Invalid endpoint');
+    res.send('Deze pagina bestaat nog niet');
 });
 
 //start server en toon in console venster
 app.listen(port, (function () {
-    console.log("Server is opgestart op poort " + port)
+    console.log('Server is opgestart op poort '+port)
 }));
 
 

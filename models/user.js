@@ -20,7 +20,7 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.getUserByEmail = function(email, callback){
-    const query = {email: email}
+    const query = {email: email};
     User.findOne(query, callback);
 }
 
@@ -32,4 +32,16 @@ module.exports.addUser = function (newUser, callback) {
             newUser.save(callback());
         });
     });
+}
+
+module.exports.comparePassword = function (opgegevenPaswoord, hashedPaswoord, callback) {
+    //je geeft een err en een res en hier heet dat err en isMatch, dat had ook pipo kunnen heten
+    //maar als res(ultaat) geeft compare true of false terug
+    bcrypt.compare(opgegevenPaswoord, hashedPaswoord, (err, isMatch) =>{
+        if(err) throw err;
+        callback(null, isMatch);
+    })
+}
+{
+
 }
