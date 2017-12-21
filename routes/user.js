@@ -32,7 +32,7 @@ router.post('/registreren', function (req, res, next) {
 });
 
 
-//Authenticatie: /user/authenticeren
+//Authenticatie/inloggen: /user/authenticeren
 router.post('/authenticeren', (req, res, next) => {
     //als persoon inlogt, geeft die de volgende gegevens door
     const email = req.body.email;
