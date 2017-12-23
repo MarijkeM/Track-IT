@@ -19,7 +19,8 @@ import { ThoughtsComponent } from './components/thoughts/thoughts.component';
 import { ChallengeThoughtComponent } from './components/challenge-thought/challenge-thought.component';
 import { GoodEventsComponent } from './components/good-events/good-events.component';
 
-import {ValidateService} from './services/validate.service'
+import { ValidateService } from './services/validate.service'
+import { FlashMessagesModule} from 'angular2-flash-messages';
 
 const appRoutes: Routes = [
     {path:'',component:HomeComponent},
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
       BrowserModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
-      HttpModule
+      HttpModule,
+      FlashMessagesModule.forRoot()
   ],
   providers: [ValidateService],
   bootstrap: [AppComponent]
