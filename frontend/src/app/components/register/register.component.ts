@@ -34,12 +34,12 @@ export class RegisterComponent implements OnInit {
     /*testen of alle velden zijn ingevuld*/
     if(!this.validateService.validateRegister(user)){
       console.log("Niet alle velden zijn ingevuld");
-      this.flashmessage.show("Gelieve alle velden in te vullen", {cssClass:'alert-danger',timeout:3000})
+      this.flashmessage.show("Gelieve alle velden in te vullen", {cssClass:'alert-danger m-3',timeout:3000})
     }else {
       /*testen of e-mail juiste vorm is*/
       if(!this.validateService.validateEmail(user.email)){
         console.log("E-mail is niet correct");
-        this.flashmessage.show("E-mailadres is niet correct", {cssClass:'alert-danger',timeout:3000})
+        this.flashmessage.show("E-mailadres is niet correct", {cssClass:'alert-danger m-3',timeout:3000})
       }
     }
 
