@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ValidateService} from '../../services/validate.service';
 
 @Component({
   selector: 'app-register',
@@ -12,15 +13,34 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
 
-  constructor() { }
+  constructor(private validateService: ValidateService) { }
 
   ngOnInit() {
-    console.log("register component");
-    console.log(this.firstName);
+    console.log("register component geladen");
   }
 
   onRegisterSubmit(){
-    console.log("Registreren gelukt");
+    console.log("Op registreren geklikt");
+
+    const user = {
+      firstName: this.firstName, //de eerste firstName is zelf gekozen, de laatste komt van de form
+      lastName: this.lastName,
+      email: this.email,
+      password: this.password
+    }
+
+    /*testen of alle velden zijn ingevuld*/
+    if(!this.validateService.validateRegister(user)){
+      console.log("Niet alle velden zijn ingevuld");
+
+    }else {
+      console.log("Wel alle velden ingevuld");
+    }
+
+    if(!this.validateService.validateEmail(user.email)){
+      console.log("E-mail is niet correct");
+    }
+
   }
 
 }
