@@ -68,7 +68,8 @@ router.post('/authenticeren', (req, res, next) => {
                         firstName: user.firstName,
                         lastName: user.lastName,
                         email: user.email
-                    }
+                    },
+                    msg:'Je bent ingelogd.'
                 });
             }else{
                 return res.json({success: false, msg: 'Verkeerd paswoord'});

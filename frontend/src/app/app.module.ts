@@ -28,6 +28,7 @@ const appRoutes: Routes = [
     {path:'',component:HomeComponent},
     {path:'register',component:RegisterComponent},
     {path:'login',component:LoginComponent},
+    {path:'home',component:HomeComponent},
     {path:'dashboard',component:DashboardComponent},
     {path:'profile',component:ProfileComponent},
     {path:'breathing',component:BreathingComponent},
