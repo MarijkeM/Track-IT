@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,6 +17,7 @@ import { BreathingComponent } from './components/breathing/breathing.component';
 import { ThoughtsComponent } from './components/thoughts/thoughts.component';
 import { ChallengeThoughtComponent } from './components/challenge-thought/challenge-thought.component';
 import { GoodEventsComponent } from './components/good-events/good-events.component';
+import { HttpModule } from "@angular/http";
 
 const appRoutes: Routes = [
     {path:'',component:HomeComponent},
@@ -54,7 +55,7 @@ const appRoutes: Routes = [
       BrowserModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
-
+      HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
