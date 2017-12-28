@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     lastName:{type:String, required:true},
     password:{type:String, required:true},
     email:{type:String, required:true, unique:true},
-    //tasks:[{type:Schema.Types.ObjectId, ref:'Task'}]
+    tasks:[{type:Schema.Types.ObjectId, ref:'Task'}]
 });
 
 //Gebruiker exporteren de 'User' gaat de naam zijn in de db

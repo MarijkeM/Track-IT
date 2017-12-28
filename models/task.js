@@ -8,4 +8,8 @@ const TaskSchema = new Schema({
     title: {type:String, required:true},
     estimatedTime: Number,
     realTime: Number
-});
+},
+    {collection:"task"}
+);
+
+const Task = module.exports = mongoose.model('Task', TaskSchema);
