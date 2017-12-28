@@ -6,29 +6,33 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
+
 const User = require('../models/user');
 
 
 //Registreer: /user/registreren
-router.post('/registreren', function (req, res) {
+router.post('/registreren', async (req, res) => {
     console.log("***router post registreren");
 
     let newUser = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email:req.body.email,
-        password:req.body.password
+        email: req.body.email,
+        password: req.body.password
     });
 
-    User.addUser(newUser, (err, user) => {
-        if(err){
-            res.json({success:false,
-                msg:'Registreren is mislukt'})
-        }else{
-            res.json({success:true,
-                msg:'Registreren is gelukt'})
-        }
-    });
+    try {
+        await User.addUser(newUser);
+
+        res.json({
+            success: true,
+            msg: 'Registreren is gelukt'
+        })
+    } catch (e) {
+        res.json({
+            success: false,
+            msg: 'Registreren is mislukt: ' + e});
+    }
 });
 
 
