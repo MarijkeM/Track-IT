@@ -10,7 +10,7 @@ const User = require('../models/user');
 
 
 //Registreer: /user/registreren
-router.post('/registreren', function (req, res, next) {
+router.post('/registreren', function (req, res) {
     console.log("***router post registreren");
 
     let newUser = new User({
@@ -33,7 +33,7 @@ router.post('/registreren', function (req, res, next) {
 
 
 //Authenticatie/inloggen: /user/authenticeren
-router.post('/authenticeren', (req, res, next) => {
+router.post('/authenticeren', (req, res) => {
     //als persoon inlogt, geeft die de volgende gegevens door
     const email = req.body.email;
     const password = req.body.password;
@@ -80,7 +80,7 @@ router.post('/authenticeren', (req, res, next) => {
 
 
 //Profiel: /user/profiel
-router.get('/profiel', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+router.get('/profiel', passport.authenticate('jwt', {session:false}), (req, res) => {
     res.json({user: req.user});
     console.log("***router get profiel");
 });
