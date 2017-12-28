@@ -31,6 +31,22 @@ export class AuthService {
         .map(response => response.json());
   }
 
+  getProfile(){
+    const url = "http://localhost:3000/";
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization',this.authToken);
+
+    headers.append('Content-Type','application/json');
+    return this.http.get(url+'user/profiel', {headers:headers})
+        .map(response => response.json());
+  }
+
+  loadToken(){
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
+
   storeUserData(token, user){
     console.log("methode storeUserData in authservice")
     localStorage.setItem('id_token', token);
