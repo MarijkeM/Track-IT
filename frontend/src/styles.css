@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*Opmaak voor gehele pagina*/
+.container{
+    background-color:rgba(247, 255, 250, 0.5);
+}
+
+p, h1,h2,h3,h4,h5{
+    color: #687F77;
+}
+
 /*eigen thema*/
 .theme-dark{
     background-color: #427F68;
@@ -27,15 +36,6 @@
     font-size: 1.2rem;
 }
 
-.container{
-    background-color:rgba(247, 255, 250, 0.5);
-
-}
-
-p, h1,h2,h3,h4,h5{
-    color: #687F77;
-}
-
 
 /*Navbar in eigen thema*/
 .navbar {
@@ -46,7 +46,7 @@ p, h1,h2,h3,h4,h5{
 }
 .navbar .navbar-brand:hover,
 .navbar .navbar-brand:focus {
-    color: #69cca7;
+    color: #69cca7 !important;
 }
 .navbar .navbar-text {
     color: #e3ffed;
@@ -58,7 +58,7 @@ p, h1,h2,h3,h4,h5{
 }
 .navbar .navbar-nav .nav-link:not(.disabled):hover,
 .navbar .navbar-nav .nav-link:not(.disabled):focus {
-    color: grey;
+    color: #69cca7 !important;
 }
 .navbar .navbar-nav .dropdown-menu {
     background-color: #427f68;
@@ -82,19 +82,24 @@ p, h1,h2,h3,h4,h5{
 .navbar .navbar-nav .nav-item.show .nav-link,
 .navbar .navbar-nav .nav-item.show .nav-link:hover,
 .navbar .navbar-nav .nav-item.show .nav-link:focus {
-    color: #69cca7;
+    color: white;
     background-color: #427f68;
 }
 .navbar .navbar-toggle {
-    border-color: #69cca7;
+    border-color: #69cca7 !important;
 }
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
-    background-color: #69cca7;
+    background-color: #69cca7 !important;
 }
 .navbar .navbar-toggle .navbar-toggler-icon {
-    color: #e3ffed;
+    color: #e3ffed !important;
 }
+
+.fa-bars .navbar-toggler-icon{
+    color: #e3ffed !important;
+}
+
 .navbar .navbar-collapse,
 .navbar .navbar-form {
     border-color: #e3ffed;
@@ -178,13 +183,13 @@ p, h1,h2,h3,h4,h5{
     width: 1.5em;
     height: 1.5em;
     vertical-align: middle;
-    content: "";
+    padding-top: 5px;
     background: no-repeat center center;
+    color: #e3ffed;
     background-size: 100% 100%;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(208,255,237)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar-toggler-icon:hover{
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(132,255,208)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    pointer-events: visible;
+    cursor: pointer;
+    color: #69cca7;
 }
