@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.set("debug",false);//op true zetten voor debuggen
+mongoose.set("debug",true);//op true zetten voor debuggen
 //je kan ook je eigen debug code schrijven:
 /*
  mongoose.set('debug', function (coll, method, query, doc [, options]) {

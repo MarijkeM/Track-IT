@@ -27,6 +27,7 @@ const app = express();
 
 //dit gaat naar de map routes en daaronder de file user
 const user = require('./routes/user');
+const task = require('./routes/task');
 
 //poort nummer voor front end
 const port = 3000;
@@ -50,6 +51,7 @@ require('./config/passport')(passport);
 
 //'/user" moet overeenkomen met de js file onder routes
 app.use('/user', user);
+app.use('/task', task);
 
 
 //route van de index
@@ -58,9 +60,8 @@ app.get('/', function (req,res) {
 });
 
 app.get('*', (req, res) => {
-    res.sendfile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
-
 
 
 //start server en toon in console venster

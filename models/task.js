@@ -13,3 +13,14 @@ const TaskSchema = new Schema({
 );
 
 const Task = module.exports = mongoose.model('Task', TaskSchema);
+
+module.exports.addTask = function (newTask) {
+        return (new Task(newTask)).save();
+}
+
+/*
+module.exports.deleteTask = (task) => {
+    Task.pull(task);
+    Task.save();
+}
+*/

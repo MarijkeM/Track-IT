@@ -12,7 +12,7 @@ const User = require('../models/user');
 
 //Registreer: /user/registreren
 router.post('/registreren', async (req, res) => {
-    console.log("***router post registreren");
+    console.log("***routes/user registreren");
 
     let newUser = new User({
         firstName: req.body.firstName,
@@ -42,7 +42,7 @@ router.post('/authenticeren', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    console.log("***router post authenticate");
+    console.log("***routes/user authenticeren");
 
     //nakijken of de user bestaat
     User.getUserByEmail(email, (err, user)=>{
@@ -86,7 +86,7 @@ router.post('/authenticeren', (req, res) => {
 //Profiel: /user/profiel
 router.get('/profiel', passport.authenticate('jwt', {session:false}), (req, res) => {
     res.json({user: req.user});
-    console.log("***router get profiel");
+    console.log("***routes/user profiel");
 });
 
 module.exports = router;

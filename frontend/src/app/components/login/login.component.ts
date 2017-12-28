@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     }
 
-    this.authService.authenticateUser(user).subscribe(data =>{
+    this.authService.authenticateUser(user).subscribe(data => {
         if(data.success){
             this.authService.storeUserData(data.token, data.user);
 
