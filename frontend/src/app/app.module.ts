@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from "@angular/http";
+import { AuthGuard } from './guards/auth.guard'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
     {path:'login',component:LoginComponent},
     {path:'home',component:HomeComponent},
     {path:'dashboard',component:DashboardComponent},
-    {path:'profiel',component:ProfileComponent},
+    {path:'profiel',component:ProfileComponent, canActivate:[AuthGuard]},
     {path:'breathing',component:BreathingComponent},
     {path:'challenge-thought',component:ChallengeThoughtComponent},
     {path:'good-events',component:GoodEventsComponent},
@@ -64,7 +65,7 @@ const appRoutes: Routes = [
       HttpModule,
       FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
