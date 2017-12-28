@@ -18,16 +18,19 @@
 
     </ul>
     <ul class="navbar-nav navbar-right">
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link"  [routerLink]="['/profiel']"><i class="fas fa-user"></i> Profiel</a>
+      <!--Als ingelogd-->
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']">
+        <a class="nav-link"   [routerLink]="['/profiel']"><i class="fas fa-user"></i> Profiel</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link"  [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Inloggen</a>
-      </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="authService.loggedIn()">
         <a class="nav-link" href="#" (click)="onLogoutClick()"><i class="fas fa-sign-out-alt"></i> Uitloggen</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
+
+      <!--Als uitgelogd-->
+      <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']">
+        <a class="nav-link"  [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Inloggen</a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/register']">Registreren</a>
       </li>
     </ul>

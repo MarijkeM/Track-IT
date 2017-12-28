@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'; //map operator om met observables te werken
+import { tokenNotExpired } from 'angular2-jwt'
 
 @Injectable()
 export class AuthService {
@@ -46,6 +47,11 @@ export class AuthService {
     const token = localStorage.getItem('id_token');
     this.authToken = token;
   }
+
+  loggedIn(){
+    return tokenNotExpired('id_token');
+  }
+
 
   storeUserData(token, user){
     console.log("methode storeUserData in authservice")
