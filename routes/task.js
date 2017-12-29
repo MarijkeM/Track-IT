@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     console.log("***router get taken");
 });
 
-//taken toevoegen: /task/takenToevoegen
+//taken toevoegen: /task/taakToevoegen
 router.post('/taakToevoegen', async (req, res) => {
     console.log("***routes/task taak toevoegen");
 
@@ -37,33 +37,36 @@ router.post('/taakToevoegen', async (req, res) => {
     }
 });
 
-/*
-//taak verwijderen: /task/id
-router.delete('/:id', async (req, res) => {
-    console.log("***routes/task taak verwijderen");
 
-    try {
-        const task = await Task.findById(req.params.id);
+//taak verwijderen: /task/taakVerwijderen/id
+router.delete('/taakVerwijderen/:id', (req, res) => {
+    console.log("***routes/task/taakVerwijderen/id taak verwijderen");
+    console.log("id: " + req.params.id);
+    const taskId = req.params.id;
 
-        try{
-            Task.deleteTask(task);
-
-            res.json({
-                success: true,
-                msg: 'Taak verwijderen is gelukt'
-            })
-        }catch (e){
+    Task.findOne({_id: taskId}, function (err) {
+        if(err){
+            console.log("id bestaat niet");
             res.json({
                 success: false,
-                msg: 'Taak niet kunnen verwijderen: ' + e});
+                msg: 'Taak bestaat niet: ' + err
+            });
+        }else{
+            Task.deleteTask(taskId, function (err) {
+                if (err) {
+                    res.json({
+                        success: false,
+                        msg: 'Taak verwijderen mislukt: ' + err
+                    });
+                }
+                res.json({
+                    success: true,
+                    msg: 'Taak verwijderen is gelukt'
+                });
+            });
         }
+    });
 
-    } catch (e) {
-        res.json({
-            success: false,
-            msg: 'Taak niet gevonden: ' + e});
-    }
 });
 
-*/
 module.exports = router;

@@ -18,9 +18,9 @@ module.exports.addTask = function (newTask) {
         return (new Task(newTask)).save();
 }
 
-/*
-module.exports.deleteTask = (task) => {
-    Task.pull(task);
-    Task.save();
+
+module.exports.deleteTask = (taskId, callback) => {
+    var query = {_id: taskId};
+    Task.remove(query, callback);
 }
-*/
+
