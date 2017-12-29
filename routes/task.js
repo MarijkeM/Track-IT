@@ -9,10 +9,24 @@ const config = require('../config/database');
 const Task = require('../models/task');
 const User = require('../models/user');
 
-//taken: /task
-router.get('/', (req, res) => {
-    res.json({task: req.task});
-    console.log("***router get taken");
+//taken: /task/alleTaken
+router.get('/alleTaken', passport.authenticate('jwt', {session:false}), (req, res) => {
+    console.log("***routes/taks/alletaken taken van bepaalde user");
+
+        Task.getTasks(req.user, function (err, tasks) {
+            console.log("taken: " + tasks);
+            console.log("error: " + err);
+            if (err) {
+                res.json({
+                    success: false,
+                    msg: 'Taken niet gevonden: ' + err
+                });
+            }
+
+            res.json(tasks);
+
+        });
+
 });
 
 //taken toevoegen: /task/taakToevoegen
