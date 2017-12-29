@@ -16,10 +16,10 @@ const TaskSchema = new Schema({
 
 const Task = module.exports = mongoose.model('Task', TaskSchema);
 
-module.exports.getTasks = function (user, callback) {
+module.exports.getTasks = function (user) {
     var query = {user: user._id};
     console.log(JSON.stringify(query));
-    Task.find(query, callback);
+    return Task.find(query);
 
 }
 
