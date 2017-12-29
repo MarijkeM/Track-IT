@@ -7,6 +7,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Task = require('../models/task');
+const User = require('../models/user');
 
 //taken: /task
 router.get('/', (req, res) => {
@@ -15,12 +16,13 @@ router.get('/', (req, res) => {
 });
 
 //taken toevoegen: /task/taakToevoegen
-router.post('/taakToevoegen', async (req, res) => {
+router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/task taak toevoegen");
 
     let newTask = new Task({
         title: req.body.title,
         estimatedTime: req.body.estimatedTime,
+        user: req.user
     });
 
     try {
