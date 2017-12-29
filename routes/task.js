@@ -51,11 +51,26 @@ router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), asy
 
 
 //taak verwijderen: /task/taakVerwijderen/id
-router.delete('/taakVerwijderen/:id', (req, res) => {
+router.delete('/taakVerwijderen/:id', passport.authenticate('jwt', {session:false}),async (req, res) => {
     console.log("***routes/task/taakVerwijderen/id taak verwijderen");
     console.log("id: " + req.params.id);
     const taskId = req.params.id;
 
+    try{
+        await Task.findOne({_id: taskId});
+        await Task.deleteTask(taskId);
+
+        res.json({
+            success: true,
+            msg: 'Taak verwijderd'
+        });
+    }catch(e){
+        res.json({
+            success: false,
+            msg: 'Taak verwijderen mislukt: ' + e
+        });
+    }
+    /*
     Task.findOne({_id: taskId}, function (err) {
         if(err){
             console.log("id bestaat niet");
@@ -78,6 +93,7 @@ router.delete('/taakVerwijderen/:id', (req, res) => {
             });
         }
     });
+    */
 
 });
 
