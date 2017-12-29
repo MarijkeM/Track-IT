@@ -57,17 +57,33 @@ router.delete('/taakVerwijderen/:id', passport.authenticate('jwt', {session:fals
     const taskId = req.params.id;
 
     try{
-        await Task.findOne({_id: taskId});
-        await Task.deleteTask(taskId);
+        task = await Task.findTaskById({_id: taskId});
+        console.log("taak: " + JSON.stringify(task));
 
-        res.json({
-            success: true,
-            msg: 'Taak verwijderd'
-        });
+        if(task == null) {
+            res.json({
+                success: false,
+                msg: 'Taak bestaat niet'
+            });
+
+        } else if(task.user != req.user._id){
+            res.json({
+                success: false,
+                msg: 'Dit is niet jou taak'
+            });
+
+        }else{
+            await Task.deleteTask(taskId, req.user);
+            res.json({
+                success: true,
+                msg: 'Taak verwijderd'
+            });
+        }
+
     }catch(e){
         res.json({
             success: false,
-            msg: 'Taak verwijderen mislukt: ' + e
+            msg: 'Taak verwijderen mislukt'
         });
     }
     /*

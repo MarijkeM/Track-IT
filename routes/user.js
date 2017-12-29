@@ -85,8 +85,8 @@ router.post('/authenticeren', (req, res) => {
 
 //Profiel: /user/profiel
 router.get('/profiel', passport.authenticate('jwt', {session:false}), (req, res) => {
+    console.log("***routes/user/profiel");
     res.json({user: req.user});
-    console.log("***routes/user profiel");
 });
 
 module.exports = router;

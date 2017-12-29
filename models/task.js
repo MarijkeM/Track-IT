@@ -16,19 +16,24 @@ const TaskSchema = new Schema({
 
 const Task = module.exports = mongoose.model('Task', TaskSchema);
 
+module.exports.findTaskById = function (taskId) {
+    var query = {_id: taskId};
+    console.log("query: " + JSON.stringify(query));
+    return Task.findById(taskId);
+}
+
 module.exports.getTasks = function (user) {
     var query = {user: user._id};
-    console.log(JSON.stringify(query));
+    console.log("query: " + JSON.stringify(query));
     return Task.find(query);
-
 }
 
 module.exports.addTask = function (newTask) {
     return (new Task(newTask)).save();
 }
 
-module.exports.deleteTask = (taskId, callback) => {
+module.exports.deleteTask = (taskId, user) => {
     var query = {_id: taskId};
-    return Task.remove(query, callback);
+    return Task.remove(query);
 }
 
