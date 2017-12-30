@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
@@ -66,7 +66,7 @@ const appRoutes: Routes = [
       FormsModule,
       ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
-      HttpModule,
+      HttpClientModule,
       FlashMessagesModule.forRoot()
   ],
   providers: [ValidateService, AuthService, AuthGuard, TaskService],

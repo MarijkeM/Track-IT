@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { Http, Headers } from '@angular/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http'
 import { AuthService } from '../authService/auth.service'
 import { GlobalVariable } from '../global'
 
@@ -9,16 +10,16 @@ export class TaskService {
     task:any;
     authToken: any;
 
-  constructor(private http: Http,
-  private authService: AuthService) { }
+  constructor(
+  private authService: AuthService,
+  private http: HttpClient) { }
 
   getTasks(){
-    let headers = new Headers();
+    const headers = new HttpHeaders()
+        .set('Authorization',this.authToken)
+        .append('Content-Type','application/json');
     this.authService.loadToken();
-    headers.append('Authorization',this.authToken);
-    headers.append('Content-Type','application/json');
 
-    return this.http.get(GlobalVariable.base_url+'task/alleTaken', {headers:headers})
-        .map(response => response.json());
+    return this.http.get(GlobalVariable.base_url+'task/alleTaken', {headers})
   }
 }
