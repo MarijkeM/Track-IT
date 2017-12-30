@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/taskService/task.service'
+import { Task } from '../../models/task'
 
 @Component({
   selector: 'app-tasks',
@@ -7,10 +8,19 @@ import { TaskService } from '../../services/taskService/task.service'
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+  tasks: Task[];
 
   constructor(private taskService:TaskService) { }
 
   ngOnInit() {
+
+    this.taskService.getTasks().subscribe((tasks : Task[]) => {
+          this.tasks = tasks;
+        },
+        err => {
+          console.log(err);
+          return false;
+        });
   }
 
 }

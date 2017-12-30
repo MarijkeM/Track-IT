@@ -1,3 +1,18 @@
-<p>
-  tasks works!
-</p>
+<h2>Taken</h2>
+
+<table class="table table-striped">
+    <thead class="theme-dark">
+        <tr>
+            <th>Naam</th>
+            <th>Verwachte tijd</th>
+            <th>Echte tijd</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of tasks">
+        <td>{{task.title}}</td>
+        <td>{{task.estimatedTime}}</td>
+        <td>{{task.realTime}}</td>
+    </tr>
+    </tbody>
+</table>

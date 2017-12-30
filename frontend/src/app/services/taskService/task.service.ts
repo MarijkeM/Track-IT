@@ -1,24 +1,27 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import { HttpClient,HttpHeaders } from '@angular/common/http'
-import { AuthService } from '../authService/auth.service'
-import { GlobalVariable } from '../global'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
+import {AuthService} from '../authService/auth.service'
+import {GlobalVariable} from '../global'
+import {Task} from '../../models/task'
 
 @Injectable()
 export class TaskService {
-    task:any;
+    task: any;
     authToken: any;
 
-  constructor(
-  private authService: AuthService,
-  private http: HttpClient) { }
+    constructor(private authService: AuthService,
+                private http: HttpClient) {
+    }
 
-  getTasks(){
-    const headers = new HttpHeaders()
-        .set('Authorization',this.authToken)
-        .append('Content-Type','application/json');
-    this.authService.loadToken();
+    getTasks() {
+        console.log("***task.service.ts getTasks()");
+        this.authToken = this.authService.loadToken();
 
-    return this.http.get<any>(GlobalVariable.base_url+'task/alleTaken', {headers})
-  }
+        const headers = new HttpHeaders()
+            .set('Authorization', this.authToken)
+            .append('Content-Type', 'application/json');
+
+        return this.http.get<any>(GlobalVariable.base_url + 'task/alleTaken', {headers});
+    }
 }

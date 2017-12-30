@@ -44,13 +44,14 @@ export class AuthService {
         .set('Authorization',this.authToken)
         .append('Content-Type','application/json');
 
+
     return this.http.get<any>(GlobalVariable.base_url+'user/profiel',
                             {headers});
   }
 
   loadToken(){
     const token = localStorage.getItem('id_token');
-    this.authToken = token;
+    return this.authToken = token;
   }
 
   loggedIn(){
