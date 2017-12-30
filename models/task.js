@@ -18,13 +18,13 @@ const Task = module.exports = mongoose.model('Task', TaskSchema);
 
 module.exports.findTaskById = function (taskId) {
     var query = {_id: taskId};
-    console.log("query: " + JSON.stringify(query));
+    //console.log("query: " + JSON.stringify(query));
     return Task.findById(taskId);
 }
 
 module.exports.getTasks = function (user) {
     var query = {user: user._id};
-    console.log("query: " + JSON.stringify(query));
+    //console.log("query: " + JSON.stringify(query));
     return Task.find(query);
 }
 
@@ -36,4 +36,10 @@ module.exports.deleteTask = (taskId, user) => {
     var query = {_id: taskId};
     return Task.remove(query);
 }
+
+module.exports.updateTask = function (taskId, newTask) {
+    var query = {_id:taskId};
+    return Task.findOneAndUpdate(query, newTask);
+}
+
 
