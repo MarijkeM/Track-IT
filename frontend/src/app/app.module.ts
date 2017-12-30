@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from "@angular/http";
 import { AuthGuard } from './guards/auth.guard'
@@ -20,9 +20,9 @@ import { ThoughtsComponent } from './components/thoughts/thoughts.component';
 import { ChallengeThoughtComponent } from './components/challenge-thought/challenge-thought.component';
 import { GoodEventsComponent } from './components/good-events/good-events.component';
 
-import { ValidateService } from './services/validate.service'
-import { AuthService } from './services/auth.service'
-import { FlashMessagesModule} from 'angular2-flash-messages';
+import { ValidateService } from './services/validateService/validate.service'
+import { AuthService } from './services/authService/auth.service'
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 const appRoutes: Routes = [
@@ -61,6 +61,7 @@ const appRoutes: Routes = [
   imports: [
       BrowserModule,
       FormsModule,
+      ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
       HttpModule,
       FlashMessagesModule.forRoot()
