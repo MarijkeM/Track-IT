@@ -30,15 +30,15 @@ const appRoutes: Routes = [
     {path:'register',component:RegisterComponent},
     {path:'login',component:LoginComponent},
     {path:'home',component:HomeComponent},
-    {path:'dashboard',component:DashboardComponent},
+    {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profiel',component:ProfileComponent, canActivate:[AuthGuard]},
     {path:'breathing',component:BreathingComponent},
-    {path:'challenge-thought',component:ChallengeThoughtComponent},
-    {path:'good-events',component:GoodEventsComponent},
-    {path:'stopwatch',component:StopwatchComponent},
-    {path:'task',component:TaskComponent},
-    {path:'tasks',component:TasksComponent},
-    {path:'thoughts',component:ThoughtsComponent},
+    {path:'challenge-thought',component:ChallengeThoughtComponent, canActivate:[AuthGuard]},
+    {path:'good-events',component:GoodEventsComponent, canActivate:[AuthGuard]},
+    {path:'stopwatch',component:StopwatchComponent, canActivate:[AuthGuard]},
+    {path:'task',component:TaskComponent, canActivate:[AuthGuard]},
+    {path:'tasks',component:TasksComponent, canActivate:[AuthGuard]},
+    {path:'thoughts',component:ThoughtsComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
