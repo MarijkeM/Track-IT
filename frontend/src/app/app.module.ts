@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from "@angular/http";
-import { AuthGuard } from './guards/auth.guard'
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -22,7 +22,10 @@ import { GoodEventsComponent } from './components/good-events/good-events.compon
 
 import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import { TaskService } from './services/taskService/task.service'
+import { AuthGuard } from './guards/auth.guard'
+
+
 
 
 const appRoutes: Routes = [
@@ -66,7 +69,7 @@ const appRoutes: Routes = [
       HttpModule,
       FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
