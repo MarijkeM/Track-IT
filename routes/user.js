@@ -37,7 +37,7 @@ router.post('/registreren', async (req, res) => {
 
 
 //Authenticatie/inloggen: /user/authenticeren
-router.post('/authenticeren', (req, res) => {
+router.post('/authenticeren', async (req, res) => {
     //als persoon inlogt, geeft die de volgende gegevens door
     const email = req.body.email;
     const password = req.body.password;
@@ -45,13 +45,18 @@ router.post('/authenticeren', (req, res) => {
     console.log("***routes/user authenticeren");
 
     //nakijken of de user bestaat
-    User.getUserByEmail(email, (err, user)=>{
-        console.log("user: "+user);
-        console.log("error: "+err);
-        if(err) throw err;
-        if(!user){
-            return res.json({success: false, msg: 'Gebruiker niet gevonden'})
+    try{
+        user = await User.getUserByEmail(email);
+        if(user == null){
+            res.json({
+                success: false,
+                msg: 'Gebruiker niet gevonden'})
         }
+    }catch (e){
+        res.json({
+            success: false,
+            msg: 'Gebruiker niet gevonden'})
+    }
 
         //nakijken of paswoord klopt
         User.comparePassword(password, user.password, (err, isMatch) => {
@@ -80,7 +85,7 @@ router.post('/authenticeren', (req, res) => {
             }
         });
     });
-});
+
 
 
 //Profiel: /user/profiel

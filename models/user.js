@@ -19,17 +19,17 @@ module.exports.getUserById = function(id, callback){
     User.findById(id, callback);
 }
 
-module.exports.getUserByEmail = function(email, callback){
+module.exports.getUserByEmail = function(email){
     const query = {email: email};
-    User.findOne(query, callback);
+    return User.findOne(query);
 }
 
-module.exports.addUser = function (newUser, callback) {
+module.exports.addUser = function (newUser) {
     bcrypt.genSalt(10, (err,salt)=>{
         bcrypt.hash(newUser.password, salt, (err, hash)=>{
             if(err) throw err;
             newUser.password = hash;
-            newUser.save(callback());
+            newUser.save();
         });
     });
 }
