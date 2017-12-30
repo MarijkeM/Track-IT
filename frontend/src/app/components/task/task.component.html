@@ -1,3 +1,30 @@
-<p>
-  task works!
-</p>
+
+<div class="row">
+    <div class="card col-1">
+        <div class="card-block">
+            3
+        </div>
+    </div>
+    <div class="card col-4">
+        <div class="card-block">
+            {{task.title}}
+        </div>
+    </div>
+    <div class="card col-2">
+        <div>
+            {{task.estimatedTime}} min
+        </div>
+    </div>
+    <div class="card col-2">
+        <div class="card-block">
+           hier komt datum
+        </div>
+    </div>
+    <div class="card col-3">
+        <div class="card-block">
+            <a href="#" type="button" class="btn btn-success" data-toggle="tooltip" title="Taak is klaar"><i class="fas fa-check"></i></a>
+            <a href="#" type="button" class="btn btn-warning" data-toggle="tooltip" title="Taak aanpassen"><i class="far fa-edit"></i></a>
+            <a href="#" type="button" class="btn btn-danger" data-toggle="tooltip" title="Taak verwijderen"><i class="far fa-trash-alt"></i></a>
+        </div>
+    </div>
+</div>

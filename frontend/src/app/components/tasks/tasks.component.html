@@ -1,18 +1,36 @@
 <h2>Taken</h2>
 
-<table class="table table-striped">
-    <thead class="theme-dark">
-        <tr>
-            <th>Naam</th>
-            <th>Verwachte tijd</th>
-            <th>Echte tijd</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let task of tasks">
-        <td>{{task.title}}</td>
-        <td>{{task.estimatedTime}}</td>
-        <td>{{task.realTime}}</td>
-    </tr>
-    </tbody>
-</table>
+
+<div class="row">
+    <div class="card col-1  theme-neutral">
+        <div class="card-block">
+            <i class="fas fa-star" data-toggle="tooltip" data-placement="top" title="Geef je taak prioriteit!"></i>
+        </div>
+    </div>
+    <div class="card col-4 theme-neutral">
+        <div class="card-block">
+            Taak
+        </div>
+    </div>
+    <div class="card col-2 theme-neutral">
+        <div class="card-block">
+            Verwachte tijd
+        </div>
+    </div>
+    <div class="card col-2 theme-neutral">
+        <div class="card-block">
+            Datum
+        </div>
+    </div>
+    <div class="card col-3 theme-neutral">
+        <div class="card-block">
+            Aanpassen
+        </div>
+    </div>
+</div>
+
+<app-task [task]="task" *ngFor="let task of tasks"></app-task>
+
+<button type="button" class="btn btn-success">Taak toevoegen</button>
+
+
