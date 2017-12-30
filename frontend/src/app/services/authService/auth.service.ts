@@ -2,20 +2,21 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'; //map operator om met observables te werken
 import { tokenNotExpired } from 'angular2-jwt'
+import { GlobalVariable } from '../global'
 
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
 
+
   constructor(private http: Http) { }
 
   registerUser(user){
-    const url = "http://localhost:3000/";
     let headers = new Headers();
 
     headers.append('Content-Type','application/json');
-    return this.http.post(url+'user/registreren', user, {headers:headers})
+    return this.http.post(GlobalVariable.base_url+'user/registreren', user, {headers:headers})
         .map(response => response.json());
 
     //die user/registreren slaagt op routes-->user.js dat is de user en daarin
@@ -24,22 +25,20 @@ export class AuthService {
   }
 
   authenticateUser(user){
-    const url = "http://localhost:3000/";
     let headers = new Headers();
 
     headers.append('Content-Type','application/json');
-    return this.http.post(url+'user/authenticeren', user, {headers:headers})
+    return this.http.post(GlobalVariable.base_url+'user/authenticeren', user, {headers:headers})
         .map(response => response.json());
   }
 
   getProfile(){
-    const url = "http://localhost:3000/";
     let headers = new Headers();
     this.loadToken();
     headers.append('Authorization',this.authToken);
 
     headers.append('Content-Type','application/json');
-    return this.http.get(url+'user/profiel', {headers:headers})
+    return this.http.get(GlobalVariable.base_url+'user/profiel', {headers:headers})
         .map(response => response.json());
   }
 
