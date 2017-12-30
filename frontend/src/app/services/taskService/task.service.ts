@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Http, Headers } from '@angular/http';
 import { HttpClient,HttpHeaders } from '@angular/common/http'
 import { AuthService } from '../authService/auth.service'
 import { GlobalVariable } from '../global'
@@ -20,6 +19,6 @@ export class TaskService {
         .append('Content-Type','application/json');
     this.authService.loadToken();
 
-    return this.http.get(GlobalVariable.base_url+'task/alleTaken', {headers})
+    return this.http.get<any>(GlobalVariable.base_url+'task/alleTaken', {headers})
   }
 }

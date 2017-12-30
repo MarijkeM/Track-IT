@@ -69,7 +69,7 @@ router.post('/authenticeren', async (req, res) => {
                 });
 
                 //wat we gaan terugsturen naar de frontend
-                res.json({
+                return res.json({
                     success: true,
                     token: 'JWT '+token,
                     user: {
@@ -87,11 +87,11 @@ router.post('/authenticeren', async (req, res) => {
     });
 
 
-
 //Profiel: /user/profiel
 router.get('/profiel', passport.authenticate('jwt', {session:false}), (req, res) => {
     console.log("***routes/user/profiel");
-    res.json({user: req.user});
+    console.log("user waarvan het profiel genomen wordt: " + req.user);
+    return res.json({user: req.user});
 });
 
 module.exports = router;

@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  //komt van ngModel in html
+
   firstName: String;
   lastName: String;
   email: String;

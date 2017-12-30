@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'; //map operator om met observables te werken
 import { tokenNotExpired } from 'angular2-jwt'
 import { GlobalVariable } from '../global'
@@ -15,34 +14,38 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   registerUser(user){
-    let headers = new HttpHeaders();
+    let headers = new HttpHeaders()
+        .set('Content-Type','application/json');
 
-    headers.append('Content-Type','application/json');
-    return this.http.post<string>(GlobalVariable.base_url+'user/registreren', user, {headers:headers});
+    return this.http.post<any>(GlobalVariable.base_url+'user/registreren',
+                          user,
+                          {headers});
 
-
+    /*
     //die user/registreren slaagt op routes-->user.js dat is de user en daarin
     //zit een post methode registreren en dat is dat tweede deel
     //hier zit dus de verbintenis met de backend
+    */
   }
 
   authenticateUser(user){
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
 
-    return this.http.post<string>(GlobalVariable.base_url+'user/authenticeren', user, {headers});
-
+    return this.http.post<any>(GlobalVariable.base_url+'user/authenticeren',
+                              user,
+                              {headers});
   }
 
   getProfile(){
+    console.log("***auth.service getProfile()");
+    this.loadToken();
     let headers = new HttpHeaders()
         .set('Authorization',this.authToken)
         .append('Content-Type','application/json');
 
-    this.loadToken();
-
-    return this.http.get<blob>(GlobalVariable.base_url+'user/profiel', {headers});
-
+    return this.http.get<any>(GlobalVariable.base_url+'user/profiel',
+                            {headers});
   }
 
   loadToken(){
