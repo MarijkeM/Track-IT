@@ -23,9 +23,8 @@ import { GoodEventsComponent } from './components/good-events/good-events.compon
 import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
 import { TaskService } from './services/taskService/task.service'
-import { AuthGuard } from './guards/auth.guard'
-
-
+import { AuthGuard } from './guards/auth.guard';
+import { TimerComponent } from './components/timer/timer.component'
 
 
 const appRoutes: Routes = [
@@ -39,6 +38,7 @@ const appRoutes: Routes = [
     {path:'challenge-thought',component:ChallengeThoughtComponent, canActivate:[AuthGuard]},
     {path:'good-events',component:GoodEventsComponent, canActivate:[AuthGuard]},
     {path:'stopwatch',component:StopwatchComponent, canActivate:[AuthGuard]},
+    {path:'timer',component:TimerComponent,},
     {path:'task',component:TaskComponent, canActivate:[AuthGuard]},
     {path:'tasks',component:TasksComponent, canActivate:[AuthGuard]},
     {path:'thoughts',component:ThoughtsComponent, canActivate:[AuthGuard]},
@@ -59,7 +59,8 @@ const appRoutes: Routes = [
     BreathingComponent,
     ThoughtsComponent,
     ChallengeThoughtComponent,
-    GoodEventsComponent
+    GoodEventsComponent,
+    TimerComponent
   ],
   imports: [
       BrowserModule,
