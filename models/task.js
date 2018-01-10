@@ -12,7 +12,8 @@ const TaskSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref:'User', required:true},
     status: ['Todo','Done'],
     dateDeadline: Date,
-    dateFinished: Date
+    dateFinished: Date,
+    priority:Number
 },
     {collection:"task"}
 );

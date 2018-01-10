@@ -8,6 +8,7 @@ export class Task {
         public userId:String,
         public status:String,
         public dateDeadline:Date,
+        public priority:Number,
         public dateFinished?:Date,
         public realTime?:Number,
 

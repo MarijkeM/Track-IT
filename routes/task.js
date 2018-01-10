@@ -35,6 +35,7 @@ router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), asy
         user: req.user,
         status: "Todo",
         dateDeadline: req.body.dateDeadline,
+        priority:req.body.priority
     });
 
     try {
