@@ -9,6 +9,7 @@ const config = require('../config/database');
 const Task = require('../models/task');
 const User = require('../models/user');
 
+
 //alle taken van 1 persoon ophalen: /task/alleTaken
 router.get('/alleTaken', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/taks/alletaken taken van bepaalde user");
@@ -111,10 +112,12 @@ router.delete('/taakVerwijderen/:id', passport.authenticate('jwt', {session:fals
                 msg: 'Taak bestaat niet'
             });
 
-        } else if(task.user != req.user._id){
+        } else if(task.user != req.user._id.toString()){
+            let user1 = task.user;
+            let user2 = req.user._id;
             res.json({
                 success: false,
-                msg: 'Dit is niet jou taak'
+                msg: 'Dit is niet jou taak: '
             });
 
         }else{
