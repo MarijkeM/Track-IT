@@ -68,7 +68,7 @@ export class TimerComponent implements OnInit, OnDestroy {
             }
         );
     }
-    
+
     onClickPause() {
         console.log("Pauze");
         this.unsubscribe();

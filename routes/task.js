@@ -32,7 +32,9 @@ router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), asy
     let newTask = new Task({
         title: req.body.title,
         estimatedTime: req.body.estimatedTime,
-        user: req.user
+        user: req.user,
+        status: "Todo",
+        dateDeadline: req.body.dateDeadline,
     });
 
     try {

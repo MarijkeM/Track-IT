@@ -9,7 +9,10 @@ const TaskSchema = new Schema({
     title: {type:String, required:true},
     estimatedTime: Number,
     realTime: Number,
-    user: {type: Schema.Types.ObjectId, ref:'User', required:true}
+    user: {type: Schema.Types.ObjectId, ref:'User', required:true},
+    status: ['Todo','Done'],
+    dateDeadline: Date,
+    dateFinished: Date
 },
     {collection:"task"}
 );
