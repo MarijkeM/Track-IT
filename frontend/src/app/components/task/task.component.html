@@ -22,9 +22,19 @@
     </div>
     <div class="card col-2">
         <div class="card-block">
-            <a href="#" type="button" class="btn  btn-sm btn-success" data-toggle="tooltip" title="Taak is klaar"><i class="fas fa-check"></i></a>
-            <a href="#" type="button" class="btn btn-sm btn-warning" data-toggle="tooltip" title="Taak aanpassen"><i class="far fa-edit"></i></a>
-            <a href="#" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Taak verwijderen"><i class="far fa-trash-alt"></i></a>
+            <a href="#" type="button" class="btn  btn-sm btn-success"
+               data-toggle="tooltip" title="Taak is klaar">
+                <i class="fas fa-check"></i>
+            </a>
+            <a href="#" type="button" class="btn btn-sm btn-warning"
+               data-toggle="tooltip" title="Taak aanpassen">
+                <i class="far fa-edit"></i>
+            </a>
+            <a href="#" type="button" class="btn btn-sm btn-danger"
+               data-toggle="tooltip" title="Taak verwijderen"
+            (click)="onClickDelete($event)">
+                <i class="far fa-trash-alt"></i>
+            </a>
         </div>
     </div>
 </div>
