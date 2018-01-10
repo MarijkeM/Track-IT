@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Task} from '../../models/task'
 import {TaskService} from '../../services/taskService/task.service'
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-task',
@@ -13,19 +14,15 @@ export class TaskComponent implements OnInit {
     deadlineDate: Date;
     datum: any;
 
-
     weekday: String[] = ["Zo","Ma","Di","Wo","Do","Vr","Za"];
 
-    constructor(private taskService: TaskService) {
+    constructor(private taskService: TaskService,
+                private router:Router) {
     }
 
-
     ngOnInit() {
-
         if (this.task.dateDeadline) {
             const d: Date = new Date(this.task.dateDeadline);
-            console.log("task deadline: " + this.task.dateDeadline);
-            console.log("new date: " + d.getUTCFullYear());
             this.datum =
                 this.weekday[d.getDay()] + " "
                 + d.getDate() +"/" +
@@ -33,7 +30,12 @@ export class TaskComponent implements OnInit {
                 d.getFullYear();
             this.deadlineDate = this.task.dateDeadline;
         }
+    }
 
+    onClickDelete(event){
+        event.preventDefault();
+        this.taskService.deleteTask(this.task._id);
+       location.reload();
     }
 
 

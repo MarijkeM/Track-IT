@@ -15,8 +15,8 @@ export class TaskService {
     }
 
     getTasks() {
-        console.log("***task.service.ts getTasks()");
-        this.authToken = this.authService.loadToken();
+        console.log("***taskService getTasks()");
+        this.loadToken();
 
         const headers = new HttpHeaders()
             .set('Authorization', this.authToken)
@@ -25,7 +25,24 @@ export class TaskService {
         return this.http.get<any>(GlobalVariable.base_url + 'task/alleTaken', {headers});
     }
 
-    editTask(){
+    deleteTask(taskId){
+        console.log("deleteTask in task.service met taskId: " + taskId);
+        this.loadToken()
+        console.log("authtoken: " + this.authToken);
 
+        const headers = new HttpHeaders()
+            .set('Authorization', this.authToken)
+            .append('Content-Type', 'application/json');
+
+        var route = "task/taakVerwijderen/"+taskId;
+
+        //console.log(this.http.delete(GlobalVariable.base_url + route, {headers}))
+        return this.http.delete(GlobalVariable.base_url + route, {headers}).subscribe(data =>{
+            console.log(data);
+        });
+    }
+
+    loadToken(){
+        this.authToken = this.authService.loadToken();
     }
 }

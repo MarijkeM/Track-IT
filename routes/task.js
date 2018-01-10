@@ -97,7 +97,7 @@ router.put('/taakWijzigen/:id', passport.authenticate('jwt', {session:false}), a
 });
 
 //taak verwijderen: /task/taakVerwijderen/id
-router.delete('/taakVerwijderen/:id', passport.authenticate('jwt', {session:false}),async (req, res) => {
+router.delete('/taakVerwijderen/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/task/taakVerwijderen/id taak verwijderen");
     console.log("id: " + req.params.id);
     const taskId = req.params.id;
