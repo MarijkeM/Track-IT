@@ -1,41 +1,45 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Observable, Subscription} from 'rxjs'
+import {TaskService} from '../../services/taskService/task.service'
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-timer',
     templateUrl: './timer.component.html',
     styleUrls: ['./timer.component.css']
 })
-export class TimerComponent implements OnInit {
+export class TimerComponent implements OnInit, OnDestroy {
 
+    ticksOnPause: number = 0;
     ticks: number = 0;
     minutes: number = 0;
     hours: number = 0;
-    seconds: number=0;
+    seconds: number = 0;
 
     sub: Subscription;
 
     timer = Observable.timer(0, 1000);
 
-    constructor() {
+    constructor(private router: Router,
+                private taskService: TaskService) {
     }
 
     ngOnInit() {
+        this.initialPadding();
     }
 
-    onClickStart() {
-
-        this.sub = this.timer.subscribe(
-            t => {
-                this.ticks = t;
-
-                this.seconds = this.getSeconds(this.ticks);
-                this.minutes = this.getMinutes(this.ticks);
-                this.hours = this.getHours(this.ticks);
-            }
-        );
-
+    unsubscribe(){
+        if(this.sub){
+            this.sub.unsubscribe();
+        }
     }
+
+    initialPadding() {
+        this.seconds = this.pad(this.seconds);
+        this.minutes = this.pad(this.minutes);
+        this.hours = this.pad(this.hours);
+    }
+
 
     private getSeconds(ticks: number) {
         return this.pad(ticks % 60);
@@ -53,8 +57,51 @@ export class TimerComponent implements OnInit {
         return digit <= 9 ? '0' + digit : digit;
     }
 
-    onClickStop() {
-        console.log(this.ticks);
+    onClickStart() {
+        this.sub = this.timer.subscribe(
+            t => {
+                this.ticks = t;
+
+                this.seconds = this.getSeconds(this.ticks + this.ticksOnPause);
+                this.minutes = this.getMinutes(this.ticks + this.ticksOnPause);
+                this.hours = this.getHours(this.ticks + this.ticksOnPause);
+            }
+        );
     }
+    
+    onClickPause() {
+        console.log("Pauze");
+        this.unsubscribe();
+        this.ticksOnPause = this.ticks + this.ticksOnPause;
+    }
+
+    onClickReset() {
+        console.log("Reset");
+        this.unsubscribe();
+        this.ticksOnPause = 0;
+        this.seconds = 0;
+        this.minutes = 0;
+        this.hours = 0;
+        this.initialPadding();
+    }
+
+    onClickDone() {
+        console.log(this.ticks + this.ticksOnPause);
+        console.log(this.sub);
+        this.unsubscribe();
+    }
+
+    onClickCancel(event){
+        event.preventDefault();
+        this.router.navigate(['/tasks']);
+        this.unsubscribe();
+    }
+
+    ngOnDestroy() {
+        this.ticksOnPause = 0;
+        this.unsubscribe();
+    }
+
+
 
 }

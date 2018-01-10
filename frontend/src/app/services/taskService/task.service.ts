@@ -24,4 +24,8 @@ export class TaskService {
 
         return this.http.get<any>(GlobalVariable.base_url + 'task/alleTaken', {headers});
     }
+
+    editTask(){
+
+    }
 }
