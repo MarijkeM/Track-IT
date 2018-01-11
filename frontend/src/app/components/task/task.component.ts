@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {Task} from '../../models/task'
 import {TaskService} from '../../services/taskService/task.service'
 import { Router } from '@angular/router';
+import {TasksComponent} from '../tasks/tasks.component'
 
 @Component({
     selector: 'app-task',
@@ -17,7 +18,8 @@ export class TaskComponent implements OnInit {
     weekday: String[] = ["Zo","Ma","Di","Wo","Do","Vr","Za"];
 
     constructor(private taskService: TaskService,
-                private router:Router) {
+                private router:Router,
+    private tasksComponent:TasksComponent) {
     }
 
     ngOnInit() {
@@ -35,7 +37,7 @@ export class TaskComponent implements OnInit {
     onClickDelete(event){
         event.preventDefault();
         this.taskService.deleteTask(this.task._id);
-       location.reload();
+       this.tasksComponent.getTasks();
     }
 
 
