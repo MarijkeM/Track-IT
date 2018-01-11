@@ -26,15 +26,54 @@ router.get('/alleTaken', passport.authenticate('jwt', {session:false}), async (r
     }
 });
 
+//alle taken van 1 persoon ophalen: /task/alleTaken
+router.get('/alleTakenTodo', passport.authenticate('jwt', {session:false}), async (req, res) => {
+    console.log("***routes/taks/alletaken taken van bepaalde user");
+
+    try{
+        tasks = await Task.getTasksTodo(req.user);
+        res.json(tasks);
+    } catch (error){
+        console.log("error: " + error);
+        res.json({
+            success: false,
+            msg: 'Taken niet gevonden: ' + error
+        });
+    }
+});
+
+//alle taken van 1 persoon ophalen: /task/alleTaken
+router.get('/alleTakenDone', passport.authenticate('jwt', {session:false}), async (req, res) => {
+    console.log("***routes/taks/alletaken taken van bepaalde user");
+
+    try{
+        tasks = await Task.getTasksDone(req.user);
+        res.json(tasks);
+    } catch (error){
+        console.log("error: " + error);
+        res.json({
+            success: false,
+            msg: 'Taken niet gevonden: ' + error
+        });
+    }
+});
+
+
 //taak toevoegen: /task/taakToevoegen
 router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/task taak toevoegen");
+    var statusBody = req.body.status.toString();
+
+
+    if(statusBody.toString() !== "Todo" && statusBody.toString() !== "Done" ){
+        statusBody = "Todo";
+    }
 
     let newTask = new Task({
         title: req.body.title,
         estimatedTime: req.body.estimatedTime,
         user: req.user,
-        status: "Todo",
+        status: statusBody,
         dateDeadline: req.body.dateDeadline,
         priority:req.body.priority
     });

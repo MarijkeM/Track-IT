@@ -32,6 +32,18 @@ module.exports.getTasks = function (user) {
     return Task.find(query);
 }
 
+module.exports.getTasksTodo = function (user) {
+    var query = {user: user._id, status:"Todo"};
+    //console.log("query: " + JSON.stringify(query));
+    return Task.find(query);
+}
+
+module.exports.getTasksDone = function (user) {
+    var query = {user: user._id, status:"Done"};
+    //console.log("query: " + JSON.stringify(query));
+    return Task.find(query);
+}
+
 module.exports.addTask = function (newTask) {
     return (new Task(newTask)).save();
 }
