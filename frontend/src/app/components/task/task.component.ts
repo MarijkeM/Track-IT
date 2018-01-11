@@ -50,6 +50,7 @@ export class TaskComponent implements OnInit {
         event.preventDefault();
         console.log("onClickDone");
         this.task.status = "Done";
+        this.task.priority = 0;
         var task = this.task;
         this.taskService.updateTask(this.task._id, task);
         this.tasksComponent.getTasks();

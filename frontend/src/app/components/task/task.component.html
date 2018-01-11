@@ -21,7 +21,7 @@
     </div>
     <div class="card col-2">
         <div class="card-block">
-            <a href="#" type="button" class="btn  btn-sm btn-success"
+            <a *ngIf="this.task.status == 'Todo'" href="#" type="button" class="btn  btn-sm btn-success"
                data-toggle="tooltip" title="Taak is klaar"
                (click)="onClickDone($event)">
                 <i class="fas fa-check"></i>
@@ -31,7 +31,7 @@
                 <i class="far fa-edit"></i>
             </a>
             <a href="#" type="button" class="btn btn-sm btn-danger"
-               data-toggle="tooltip" title="Taak verwijderen"
+               data-toggle="tooltip" title="Taak definitief verwijderen (uit alle lijsten)"
                (click)="onClickDelete($event)">
                <i class="far fa-trash-alt"></i>
             </a>
