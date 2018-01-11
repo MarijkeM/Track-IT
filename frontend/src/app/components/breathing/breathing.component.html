@@ -1,3 +1,46 @@
-<p>
-  breathing works!
-</p>
+<div class="card">
+
+    <div class="card-header text-muted text-right">
+        {{this.whenToStop}}
+        <span *ngIf="this.whenToStop == 1">minuut </span>
+        <span *ngIf="this.whenToStop > 1">minuten </span>
+            oefening
+    </div>
+
+    <div class="card-block text-center p-2">
+        <h1>{{this.breatheCue}}</h1>
+
+        <div *ngIf="this.breatheCue == 'Adem in'">
+            <i class="fas fa-lg fa-circle" *ngFor="let icon of icons"></i>
+        </div>
+        <div *ngIf="this.breatheCue == 'Adem uit'">
+            <i class="far fa-lg fa-circle" *ngFor="let icon of icons"></i>
+        </div>
+
+        <p class="text-center">
+            <button type="button" [ngClass]="this.whenToStop == 1 ? 'btn theme-light': 'btn theme-dark'" class="btn theme-dark" (click)="onClickFirst(1)">
+                1 minuut
+            </button>
+            <button type="button" [ngClass]="this.whenToStop == 2 ? 'btn theme-light': 'btn theme-dark'" (click)="onClickSecond(2)">
+                2 minuten
+            </button>
+            <button type="button" [ngClass]="this.whenToStop == 5 ? 'btn theme-light': 'btn theme-dark'" (click)="onClickThird(5)">
+                5 minuten
+            </button>
+        </p>
+
+        <p>
+            <button type="button" class="btn theme-dark text-center" (click)="onClickStart()">
+                <i class="fas fa-play"></i>
+                Starten
+            </button>
+        </p>
+        <p>
+            <button type="button" class="btn theme-dark" (click)="onClickReset()">
+                <i class="fas fa-undo"></i>
+                Reset
+            </button>
+        </p>
+    </div>
+
+</div>

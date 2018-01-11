@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bcryptjs": "*",
+    "beepbeep": "^1.2.1",
     "body-parser": "*",
     "cors": "*",
     "express": "*",

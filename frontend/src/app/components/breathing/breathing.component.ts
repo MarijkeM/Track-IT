@@ -1,30 +1,129 @@
-import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs'
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Observable, Subscription} from 'rxjs'
+import {Router} from '@angular/router';
 
 
 @Component({
-  selector: 'app-breathing',
-  templateUrl: './breathing.component.html',
-  styleUrls: ['./breathing.component.css']
+    selector: 'app-breathing',
+    templateUrl: './breathing.component.html',
+    styleUrls: ['./breathing.component.css']
 })
-export class BreathingComponent implements OnInit {
+export class BreathingComponent implements OnInit, OnDestroy {
 
-  ticks = 0;
+    ticks: number = 0;
+    minutes: number = 0;
+    seconds: number = 0;
+    icons: number[];
 
-  constructor() { }
+    whenToStop: number = 1;
 
-  ngOnInit() {
+    breatheCue: string = "Laten we beginnen!";
+
+    sub: Subscription;
+
+    timer = Observable.timer(0, 1000);
+
+    constructor(private router: Router) {
+    }
+
+    ngOnInit() {
+    }
+
+    unsubscribe() {
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
+    }
 
 
-  }
+    private getSeconds(ticks: number) {
+        return ticks % 60;
+    }
 
-  onClickStart(){
-    let timer = Observable.timer(0,1000);
-    timer.subscribe(t=>this.ticks = t);
-  }
+    private getMinutes(ticks: number) {
+        return (Math.floor(ticks / 60)) % 60;
+    }
 
-  onClickStop(){
-    console.log(this.ticks);
-  }
+    onClickStart() {
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
+            this.sub = this.timer.subscribe(
+                t => {
+                    this.ticks = t;
+
+                    this.seconds = this.getSeconds(this.ticks);
+                    this.minutes = this.getMinutes(this.ticks);
+
+                    if(this.minutes == this.whenToStop){
+                        this.stop();
+                    }else if (this.ticks % 5 == 0) {
+                        this.toggleBreathe();
+                    }
+
+                    this.printIcons(this.ticks);
+                }
+            );
+    }
+
+    printIcons(ticks){
+        var number = ticks %5;
+        this.icons = [];
+        for(var i = 0; i<= number; i++){
+            this.icons.push(number)
+        }
+    }
+
+    toggleBreathe() {
+        this.playBeep();
+        if (this.breatheCue == "Adem in") {
+            this.breatheCue = "Adem uit";
+        } else {
+            this.breatheCue = "Adem in";
+        }
+    }
+
+    stop(){
+        this.onClickReset();
+        this.breatheCue = "Klaar!";
+        this.playEndTune();
+    }
+
+    playEndTune(){
+        var audio = new Audio();
+        audio.src = "../../../assets/TempleBell.mp3"
+        audio.load();
+        audio.play();
+    }
+
+    playBeep() {
+        var audio = new Audio();
+        audio.src = "../../../assets/Tone.mp3";
+        audio.load();
+        audio.play();
+    }
+
+    onClickFirst(time){
+        this.whenToStop = time;
+    }
+    onClickSecond(time){
+        this.whenToStop = time;
+    }
+    onClickThird(time){
+        this.whenToStop = time;
+    }
+
+    onClickReset() {
+        console.log("Reset");
+        this.unsubscribe();
+        this.seconds = 0;
+        this.minutes = 0;
+
+    }
+
+    ngOnDestroy() {
+        this.unsubscribe();
+    }
+
 
 }
