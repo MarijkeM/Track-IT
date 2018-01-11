@@ -56,5 +56,10 @@ export class TaskComponent implements OnInit {
         this.tasksComponent.getTasks();
     }
 
+    onClickTimer(event) {
+        event.preventDefault();
+        this.router.navigate(['/timer']);
+    }
+
 
 }

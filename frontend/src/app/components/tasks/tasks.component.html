@@ -1,6 +1,6 @@
 <div class="row">
     <div class="float-left col-sm-6">
-    <h2>Taken</h2>
+        <h2>Taken</h2>
     </div>
 
     <div class="col-sm-6 text-right">
@@ -39,14 +39,18 @@
     </div>
     <div class="card col-2 theme-neutral">
         <div class="card-block">
-            Aanpassen
         </div>
     </div>
 </div>
 
-<app-task [task]="task" *ngFor="let task of tasks"></app-task>
+<div>
+    <app-task [task]="task" *ngFor="let task of tasks"></app-task>
+</div>
 
-<button type="button" class="btn btn-success" (click)="onClickAddTask()">Taak toevoegen</button>
-
+<div class="row">
+    <button type="button" class="btn btn-success mt-2" (click)="onClickAddTask()"><i class="fas fa-plus"></i> Taak
+        toevoegen
+    </button>
+</div>
 
 

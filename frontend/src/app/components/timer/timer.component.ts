@@ -86,9 +86,8 @@ export class TimerComponent implements OnInit, OnDestroy {
     }
 
     onClickDone() {
-        console.log(this.ticks + this.ticksOnPause);
-        console.log(this.sub);
         this.unsubscribe();
+        this.router.navigate(['/tasks'])
     }
 
     onClickCancel(event){
