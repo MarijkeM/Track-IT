@@ -3,13 +3,13 @@
 <form (submit)="onLoginSubmit()">
   <div class="row">
     <div class="col-md-3 field-label-responsive">
-      <label for="email">E-mailadres</label>
+      <label for="title">Naam: </label>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-at"></i></div>
-          <input type="text" [(ngModel)]="email" name="email" class="form-control" id="email"
+          <input type="text" [(ngModel)]="title" name="title" class="form-control" id="title"
                  placeholder="voorbeeld@voorbeeld.com">
         </div>
       </div>
@@ -18,13 +18,13 @@
 
   <div class="row">
     <div class="col-md-3 field-label-responsive">
-      <label for="password">Paswoord</label>
+      <label for="priority">Prioriteit</label>
     </div>
     <div class="col-md-6">
       <div class="form-group has-danger">
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-          <input type="password" [(ngModel)]="password" name="password"  class="form-control" id="password"
+          <input type="number" [(ngModel)]="priority" name="priority"  class="form-control" id="password"
                  placeholder="Paswoord">
         </div>
       </div>

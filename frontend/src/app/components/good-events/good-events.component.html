@@ -1,2 +1,35 @@
 <h1>Goede gebeurtenissen</h1>
-<p>Coming soon: een plek waar je al je goede gebeurtenissen kwijt kan</p>
+<p>Dit is een plek waar enkel positieve herinneringen thuis horen</p>
+
+<form id="eventForm" (submit)="onEventSubmit($event)">
+    <div class="row">
+        <div class="col-sm-3 col-lg-2 field-label-responsive">
+            <label for="content"><b>Nieuw event:</b></label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <textarea form="eventForm" [(ngModel)]="content" name="content" class="form-control" id="content"
+                              placeholder="Schrijf hier wat er is gebeurd"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-lg-2"></div>
+        <div class="col-md-6">
+            <input type="submit" class="btn btn-success" value="Opslaan">
+        </div>
+    </div>
+</form>
+<hr/>
+<div class="card text-center m-2" *ngFor="let event of events">
+    <div class="card-block">
+        <p class="card-text">{{event.content}}</p>
+    </div>
+    <div class="card-footer text-muted">
+        {{event.date}}
+    </div>
+</div>
+

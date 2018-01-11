@@ -58,7 +58,6 @@ export class AuthService {
     return tokenNotExpired('id_token');
   }
 
-
   storeUserData(token, user){
     console.log("methode storeUserData in authservice")
     localStorage.setItem('id_token', token);

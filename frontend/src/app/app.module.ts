@@ -24,7 +24,8 @@ import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
 import { TaskService } from './services/taskService/task.service'
 import { AuthGuard } from './guards/auth.guard';
-import { TimerComponent } from './components/timer/timer.component'
+import { TimerComponent } from './components/timer/timer.component';
+import { AddTaskComponent } from './components/add-task/add-task.component'
 
 
 const appRoutes: Routes = [
@@ -60,7 +61,8 @@ const appRoutes: Routes = [
     ThoughtsComponent,
     ChallengeThoughtComponent,
     GoodEventsComponent,
-    TimerComponent
+    TimerComponent,
+    AddTaskComponent
   ],
   imports: [
       BrowserModule,
