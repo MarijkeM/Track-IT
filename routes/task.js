@@ -62,11 +62,38 @@ router.get('/alleTakenDone', passport.authenticate('jwt', {session:false}), asyn
 //taak toevoegen: /task/taakToevoegen
 router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/task taak toevoegen");
-    var statusBody = req.body.status.toString();
+    var statusBody = "";
+    var deadline = "";
 
+    if(!req.body.dateDeadline){
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
 
-    if(statusBody.toString() !== "Todo" && statusBody.toString() !== "Done" ){
-        statusBody = "Todo";
+        if(dd<10) {
+            dd = '0'+dd
+        }
+
+        if(mm<10) {
+            mm = '0'+mm
+        }
+
+        today = mm + '/' + dd + '/' + yyyy;
+        deadline = new Date(today);
+
+    }else{
+        deadline = req.body.dateDeadline;
+    }
+
+    if(req.body.status){
+        statusBody = req.body.status;
+
+        if(statusBody.toString() !== "Todo" && statusBody.toString() !== "Done" ){
+            statusBody = "Todo";
+        }
+    }else{
+        statusBody = "Todo"
     }
 
     let newTask = new Task({
@@ -74,7 +101,7 @@ router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), asy
         estimatedTime: req.body.estimatedTime,
         user: req.user,
         status: statusBody,
-        dateDeadline: req.body.dateDeadline,
+        dateDeadline: deadline,
         priority:req.body.priority
     });
 
@@ -96,7 +123,6 @@ router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), asy
 router.put('/taakWijzigen/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/task/taakWijzigen/" + req.params.id);
     const taskId = req.params.id;
-
 
     var update = ({
         title: req.body.title,

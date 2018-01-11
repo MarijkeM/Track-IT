@@ -47,6 +47,21 @@ export class TaskService {
         return this.http.get<any>(route, {headers});
     }
 
+    addTask(task) {
+        console.log("***taskService addTask");
+
+        this.loadToken();
+        const headers = this.getHeaders();
+
+        var route = GlobalVariable.base_url + 'task/taakToevoegen';
+
+        return this.http.post<any>(route, task, {headers}).subscribe((data) => {
+            console.log("data: " + JSON.stringify(data));
+        }, (err) => {
+            console.log("error bij taak toevoegen: " + JSON.stringify(err));
+        });;
+    }
+
     deleteTask(taskId) {
         console.log("deleteTask in task.service met taskId: " + taskId);
 
@@ -61,11 +76,8 @@ export class TaskService {
     }
 
     updateTask(taskId, task) {
-        console.log("updateTask in taskService met taskId: " + taskId);
-        console.log("en taak: " + JSON.stringify(task))
 
         this.loadToken()
-        console.log("auth token" + this.authToken)
         const headers = this.getHeaders();
 
         var route = GlobalVariable.base_url + "task/taakWijzigen/" + taskId;
@@ -73,7 +85,7 @@ export class TaskService {
         return this.http.put<any>(route, task, {headers}).subscribe((data) => {
             console.log("data: " + JSON.stringify(data));
         }, (err) => {
-            console.log("error bij taakwijzigen: " + JSON.stringify(err));
+            console.log("error bij taak wijzigen: " + JSON.stringify(err));
         });
     }
 

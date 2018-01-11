@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskService} from '../../services/taskService/task.service'
 import {Task} from '../../models/task'
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-tasks',
@@ -10,7 +11,8 @@ import {Task} from '../../models/task'
 export class TasksComponent implements OnInit {
     tasks: Task[];
 
-    constructor(private taskService: TaskService) {
+    constructor(private taskService: TaskService,
+                private router: Router,) {
     }
 
     ngOnInit() {
@@ -36,6 +38,10 @@ export class TasksComponent implements OnInit {
         if (a.priority < b.priority)
             return 1;
         return 0;
+    }
+
+    onClickAddTask(){
+        this.router.navigate(['/addTask'])
     }
 
     onClickTodo() {

@@ -1,0 +1,71 @@
+<h2>Taak toevoegen</h2>
+
+<form (submit)="onTaskSubmit()">
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="title">Naam: </label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+
+          <input type="text" [(ngModel)]="title" name="title" class="form-control" id="title"
+                 placeholder="bv. de was ophangen">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="priority">Prioriteit: </label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group has-danger">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <input type="number" [(ngModel)]="priority" name="priority"  class="form-control" id="priority"
+                 placeholder="een cijfer van 1 tot 5" max="5" min="1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-3 field-label-responsive">
+    <label for="estimatedTime">Geschatte tijd (in minuten): </label>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group has-danger">
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <input type="number" [(ngModel)]="estimatedTime" name="estimatedTime"  class="form-control" id="estimatedTime"
+               placeholder="Hoelang denk je hiermee bezig te zijn?" min="1" max="480">
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-3 field-label-responsive">
+      <label for="day">Deadline: </label>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group has-danger">
+        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+          <input type="number" [(ngModel)]="day" name="day"  class="form-control" id="day"
+                 placeholder="dd" min="1" max="31" size="2">
+          <input type="number" [(ngModel)]="month" name="monthe"  class="form-control" id="month"
+                 placeholder="mm" min="1" max="12" size="2">
+          <input type="number" [(ngModel)]="year" name="year"  class="form-control" id="year"
+                 placeholder="yyyy" min="2017" max="2100" size="4">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <input type="submit" class="btn btn-success" value="Opslagen">
+    </div>
+  </div>
+</form>

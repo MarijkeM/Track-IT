@@ -43,6 +43,7 @@ const appRoutes: Routes = [
     {path:'task',component:TaskComponent, canActivate:[AuthGuard]},
     {path:'tasks',component:TasksComponent, canActivate:[AuthGuard]},
     {path:'thoughts',component:ThoughtsComponent, canActivate:[AuthGuard]},
+    {path:'addTask',component:AddTaskComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
