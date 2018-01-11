@@ -3,6 +3,7 @@
  */
 export class Task {
     constructor(
+        public _id:any,
         public title:String,
         public estimatedTime:Number,
         public userId:String,
