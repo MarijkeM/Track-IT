@@ -15,7 +15,7 @@ export class BreathingComponent implements OnInit, OnDestroy {
     seconds: number = 0;
     icons: number[];
 
-    whenToStop: number = 1;
+    whenToStop: number = 2;
 
     breatheCue: string = "Laten we beginnen!";
 
@@ -27,12 +27,6 @@ export class BreathingComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-    }
-
-    unsubscribe() {
-        if (this.sub) {
-            this.sub.unsubscribe();
-        }
     }
 
 
@@ -103,6 +97,7 @@ export class BreathingComponent implements OnInit, OnDestroy {
         audio.play();
     }
 
+
     onClickFirst(time){
         this.whenToStop = time;
     }
@@ -113,16 +108,27 @@ export class BreathingComponent implements OnInit, OnDestroy {
         this.whenToStop = time;
     }
 
+    
     onClickReset() {
         console.log("Reset");
+        this.reset();
+    }
+
+    reset(){
         this.unsubscribe();
         this.seconds = 0;
         this.minutes = 0;
-
     }
 
+    unsubscribe() {
+        if (this.sub) {
+            this.sub.unsubscribe();
+        }
+    }
+
+
     ngOnDestroy() {
-        this.unsubscribe();
+        this.reset()
     }
 
 
