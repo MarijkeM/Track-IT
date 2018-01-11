@@ -30,7 +30,6 @@ export class TasksComponent implements OnInit {
 
     }
 
-
     sorterenOpPrioriteit(a, b) {
         if (a.priority > b.priority)
             return -1;

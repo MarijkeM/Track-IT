@@ -43,7 +43,7 @@ export class TaskComponent implements OnInit {
     onClickDelete(event){
         event.preventDefault();
         this.taskService.deleteTask(this.task._id);
-       this.tasksComponent.getTasks();
+        this.tasksComponent.getTasks();
     }
 
     onClickDone(event){
