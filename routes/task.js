@@ -88,7 +88,7 @@ router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), asy
     } catch (e) {
         res.json({
             success: false,
-            msg: 'Toek toevoegen is mislukt: ' + e});
+            msg: 'Taak toevoegen is mislukt: ' + e});
     }
 });
 
@@ -96,32 +96,40 @@ router.post('/taakToevoegen', passport.authenticate('jwt', {session:false}), asy
 router.put('/taakWijzigen/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/task/taakWijzigen/" + req.params.id);
     const taskId = req.params.id;
-    const updatetTask = req.body;
 
-    /* Some logs
-     console.log("oude taak: " + JSON.stringify(task));
-     console.log("nieuwe taak: " + JSON.stringify(updatetTask));
-     console.log("task.user: " + JSON.stringify(task.user));
+
+    var update = ({
+        title: req.body.title,
+        estimatedTime: req.body.estimatedTime,
+        dateFinished: req.body.dateFinished,
+        user: req.body.user,
+        status: req.body.status,
+        dateDeadline: req.body.dateDeadline,
+        priority:req.body.priority
+    });
+
+    console.log("een logje");
+     console.log("nieuwe taak: " + JSON.stringify(update));
      console.log("req.user._id: " + JSON.stringify(req.user._id));
-     console.log("users komen overeen is " + (JSON.stringify(task.user) === JSON.stringify(req.user._id)));
-     */
+     /*console.log("users komen overeen is " + (JSON.stringify(task.user) === JSON.stringify(req.user._id)));
+*/
 
     try {
-        task = await Task.findTaskById(taskId);
+        var task = await Task.findTaskById(taskId);
 
         if(task == null){
             res.json({
                 success: false,
                 msg: 'Taak bestaat niet'
             });
-        }else if(JSON.stringify(task.user) != JSON.stringify(req.user._id)){
+        }else if(update.user.toString() !=(req.user._id).toString()){
 
             res.json({
                 success: false,
-                msg: 'Je kan de taak niet aanpassen'
+                msg: 'Je kan de taak niet aanpassen: '
             });
         }else{
-            await Task.updateTask(taskId, updatetTask);
+            await Task.updateTask(taskId, update);
 
             res.json({
                 success: true,

@@ -1,5 +1,4 @@
-
-<div class="row">
+<div [ngClass]="this.isDone ? 'row taskDone': 'row'">
     <div class="card col-1">
         <div class="card-block">
             {{task.priority}}
@@ -23,7 +22,8 @@
     <div class="card col-2">
         <div class="card-block">
             <a href="#" type="button" class="btn  btn-sm btn-success"
-               data-toggle="tooltip" title="Taak is klaar">
+               data-toggle="tooltip" title="Taak is klaar"
+               (click)="onClickDone($event)">
                 <i class="fas fa-check"></i>
             </a>
             <a href="#" type="button" class="btn btn-sm btn-warning"
@@ -32,8 +32,8 @@
             </a>
             <a href="#" type="button" class="btn btn-sm btn-danger"
                data-toggle="tooltip" title="Taak verwijderen"
-            (click)="onClickDelete($event)">
-                <i class="far fa-trash-alt"></i>
+               (click)="onClickDelete($event)">
+               <i class="far fa-trash-alt"></i>
             </a>
         </div>
     </div>

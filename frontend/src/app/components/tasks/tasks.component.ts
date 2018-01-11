@@ -13,15 +13,40 @@ export class TasksComponent implements OnInit {
   constructor(private taskService:TaskService) { }
 
   ngOnInit() {
-
-    this.taskService.getTasks().subscribe((tasks : Task[]) => {
-          this.tasks = tasks;
-          //console.log(tasks);
-        },
-        err => {
-          console.log(err);
-          return false;
-        });
+      this.getTasks();
   }
+
+  getTasks(){
+      this.taskService.getTasks().subscribe((tasks : Task[]) => {
+              this.tasks = tasks;
+              console.log(tasks);
+          },
+          err => {
+              console.log(err);
+              return false;
+          });
+  }
+
+    onClickTodo(){
+        this.taskService.getTasksToDo().subscribe((tasks : Task[]) => {
+                this.tasks = tasks;
+                console.log(tasks);
+            },
+            err => {
+                console.log(err);
+                return false;
+            });
+    }
+
+    onClickDone(){
+        this.taskService.getTasksDone().subscribe((tasks : Task[]) => {
+                this.tasks = tasks;
+                console.log(tasks);
+            },
+            err => {
+                console.log(err);
+                return false;
+            });
+    }
 
 }

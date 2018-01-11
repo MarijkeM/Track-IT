@@ -108,7 +108,7 @@ export class BreathingComponent implements OnInit, OnDestroy {
         this.whenToStop = time;
     }
 
-    
+
     onClickReset() {
         console.log("Reset");
         this.reset();
