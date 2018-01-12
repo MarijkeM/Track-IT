@@ -48,12 +48,12 @@ router.post('/authenticeren', async (req, res) => {
     try{
         user = await User.getUserByEmail(email);
         if(user == null){
-            res.json({
+            return res.json({
                 success: false,
                 msg: 'Gebruiker niet gevonden'})
         }
     }catch (e){
-        res.json({
+        return res.json({
             success: false,
             msg: 'Gebruiker niet gevonden'})
     }

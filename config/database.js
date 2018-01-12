@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 mongoose.set("debug",true);//op true zetten voor debuggen
 //je kan ook je eigen debug code schrijven:
 /*
