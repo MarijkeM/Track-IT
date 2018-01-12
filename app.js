@@ -31,7 +31,7 @@ const user = require('./routes/user');
 const task = require('./routes/task');
 
 //poort nummer voor back end
-const port = process.env.port || 8080; //local:3000
+const port = process.env.port || 8090; //local:3000
 
 //CORS gebruiken
 app.use(cors());
