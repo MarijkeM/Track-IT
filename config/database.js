@@ -14,6 +14,6 @@ mongoose.set("debug",true);//op true zetten voor debuggen
  }
  */
 module.exports = {
-    database:'mongodb://admin:adminCVS@ds247407.mlab.com:47407/meancvs',//de naam van de database in mongo
+    database:'admin:adminCVS@ds247407.mlab.com:47407/meancvs',//de naam van de database in mongo
     secret:'secvsret'//voor passport nodig
 }
