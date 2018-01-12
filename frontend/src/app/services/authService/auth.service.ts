@@ -17,7 +17,7 @@ export class AuthService {
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
 
-    return this.http.post<any>('user/registreren',
+    return this.http.post<any>(GlobalVariable.base_url+'user/registreren',
                           user,
                           {headers});
 
@@ -32,7 +32,7 @@ export class AuthService {
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
 
-    return this.http.post<any>('user/authenticeren',
+    return this.http.post<any>(GlobalVariable.base_url+'user/authenticeren',
                               user,
                               {headers});
   }
@@ -45,7 +45,7 @@ export class AuthService {
         .append('Content-Type','application/json');
 
 
-    return this.http.get<any>('user/profiel',
+    return this.http.get<any>(GlobalVariable.base_url+'user/profiel',
                             {headers});
   }
 
