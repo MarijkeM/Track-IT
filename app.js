@@ -21,7 +21,7 @@ mongoose.connection.on('connected', function () {
 
 //dit toont als er een error is in de db
 mongoose.connection.on('error', function (error) {
-    console.log('Database error ' + error)
+    console.log('Database error: ' + error)
 })
 
 const app = express();
@@ -31,7 +31,7 @@ const user = require('./routes/user');
 const task = require('./routes/task');
 
 //poort nummer voor back end
-const port = process.env.port || 8090; //local:3000
+const port = process.env.PORT || 8080; //local:3000
 
 //CORS gebruiken
 app.use(cors());
