@@ -737,7 +737,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form (submit)=\"onLoginSubmit()\">\n  <div class=\"row\">\n    <div class=\"col-md-3 field-label-responsive\">\n      <label for=\"email\">E-mailadres</label>\n    </div>\n    <div class=\"col-md-6\">\n      <div class=\"form-group\">\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-at\"></i></div>\n          <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" id=\"email\"\n                 placeholder=\"voorbeeld@voorbeeld.com\">\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-3 field-label-responsive\">\n      <label for=\"password\">Paswoord</label>\n    </div>\n    <div class=\"col-md-6\">\n      <div class=\"form-group has-danger\">\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fa fa-key\"></i></div>\n          <input type=\"password\" [(ngModel)]=\"password\" name=\"password\"  class=\"form-control\" id=\"password\"\n                 placeholder=\"Paswoord\">\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-3\"></div>\n    <div class=\"col-md-6\">\n      <input type=\"submit\" class=\"btn btn-success\" value=\"Inloggen\">\n    </div>\n    <flash-messages></flash-messages>\n  </div>\n</form>\n\n"
+module.exports = "<h2>Inloggen</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"row\">\n    <div class=\"col-md-3 field-label-responsive\">\n      <label for=\"email\">E-mailadres</label>\n    </div>\n    <div class=\"col-md-6\">\n      <div class=\"form-group\">\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-at\"></i></div>\n          <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" id=\"email\"\n                 placeholder=\"voorbeeld@voorbeeld.com\">\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-3 field-label-responsive\">\n      <label for=\"password\">Paswoord</label>\n    </div>\n    <div class=\"col-md-6\">\n      <div class=\"form-group has-danger\">\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fa fa-key\"></i></div>\n          <input type=\"password\" [(ngModel)]=\"password\" name=\"password\"  class=\"form-control\" id=\"password\"\n                 placeholder=\"Paswoord\">\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"row\">\n    <div class=\"col-md-3\"></div>\n    <div class=\"col-md-6\">\n      <input type=\"submit\" class=\"btn btn-success\" value=\"Inloggen\">\n    </div>\n    <flash-messages></flash-messages>\n  </div>\n</form>\n\n"
 
 /***/ }),
 
@@ -1646,8 +1646,7 @@ var Task = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt__ = __webpack_require__("../../../../angular2-jwt/angular2-jwt.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_jwt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__global__ = __webpack_require__("../../../../../src/app/services/global.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1661,15 +1660,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  //map operator om met observables te werken
 
 
-
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
     }
     AuthService.prototype.registerUser = function (user) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["c" /* HttpHeaders */]()
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]()
             .set('Content-Type', 'application/json');
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__global__["a" /* GlobalVariable */].base_url + 'user/registreren', user, { headers: headers });
+        return this.http.post('user/registreren', user, { headers: headers });
         /*
         //die user/registreren slaagt op routes-->user.js dat is de user en daarin
         //zit een post methode registreren en dat is dat tweede deel
@@ -1677,17 +1675,17 @@ var AuthService = (function () {
         */
     };
     AuthService.prototype.authenticateUser = function (user) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["c" /* HttpHeaders */]()
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]()
             .set('Content-Type', 'application/json');
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__global__["a" /* GlobalVariable */].base_url + 'user/authenticeren', user, { headers: headers });
+        return this.http.post('user/authenticeren', user, { headers: headers });
     };
     AuthService.prototype.getProfile = function () {
         console.log("***auth.service getProfile()");
         this.loadToken();
-        var headers = new __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["c" /* HttpHeaders */]()
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]()
             .set('Authorization', this.authToken)
             .append('Content-Type', 'application/json');
-        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__global__["a" /* GlobalVariable */].base_url + 'user/profiel', { headers: headers });
+        return this.http.get('user/profiel', { headers: headers });
     };
     AuthService.prototype.loadToken = function () {
         var token = localStorage.getItem('id_token');
@@ -1710,7 +1708,7 @@ var AuthService = (function () {
     };
     AuthService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]])
     ], AuthService);
     return AuthService;
 }());
