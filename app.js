@@ -10,8 +10,8 @@ const config = require('./config/database')
 //deze ".database" is omdat in die config file database:'mongodb:... staat,
 //het kon ook pipo heten als dat in die config file zo zou heten, het is dus niet
 //de naam van de file
-var promise = mongoose.createConnection(config.database, {useMongoClient: true})
-//mongoose.connect(config.database);
+//var promise = mongoose.createConnection(config.database, {useMongoClient: true})
+mongoose.connect(config.database);
 
 //dit komt te staan als je nodemon gebruikt, dit is niet verplicht
 //maar zo kan je laten zien dat de connectie ontstaan is
