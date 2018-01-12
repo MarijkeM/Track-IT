@@ -584,8 +584,6 @@ module.exports = "<h1>Goede gebeurtenissen</h1>\n<p>Dit is een plek waar enkel p
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoodEventsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -596,11 +594,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var GoodEventsComponent = (function () {
-    function GoodEventsComponent(flashMessage) {
-        this.flashMessage = flashMessage;
-        this.events = [{ content: "Ik ben naar de markt geweest en het was heel gezellig", date: this.getToday() }];
+    function GoodEventsComponent() {
+        this.events = [{ content: "Voorbeeld: Ik ben naar de markt geweest en het was heel gezellig", date: this.getToday() }];
     }
     GoodEventsComponent.prototype.ngOnInit = function () {
         if (localStorage.getItem('events')) {
@@ -646,7 +642,7 @@ var GoodEventsComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/good-events/good-events.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/good-events/good-events.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]])
+        __metadata("design:paramtypes", [])
     ], GoodEventsComponent);
     return GoodEventsComponent;
 }());
@@ -676,7 +672,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div >\n  <h1 class=\"header theme-writing\">Hoofdpagina</h1>\n  <p>Dit wordt een website om rust te vinden</p>\n</div>\n"
+module.exports = "<div >\n  <h1 class=\"header theme-writing\">Welkom!</h1>\n  <p>Deze site is speciaal voor mensen die meer structuur en rust in hun leven willen.\n  Je kan hier je taken duidelijk oplijsten gesorteerd op prioriteit, je kan een ademhalingsoefening doen\n  om weer tot rust te komen. Je kan tevens ook alle toffe gebeurtenissen noteren zodat je\n  altijd onthoudt welke goede dingen er in je leven gebeuren.</p>\n  <p>Veel plezier!</p>\n</div>\n"
 
 /***/ }),
 
