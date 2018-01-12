@@ -10,11 +10,11 @@ import {Router} from '@angular/router';
 export class AddTaskComponent implements OnInit {
   title: String;
   priority: String;
-  estimatedTime:Number;
+  estimatedTime:number;
   date:Date;
-  year:Number;
-  month:Number;
-  day:Number;
+  year:number;
+  month:number;
+  day:number;
 
   constructor(private taskService: TaskService,
               private router: Router,) { }
