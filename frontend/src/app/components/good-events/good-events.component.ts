@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GoodEvent} from '../../models/goodEvent.model'
-import {FlashMessagesService} from 'angular2-flash-messages'
+
 
 @Component({
   selector: 'app-good-events',
@@ -9,11 +9,11 @@ import {FlashMessagesService} from 'angular2-flash-messages'
 })
 export class GoodEventsComponent implements OnInit {
   goodEvent: GoodEvent;
-  events: GoodEvent[] = [{content:"Ik ben naar de markt geweest en het was heel gezellig", date:this.getToday()}];
+  events: GoodEvent[] = [{content:"Voorbeeld: Ik ben naar de markt geweest en het was heel gezellig", date:this.getToday()}];
   content: String;
   date: Date;
 
-  constructor(private flashMessage: FlashMessagesService) { }
+  constructor() { }
 
 
   ngOnInit() {
