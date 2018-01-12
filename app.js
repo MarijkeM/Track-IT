@@ -29,8 +29,8 @@ const app = express();
 const user = require('./routes/user');
 const task = require('./routes/task');
 
-//poort nummer voor front end
-const port = 3000;
+//poort nummer voor back end
+const port = process.env.port || 8080; //local:3000
 
 //CORS gebruiken
 app.use(cors());
