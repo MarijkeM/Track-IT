@@ -53,12 +53,10 @@ require('./config/passport')(passport);
 
 //'/user" moet overeenkomen met de js file onder routes
 app.use('/user', user);
-app.use('/task', task);
-
 
 //route van de index
 app.get('/', function (req,res) {
-    res.send('Deze pagina bestaat nog niet');
+    res.send('Deze pagina bestaat niet');
 });
 
 app.get('*', (req, res) => {
