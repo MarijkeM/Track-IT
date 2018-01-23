@@ -19,9 +19,11 @@
     "passport-jwt": "*"
   },
   "keywords": [
-    "CVS",
-    "MEAN"
+    "Track",
+    "MEAN",
+    "Freight",
+    "Track-and-trace"
   ],
-  "author": "Marijke Meersman",
+  "author": "Track-IT, team D3",
   "license": "ISC"
 }
