@@ -12,20 +12,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { TasksComponent } from './components/tasks/tasks.component';
-import { TaskComponent } from './components/task/task.component';
-import { StopwatchComponent } from './components/stopwatch/stopwatch.component';
-import { BreathingComponent } from './components/breathing/breathing.component';
-import { ThoughtsComponent } from './components/thoughts/thoughts.component';
-import { ChallengeThoughtComponent } from './components/challenge-thought/challenge-thought.component';
-import { GoodEventsComponent } from './components/good-events/good-events.component';
 
 import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
-import { TaskService } from './services/taskService/task.service'
 import { AuthGuard } from './guards/auth.guard';
-import { TimerComponent } from './components/timer/timer.component';
-import { AddTaskComponent } from './components/add-task/add-task.component'
 
 
 const appRoutes: Routes = [
@@ -35,15 +25,6 @@ const appRoutes: Routes = [
     {path:'home',component:HomeComponent},
     {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profiel',component:ProfileComponent, canActivate:[AuthGuard]},
-    {path:'breathing',component:BreathingComponent},
-    {path:'challenge-thought',component:ChallengeThoughtComponent, canActivate:[AuthGuard]},
-    {path:'good-events',component:GoodEventsComponent, canActivate:[AuthGuard]},
-    {path:'stopwatch',component:StopwatchComponent, canActivate:[AuthGuard]},
-    {path:'timer',component:TimerComponent,},
-    {path:'task',component:TaskComponent, canActivate:[AuthGuard]},
-    {path:'tasks',component:TasksComponent, canActivate:[AuthGuard]},
-    {path:'thoughts',component:ThoughtsComponent, canActivate:[AuthGuard]},
-    {path:'addTask',component:AddTaskComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
@@ -55,15 +36,6 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    TasksComponent,
-    TaskComponent,
-    StopwatchComponent,
-    BreathingComponent,
-    ThoughtsComponent,
-    ChallengeThoughtComponent,
-    GoodEventsComponent,
-    TimerComponent,
-    AddTaskComponent
   ],
   imports: [
       BrowserModule,
@@ -73,7 +45,7 @@ const appRoutes: Routes = [
       HttpClientModule,
       FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService, AuthGuard, TaskService],
+  providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

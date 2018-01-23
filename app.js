@@ -28,10 +28,11 @@ const app = express();
 
 //dit gaat naar de map routes en daaronder de file user
 const user = require('./routes/user');
-const task = require('./routes/task');
+
 
 //poort nummer voor back end
-const port = process.env.PORT || 8080; //local:3000
+//const port = process.env.PORT || 8080;
+const port = 3000;
 
 //CORS gebruiken
 app.use(cors());

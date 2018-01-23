@@ -7,13 +7,13 @@ mongoose.set("debug",true);//op true zetten voor debuggen
  });
  */
 
-/*offline modus
+//offline modus
  module.exports = {
- database:'mongodb://localhost:27017/meancvs',//de naam van de database in mongo
+ database:'mongodb://localhost:27017/trackit',//de naam van de database in mongo
  secret:'secvsret'
  }
- */
+ /*
 module.exports = {
-    database:'mongodb://admin:adminCVS@ds247407.mlab.com:47407/meancvs',//de naam van de database in mongo
+    database:'mongodb://admin:adminCVS@ds247407.mlab.com:47407/trackit',//de naam van de database in mongo
     secret:'secvsret'//voor passport nodig
-}
+}*/

@@ -1,7 +1,7 @@
 {
-  "name": "mean-cvs",
+  "name": "Track-IT",
   "version": "1.0.0",
-  "description": "MEAN stack app voor mensen met CVS",
+  "description": "App to ",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,18 +18,10 @@
     "passport": "*",
     "passport-jwt": "*"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MarijkeM/MEAN-CVS.git"
-  },
   "keywords": [
     "CVS",
     "MEAN"
   ],
   "author": "Marijke Meersman",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MarijkeM/MEAN-CVS/issues"
-  },
-  "homepage": "https://github.com/MarijkeM/MEAN-CVS#readme"
+  "license": "ISC"
 }
