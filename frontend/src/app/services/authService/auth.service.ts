@@ -32,12 +32,10 @@ export class AuthService {
   authenticateUser(user){
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
-    
+
       return this.http.post<any>(GlobalVariable.base_url+'user/authenticeren',
           user,
           {headers});
-
-
   }
 
   getProfile(){
@@ -62,7 +60,6 @@ export class AuthService {
   }
 
   storeUserData(token, user){
-    console.log("methode storeUserData in authservice")
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
