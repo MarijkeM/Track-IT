@@ -19,6 +19,7 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.getUserByEmail = function(email){
+    console.log("getUserByEmail");
     const query = {email: email};
     return User.findOne(query);
 }
@@ -29,6 +30,7 @@ module.exports.addUser = function (newUser) {
             if(err) throw err;
             newUser.password = hash;
             newUser.save();
+            console.log(newUser.email);
         });
     });
 }

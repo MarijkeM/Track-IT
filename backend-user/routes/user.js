@@ -47,6 +47,7 @@ router.post('/authenticeren', async (req, res) => {
     //nakijken of de user bestaat
     try{
         user = await User.getUserByEmail(email);
+        console.log(user.email);
         if(user == null){
             return res.json({
                 success: false,

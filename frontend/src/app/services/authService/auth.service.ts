@@ -14,6 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   registerUser(user){
+    console.log("registreer user");
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
 
@@ -32,9 +33,14 @@ export class AuthService {
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
 
-    return this.http.post<any>(GlobalVariable.base_url+'user/authenticeren',
-                              user,
-                              {headers});
+    try{
+      return this.http.post<any>(GlobalVariable.base_url+'user/authenticeren',
+          user,
+          {headers});
+    }catch (e) {
+      return console.log("error: " + e)
+    }
+
   }
 
   getProfile(){
