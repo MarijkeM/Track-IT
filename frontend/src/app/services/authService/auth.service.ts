@@ -32,14 +32,11 @@ export class AuthService {
   authenticateUser(user){
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
-
-    try{
+    
       return this.http.post<any>(GlobalVariable.base_url+'user/authenticeren',
           user,
           {headers});
-    }catch (e) {
-      return console.log("error: " + e)
-    }
+
 
   }
 
