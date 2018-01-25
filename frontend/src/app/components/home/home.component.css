@@ -6,6 +6,10 @@
     height: 200px;
 }
 
-.jumbotron{
-    margin: 0px;
+.album{
+    padding: 0px!important;
+}
+
+.card{
+    margin-bottom: 0px!important;
 }

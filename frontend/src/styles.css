@@ -8,10 +8,14 @@ h1{
  }
 
 .btn-primary:hover{
-    background-color: #3a755a;
-    border-color: #3a755a;
+    background-color: #87AA9A;
+    border-color: #87AA9A;
+}
+
+a{
+    color: #FF644C;
 }
 
 a:hover{
-    text-decoration: underline!important;
+    color: #CC503D;
 }

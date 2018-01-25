@@ -1,3 +1,15 @@
 nav{
     background-color: #e9ecef !important;
 }
+
+.nav-link{
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-bottom-color: transparent;
+}
+
+.nav-link:hover{
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+    border-bottom-color: #FF644C;
+}
