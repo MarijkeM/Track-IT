@@ -1,19 +1,19 @@
 <section class="jumbotron">
   <div class="container">
-    <h1 class="jumbotron-heading"><strong>Inloggen</strong></h1>
+    <h1 class="jumbotron-heading"><strong>Sign in</strong></h1>
   </div>
   <div class="container">
     <form (submit)="onLoginSubmit()">
       <div class="row">
         <div class="col-md-2 field-label-responsive">
-          <label for="email">E-mailadres:</label>
+          <label for="email">E-mail:</label>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-at"></i></div>
               <input type="text" [(ngModel)]="email" name="email" class="form-control" id="email"
-                     placeholder="voorbeeld@voorbeeld.com">
+                     placeholder="example@mail.com">
             </div>
           </div>
         </div>
@@ -21,14 +21,14 @@
 
       <div class="row">
         <div class="col-md-2 field-label-responsive">
-          <label for="password">Paswoord:</label>
+          <label for="password">Password::</label>
         </div>
         <div class="col-md-6">
           <div class="form-group has-danger">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
               <input type="password" [(ngModel)]="password" name="password"  class="form-control" id="password"
-                     placeholder="Paswoord">
+                     placeholder="Password">
             </div>
           </div>
         </div>
@@ -37,10 +37,10 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-6">
-          <input type="submit" class="btn btn-primary" value="Inloggen">
+          <input type="submit" class="btn btn-primary" value="Log in">
         </div>
-        <flash-messages></flash-messages>
       </div>
+      <flash-messages></flash-messages>
     </form>
   </div>
 </section>

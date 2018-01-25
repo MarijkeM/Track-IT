@@ -1,7 +1,7 @@
 <section class="jumbotron">
   <div class="container">
-    <h1 class="jumbotron-heading"><strong>Registreren</strong></h1>
-    <p class="lead">Welkom, registreer je hieronder en geniet van alle voordelen! We beloven dat we niets met je gegevens gaan doen zonder jou toestemming.</p>
+    <h1 class="jumbotron-heading"><strong>Register</strong></h1>
+    <p class="lead">Welcome, register here and enjoy all advantages of Track-IT! We won't use your data for commecial use.</p>
   </div>
 
   <div class="container">
@@ -9,30 +9,29 @@
 
       <div class="row">
         <div class="col-md-2 field-label-responsive">
-          <label for="firstName">Voornaam:</label>
+          <label for="firstName">Firstname:</label>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-user"></i></div>
               <input type="text" class="form-control" id="firstName" [(ngModel)]="firstName" name="firstName"
-                     placeholder="Voornaam" autofocus>
+                     placeholder="Firstname" autofocus>
             </div>
           </div>
         </div>
       </div>
 
-
       <div class="row">
         <div class="col-md-2 field-label-responsive">
-          <label for="lastName">Familienaam:</label>
+          <label for="lastName">Lastname:</label>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-user"></i></div>
               <input type="text" [(ngModel)]="lastName" name="lastName" class="form-control" id="lastName"
-                     placeholder="Familienaam">
+                     placeholder="Lastname">
             </div>
           </div>
         </div>
@@ -41,14 +40,14 @@
 
       <div class="row">
         <div class="col-md-2 field-label-responsive">
-          <label for="email">E-mailadres:</label>
+          <label for="email">E-mail:</label>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-at"></i></div>
               <input type="text" [(ngModel)]="email" name="email" class="form-control" id="email"
-                     placeholder="voorbeeld@voorbeeld.com">
+                     placeholder="example@mail.com">
             </div>
           </div>
         </div>
@@ -57,14 +56,14 @@
 
       <div class="row">
         <div class="col-md-2 field-label-responsive">
-          <label for="password">Paswoord:</label>
+          <label for="password">Password:</label>
         </div>
         <div class="col-md-6">
           <div class="form-group has-danger">
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
               <input type="password" [(ngModel)]="password" name="password"  class="form-control" id="password"
-                     placeholder="Paswoord">
+                     placeholder="Password">
             </div>
           </div>
         </div>
@@ -73,10 +72,10 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-6">
-          <input type="submit" class="btn btn-primary" value="Registreren">
+          <input type="submit" class="btn btn-primary" value="Register">
         </div>
-        <flash-messages></flash-messages>
       </div>
+      <flash-messages></flash-messages>
     </form>
   </div>
 </section>
