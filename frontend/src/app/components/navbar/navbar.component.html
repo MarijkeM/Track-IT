@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md">
+<nav class="navbar box-shadow navbar-expand-md">
   <a class="navbar-brand" [routerLink]="['/']"><i class="fas fa-home"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
     <i class="fas fa-bars navbar-toggler-icon"></i><!--<span class="navbar-toggler-icon"></span>-->
@@ -7,17 +7,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto navbar-left">
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link"[routerLink]="['/tasks']">Taken</a>
+        <a class="nav-link"[routerLink]="['/tasks']">Order</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/thoughts']">Gedachten</a>
+        <a class="nav-link" [routerLink]="['/thoughts']">Freight</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/good-events']">Gebeurtenissen</a>
+        <a class="nav-link" [routerLink]="['/good-events']">Tracking</a>
       </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/breathing']">Ademhaling</a>
-      </li>
+
 
     </ul>
     <ul class="navbar-nav navbar-right">
