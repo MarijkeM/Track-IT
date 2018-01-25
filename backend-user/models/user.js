@@ -9,6 +9,7 @@ const UserSchema = new Schema({
     lastName:{type:String, required:true},
     password:{type:String, required:true},
     email:{type:String, required:true, unique:true},
+    access:{level:{type:Number},group:{type:String}}
 });
 
 //Gebruiker exporteren de 'User' gaat de naam zijn in de db

@@ -41,7 +41,6 @@ app.use(cors());
 // zou die meteen naar daar gaan
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //Body parser middleware
 app.use(bodyparser.json());
 
