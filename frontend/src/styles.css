@@ -16,6 +16,14 @@ a{
     color: #FF644C;
 }
 
-a:hover{
+a:hover, .link:hover{
     color: #CC503D;
+}
+
+.link{
+    color: #FF644C!important;
+}
+
+.link:hover{
+    color: #CC503D!important;
 }
