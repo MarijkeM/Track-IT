@@ -12,47 +12,63 @@ const User = require('../models/user');
 
 //Registreer: /user/registreren
 router.post('/registreren', async(req, res) => {
-    console.log("***routes/user registreren");
+        console.log("***routes/user registreren");
 
-    let newUser = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-        
-    });
+        let newUser = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password,
+            role: req.body.role
+    })
 
-    try {
-        var user = await User.getUserByEmail(newUser.email);
-        console.log(user);
-        if (!user) {
-            var message;
-            message = await User.addUser(newUser);
+        try {
+            var user = await
+                User.getUserByEmail(newUser.email);
+            console.log(user);
+            if (!user) {
+                var message;
+                message = await
+                    User.addUser(newUser);
 
-            if (message == 1) {
-                res.json({
-                    success: true,
-                    msg: "Registreren gelukt"
-                })
-            }
-            else {
+                if (message == 1) {
+                    user = await
+                        User.getUserByEmail(newUser.email);
+                    if (user) {
+                        res.json({
+                            success: true,
+                            msg: "Registreren gelukt"
+                        })
+                    } else {
+                        res.json({
+                            success: true,
+                            msg: "Registreren mislukt, verkeerde rol"
+                        })
+                    }
+                }
+                else {
+                    res.json({
+                        success: false,
+                        msg: message
+                    })
+                }
+            } else {
                 res.json({
                     success: false,
                     msg: "Gebruiker bestaat al"
                 })
             }
         }
-    }
-    catch
-        (e)
-        {
+        catch
+            (e) {
             res.json({
                 success: false,
                 msg: 'User toevoegen mislukt: ' + e
             });
         }
     }
-    );
+)
+;
 
 
 //Authenticatie/inloggen: /user/authenticeren

@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     lastName: {type: String, required: true},
     password: {type: String, required: true},
     email: {type: String, required: true, unique: true},
-    //role: {type: String, enum: ['client', 'driver', 'admin'], default: 'client'}
+    role: {type: String, enum: ['client', 'driver', 'admin'], default: 'client'}
 });
 
 //Gebruiker exporteren de 'User' gaat de naam zijn in de db

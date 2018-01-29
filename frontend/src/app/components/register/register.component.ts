@@ -29,10 +29,11 @@ export class RegisterComponent implements OnInit {
     console.log("Op registreren geklikt");
 
     const user = {
-      firstName: this.firstName, //de eerste firstName is zelf gekozen, de laatste komt van de form
+      firstName: this.firstName, //de eerste firstName is zelf gekozen (maar moet overeenkomen met model, de laatste komt van de form
       lastName: this.lastName,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role: "client"
     };
 
     /*testen of alle velden zijn ingevuld*/
