@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\r\n\r\n    <div class=\"container\">\r\n        <flash-messages></flash-messages>\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n\r\n"
+module.exports = "<app-navbar></app-navbar>\r\n<div class=\"main\">\r\n    <flash-messages></flash-messages>\r\n    <router-outlet></router-outlet>\r\n</div>\r\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -95,6 +95,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_validateService_validate_service__ = __webpack_require__("../../../../../src/app/services/validateService/validate.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_authService_auth_service__ = __webpack_require__("../../../../../src/app/services/authService/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -117,13 +118,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_9__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__components_login_login_component__["a" /* LoginComponent */] },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_15__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'profiel', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_15__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_15__guards_auth_guard__["a" /* AuthGuard */]] },
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -138,6 +140,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__["a" /* HomeComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_footer_footer_component__["a" /* FooterComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -219,6 +222,67 @@ var DashboardComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/footer/footer.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "footer{\r\n    margin-top: 5px;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/footer/footer.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<footer>\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <p class=\"float-right\"><a href=\"#\">Home</a> | <a class=\"link\" onclick=\"topFunction()\">Back to top</a></p>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <p>Track-IT is a part of project 4.0 &copy;Thomas More - In order of <a href=\"https://www.agilians.com/\">Agilians</a></p>\r\n        <p class=\"text-muted\">Group D3: Arne Hendrickx | Dylan Van Kerckhoven | Gregory Vermeiren | Laurens Bakelants | Marijke Meersman | Ruben Dierckx</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</footer>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/footer/footer.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var FooterComponent = (function () {
+    function FooterComponent() {
+    }
+    FooterComponent.prototype.ngOnInit = function () {
+    };
+    FooterComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-footer',
+            template: __webpack_require__("../../../../../src/app/components/footer/footer.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/footer/footer.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], FooterComponent);
+    return FooterComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/home/home.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -227,7 +291,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".jumbotron-heading{\r\n    font-size: 3.5em;\r\n}\r\n\r\n.card-img-top{\r\n\r\n}\r\n\r\n.album{\r\n    padding: 0px!important;\r\n}\r\n\r\n.card{\r\n    margin-bottom: 0px!important;\r\n}", ""]);
 
 // exports
 
@@ -240,7 +304,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div >\r\n  <h1 class=\"header theme-writing\">Welkom!</h1>\r\n</div>\r\n"
+module.exports = "<section class=\"jumbotron\">\r\n  <div class=\"container\">\r\n    <h1 class=\"jumbotron-heading\"><strong>Track-IT</strong></h1>\r\n    <p class=\"lead\">Welcome to Track-IT we offer services to make your orders / transports / deliveries more easy. Look at our different modules for more information.</p>\r\n  </div>\r\n\r\n  <div class=\"album py-5 bg\">\r\n    <div class=\"container\">\r\n      <div class=\"row\">\r\n        <div class=\"card-group\">\r\n            <div class=\"card mb-4 box-shadow\">\r\n              <img class=\"card-img-top\" src=\"../../assets/images/order.jpg\" alt=\"Order\">\r\n              <div class=\"card-body\">\r\n                <h4 class=\"card-title\">Order</h4>\r\n                <p class=\"card-text\">The order module will maange all information about the \"ready-to-ship\" orders.</p>\r\n              </div>\r\n              <div class=\"card-footer\">\r\n                <a href=\"#\" class=\"btn btn-primary\">View</a>\r\n                <small class=\"text-muted float-right\">Coming soon</small>\r\n              </div>\r\n          </div>\r\n            <div class=\"card mb-4 box-shadow\">\r\n              <img class=\"card-img-top\" src=\"../../assets/images/freight.jpg\" alt=\"Trucker\">\r\n              <div class=\"card-body\">\r\n                <h4 class=\"card-title\">Freight</h4>\r\n                <p class=\"card-text\">The freight module manages all information about a specific truck and it's cargo.</p>\r\n              </div>\r\n              <div class=\"card-footer\">\r\n                <a href=\"#\" class=\"btn btn-primary\">View</a>\r\n              </div>\r\n            </div>\r\n            <div class=\"card mb-4 box-shadow\">\r\n              <img class=\"card-img-top\" src=\"../../assets/images/tracking.jpg\" alt=\"Track\">\r\n              <div class=\"card-body\">\r\n                <h4 class=\"card-title\">Tracking</h4>\r\n                <p class=\"card-text\">The tracking module will manage the information about the whereabouts of a single truck. This information will be used to track the truck.</p>\r\n              </div>\r\n              <div class=\"card-footer\">\r\n                <a href=\"#\" class=\"btn btn-primary\">View</a>\r\n              </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n\r\n"
 
 /***/ }),
 
@@ -301,7 +365,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Inloggen</h2>\r\n<form (submit)=\"onLoginSubmit()\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3 field-label-responsive\">\r\n      <label for=\"email\">E-mailadres</label>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group\">\r\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-at\"></i></div>\r\n          <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" id=\"email\"\r\n                 placeholder=\"voorbeeld@voorbeeld.com\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3 field-label-responsive\">\r\n      <label for=\"password\">Paswoord</label>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group has-danger\">\r\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fa fa-key\"></i></div>\r\n          <input type=\"password\" [(ngModel)]=\"password\" name=\"password\"  class=\"form-control\" id=\"password\"\r\n                 placeholder=\"Paswoord\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3\"></div>\r\n    <div class=\"col-md-6\">\r\n      <input type=\"submit\" class=\"btn btn-success\" value=\"Inloggen\">\r\n    </div>\r\n    <flash-messages></flash-messages>\r\n  </div>\r\n</form>\r\n\r\n"
+module.exports = "<section class=\"jumbotron\">\r\n  <div class=\"container\">\r\n    <h1 class=\"jumbotron-heading\"><strong>Sign in</strong></h1>\r\n  </div>\r\n  <div class=\"container\">\r\n    <form (submit)=\"onLoginSubmit()\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2 field-label-responsive\">\r\n          <label for=\"email\">E-mail:</label>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-group\">\r\n            <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n              <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-at\"></i></div>\r\n              <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" id=\"email\"\r\n                     placeholder=\"example@mail.com\">\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2 field-label-responsive\">\r\n          <label for=\"password\">Password::</label>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-group has-danger\">\r\n            <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n              <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fa fa-key\"></i></div>\r\n              <input type=\"password\" [(ngModel)]=\"password\" name=\"password\"  class=\"form-control\" id=\"password\"\r\n                     placeholder=\"Password\">\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2\"></div>\r\n        <div class=\"col-md-6\">\r\n          <input type=\"submit\" class=\"btn btn-primary\" value=\"Log in\">\r\n        </div>\r\n      </div>\r\n      <flash-messages></flash-messages>\r\n    </form>\r\n  </div>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -387,7 +451,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".navbar {\r\n    background-color: #427f68;\r\n}\r\n.navbar .navbar-brand {\r\n    color: #e3ffed;\r\n}\r\n.navbar .navbar-brand:hover,\r\n.navbar .navbar-brand:focus {\r\n    color: #427f68;\r\n}\r\n.navbar .navbar-text {\r\n    color: #e3ffed;\r\n}\r\n.navbar .navbar-nav .nav-link {\r\n    color: #e3ffed;\r\n    border-radius: .25rem;\r\n    margin: 0 0.25em;\r\n}\r\n.navbar .navbar-nav .nav-link:not(.disabled):hover,\r\n.navbar .navbar-nav .nav-link:not(.disabled):focus {\r\n    color: #427f68;\r\n}\r\n.navbar .navbar-nav .dropdown-menu {\r\n    background-color: #427f68;\r\n    border-color: #69cca7;\r\n}\r\n.navbar .navbar-nav .dropdown-menu .dropdown-item {\r\n    color: #e3ffed;\r\n}\r\n.navbar .navbar-nav .dropdown-menu .dropdown-item:hover,\r\n.navbar .navbar-nav .dropdown-menu .dropdown-item:focus,\r\n.navbar .navbar-nav .dropdown-menu .dropdown-item.active {\r\n    color: #427f68;\r\n    background-color: #69cca7;\r\n}\r\n.navbar .navbar-nav .dropdown-menu .dropdown-divider {\r\n    border-top-color: #69cca7;\r\n}\r\n.navbar .navbar-nav .nav-item.active .nav-link,\r\n.navbar .navbar-nav .nav-item.active .nav-link:hover,\r\n.navbar .navbar-nav .nav-item.active .nav-link:focus,\r\n.navbar .navbar-nav .nav-item.show .nav-link,\r\n.navbar .navbar-nav .nav-item.show .nav-link:hover,\r\n.navbar .navbar-nav .nav-item.show .nav-link:focus {\r\n    color: #427f68;\r\n    background-color: #69cca7;\r\n}\r\n.navbar .navbar-toggle {\r\n    border-color: #69cca7;\r\n}\r\n.navbar .navbar-toggle:hover,\r\n.navbar .navbar-toggle:focus {\r\n    background-color: #69cca7;\r\n}\r\n.navbar .navbar-toggle .navbar-toggler-icon {\r\n    color: #e3ffed;\r\n}\r\n.navbar .navbar-collapse,\r\n.navbar .navbar-form {\r\n    border-color: #e3ffed;\r\n}\r\n.navbar .navbar-link {\r\n    color: #e3ffed;\r\n}\r\n.navbar .navbar-link:hover {\r\n    color: #427f68;\r\n}\r\n\r\n@media (max-width: 575px) {\r\n    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {\r\n        color: #e3ffed;\r\n    }\r\n    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,\r\n    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus {\r\n        color: #427f68;\r\n    }\r\n    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {\r\n        color: #427f68;\r\n        background-color: #69cca7;\r\n    }\r\n}\r\n\r\n@media (max-width: 767px) {\r\n    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {\r\n        color: #e3ffed;\r\n    }\r\n    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,\r\n    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:focus {\r\n        color: #427f68;\r\n    }\r\n    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active {\r\n        color: #427f68;\r\n        background-color: #69cca7;\r\n    }\r\n}\r\n\r\n@media (max-width: 991px) {\r\n    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {\r\n        color: #e3ffed;\r\n    }\r\n    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,\r\n    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus {\r\n        color: #69cca7;\r\n    }\r\n    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {\r\n        color: #427f68;\r\n        background-color: #69cca7;\r\n    }\r\n}\r\n\r\n@media (max-width: 1199px) {\r\n    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {\r\n        color: #e3ffed;\r\n    }\r\n    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,\r\n    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus {\r\n        color: #69cca7;\r\n    }\r\n    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {\r\n        color: #427f68;\r\n        background-color: #69cca7;\r\n    }\r\n}\r\n\r\n.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {\r\n    color: #e3ffed;\r\n}\r\n.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,\r\n.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {\r\n    color: #69cca7;\r\n}\r\n.navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {\r\n    color: #427f68;\r\n    background-color: #69cca7;\r\n}\r\n\r\nh1{\r\n    color:red;\r\n}", ""]);
+exports.push([module.i, "nav{\r\n    background-color: #e9ecef !important;\r\n}\r\n\r\n.nav-link{\r\n    border-bottom-style: solid;\r\n    border-bottom-width: 3px;\r\n    border-bottom-color: transparent;\r\n}\r\n\r\n.nav-link:hover{\r\n    border-bottom-style: solid;\r\n    border-bottom-width: 3px;\r\n    border-bottom-color: #FF644C;\r\n}", ""]);
 
 // exports
 
@@ -400,7 +464,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-md\">\r\n  <a class=\"navbar-brand\" [routerLink]=\"['/']\"><i class=\"fas fa-home\"></i></a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"true\" aria-label=\"Toggle navigation\">\r\n    <i class=\"fas fa-bars navbar-toggler-icon\"></i><!--<span class=\"navbar-toggler-icon\"></span>-->\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto navbar-left\">\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">\r\n        <a class=\"nav-link\"[routerLink]=\"['/tasks']\">Taken</a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/thoughts']\">Gedachten</a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/good-events']\">Gebeurtenissen</a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/breathing']\">Ademhaling</a>\r\n      </li>\r\n\r\n    </ul>\r\n    <ul class=\"navbar-nav navbar-right\">\r\n      <!--Als ingelogd-->\r\n      <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\"   [routerLink]=\"['/profiel']\"><i class=\"fas fa-user\"></i> Profiel</a>\r\n      </li>\r\n      <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\">\r\n        <a class=\"nav-link\" href=\"#\" (click)=\"onLogoutClick()\"><i class=\"fas fa-sign-out-alt\"></i> Uitloggen</a>\r\n      </li>\r\n\r\n      <!--Als uitgelogd-->\r\n      <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\"  [routerLink]=\"['/login']\"><i class=\"fas fa-sign-in-alt\"></i> Inloggen</a>\r\n      </li>\r\n      <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/register']\">Registreren</a>\r\n      </li>\r\n    </ul>\r\n\r\n  </div>\r\n</nav>"
+module.exports = "<nav id=\"nav\" class=\"navbar box-shadow navbar-expand-md\">\r\n  <a class=\"navbar-brand\" [routerLink]=\"['/']\"><i class=\"fas fa-home\"></i></a>\r\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"true\" aria-label=\"Toggle navigation\">\r\n    <i class=\"fas fa-bars navbar-toggler-icon\"></i><!--<span class=\"navbar-toggler-icon\"></span>-->\r\n  </button>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto navbar-left\">\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\" [routerLinkActiveOptions]=\"{exact:true}\">\r\n        <a class=\"nav-link\"[routerLink]=\"['/tasks']\">Order</a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/thoughts']\">Freight</a>\r\n      </li>\r\n      <li class=\"nav-item\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/good-events']\">Tracking</a>\r\n      </li>\r\n\r\n\r\n    </ul>\r\n    <ul class=\"navbar-nav navbar-right\">\r\n      <!--Als ingelogd-->\r\n      <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\"   [routerLink]=\"['/profile']\"><i class=\"fas fa-user\"></i> Profile</a>\r\n      </li>\r\n      <li class=\"nav-item\" *ngIf=\"authService.loggedIn()\">\r\n        <a class=\"nav-link\" href=\"#\" (click)=\"onLogoutClick()\"><i class=\"fas fa-sign-out-alt\"></i> Sign out</a>\r\n      </li>\r\n\r\n      <!--Als uitgelogd-->\r\n      <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\"  [routerLink]=\"['/login']\"><i class=\"fas fa-sign-in-alt\"></i> Sign in</a>\r\n      </li>\r\n      <li class=\"nav-item\" *ngIf=\"!authService.loggedIn()\" [routerLinkActive]=\"['active']\">\r\n        <a class=\"nav-link\" [routerLink]=\"['/register']\"><i class=\"fas fas fa-user-plus\"></i> Register</a>\r\n      </li>\r\n    </ul>\r\n\r\n  </div>\r\n</nav>"
 
 /***/ }),
 
@@ -482,7 +546,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">Profielpagina van {{user.firstName}}</h2>\r\n  <ul class=\"list-group\">\r\n    <li class=\"list-group-item\"><b>Naam:</b> {{user.firstName}} {{user.lastName}}</li>\r\n    <li class=\"list-group-item\"><b>E-mailadres:</b> {{user.email}}</li>\r\n  </ul>\r\n</div>\r\n"
+module.exports = "<section class=\"jumbotron\">\r\n  <div class=\"container\">\r\n    <h1 class=\"jumbotron-heading\"><strong>Profile of {{user.firstName}}</strong></h1>\r\n  </div>\r\n  <div class=\"container\">\r\n    <ul class=\"list-group\">\r\n      <li class=\"list-group-item\"><b>Name:</b> {{user.firstName}} {{user.lastName}}</li>\r\n      <li class=\"list-group-item\"><b>E-mail:</b> {{user.email}}</li>\r\n    </ul>\r\n  </div>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -560,7 +624,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-3\"></div>\r\n  <div class=\"col-md-6\">\r\n    <h2>Registreren</h2>\r\n    <p>Welkom, registreer je hieronder en geniet van alle voordelen! We beloven dat we niets met je gegevens gaan doen zonder jou toestemming.</p>\r\n    <hr>\r\n  </div>\r\n</div>\r\n\r\n<form (submit)=\"onRegisterSubmit()\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3 field-label-responsive\">\r\n      <label for=\"firstName\">Voornaam</label>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group\">\r\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-user\"></i></div>\r\n          <input type=\"text\" class=\"form-control\" id=\"firstName\" [(ngModel)]=\"firstName\" name=\"firstName\"\r\n                 placeholder=\"Voornaam\" autofocus>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3 field-label-responsive\">\r\n      <label for=\"lastName\">Familienaam</label>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group\">\r\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-user\"></i></div>\r\n          <input type=\"text\" [(ngModel)]=\"lastName\" name=\"lastName\" class=\"form-control\" id=\"lastName\"\r\n                 placeholder=\"Familienaam\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3 field-label-responsive\">\r\n      <label for=\"email\">E-mailadres</label>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group\">\r\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-at\"></i></div>\r\n          <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" id=\"email\"\r\n                 placeholder=\"voorbeeld@voorbeeld.com\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3 field-label-responsive\">\r\n      <label for=\"password\">Paswoord</label>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <div class=\"form-group has-danger\">\r\n        <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n          <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fa fa-key\"></i></div>\r\n          <input type=\"password\" [(ngModel)]=\"password\" name=\"password\"  class=\"form-control\" id=\"password\"\r\n                 placeholder=\"Paswoord\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-md-3\"></div>\r\n    <div class=\"col-md-6\">\r\n      <input type=\"submit\" class=\"btn btn-success\" value=\"Registreren\">\r\n    </div>\r\n    <flash-messages></flash-messages>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<section class=\"jumbotron\">\r\n  <div class=\"container\">\r\n    <h1 class=\"jumbotron-heading\"><strong>Register</strong></h1>\r\n    <p class=\"lead\">Welcome, register here and enjoy all advantages of Track-IT! We won't use your data for commecial use.</p>\r\n  </div>\r\n\r\n  <div class=\"container\">\r\n    <form (submit)=\"onRegisterSubmit()\">\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2 field-label-responsive\">\r\n          <label for=\"firstName\">Firstname:</label>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-group\">\r\n            <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n              <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-user\"></i></div>\r\n              <input type=\"text\" class=\"form-control\" id=\"firstName\" [(ngModel)]=\"firstName\" name=\"firstName\"\r\n                     placeholder=\"Firstname\" autofocus>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2 field-label-responsive\">\r\n          <label for=\"lastName\">Lastname:</label>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-group\">\r\n            <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n              <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-user\"></i></div>\r\n              <input type=\"text\" [(ngModel)]=\"lastName\" name=\"lastName\" class=\"form-control\" id=\"lastName\"\r\n                     placeholder=\"Lastname\">\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2 field-label-responsive\">\r\n          <label for=\"email\">E-mail:</label>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-group\">\r\n            <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n              <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fas fa-at\"></i></div>\r\n              <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\" id=\"email\"\r\n                     placeholder=\"example@mail.com\">\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2 field-label-responsive\">\r\n          <label for=\"password\">Password:</label>\r\n        </div>\r\n        <div class=\"col-md-6\">\r\n          <div class=\"form-group has-danger\">\r\n            <div class=\"input-group mb-2 mr-sm-2 mb-sm-0\">\r\n              <div class=\"input-group-addon\" style=\"width: 2.6rem\"><i class=\"fa fa-key\"></i></div>\r\n              <input type=\"password\" [(ngModel)]=\"password\" name=\"password\"  class=\"form-control\" id=\"password\"\r\n                     placeholder=\"Password\">\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row\">\r\n        <div class=\"col-md-2\"></div>\r\n        <div class=\"col-md-6\">\r\n          <input type=\"submit\" class=\"btn btn-primary\" value=\"Register\">\r\n        </div>\r\n      </div>\r\n      <flash-messages></flash-messages>\r\n    </form>\r\n  </div>\r\n</section>\r\n\r\n"
 
 /***/ }),
 
