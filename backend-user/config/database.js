@@ -16,5 +16,5 @@ mongoose.set("debug",true);//op true zetten voor debuggen
 
 module.exports = {
     database:'mongodb://TrackIT:Agilians@ds213118.mlab.com:13118/user_management',//de naam van de database in mongo
-    secret:'secvsret'//voor passport nodig
+    secret:'fPQXkacYu6s89Di4VPOZKZx7lXxHdwqjUNe4yihZ9xn2pDrByrreLYBdElXqRtc'//voor passport nodig
 }
