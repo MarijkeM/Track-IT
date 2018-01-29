@@ -21,7 +21,6 @@ router.post('/registreren', async(req, res) => {
             password: req.body.password,
             role: req.body.role
     })
-
         try {
             var user = await
                 User.getUserByEmail(newUser.email);
