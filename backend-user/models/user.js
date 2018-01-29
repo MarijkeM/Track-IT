@@ -44,6 +44,3 @@ module.exports.comparePassword = function (opgegevenPaswoord, hashedPaswoord, ca
         callback(null, isMatch);
     })
 }
-{
-
-}
