@@ -17,6 +17,7 @@ import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
 import { AuthGuard } from './guards/auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 const appRoutes: Routes = [
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent,
     FooterComponent,
+    OrderComponent,
   ],
   imports: [
       BrowserModule,
