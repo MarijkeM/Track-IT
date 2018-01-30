@@ -28,7 +28,6 @@ const appRoutes: Routes = [
     {path:'home',component:HomeComponent},
     {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
-    {path:'order',component:OrderComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
