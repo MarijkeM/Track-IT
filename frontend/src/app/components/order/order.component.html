@@ -1,3 +1,10 @@
-<p>
-  order works!
-</p>
+<section class="jumbotron">
+  <div class="container">
+    <h1 class="jumbotron-heading"><strong>Orders</strong></h1>
+  </div>
+  <div class="container">
+    <div *ngFor="let order of orders">
+      <h5>order {{order.id}}</h5>
+    </div>
+  </div>
+</section>

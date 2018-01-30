@@ -9,13 +9,26 @@ const config = require('../config/database');
 
 const Order = require('../models/order');
 
-/**
-//Profiel: /user/profiel
-router.get('/profiel', passport.authenticate('jwt', {session:false}), (req, res) => {
-    console.log("***routes/user/profiel");
-    console.log("user waarvan het profiel genomen wordt: " + req.user);
-    return res.json({user: req.user});
+
+//Order: /order/getAllOrders
+router.get('/getAllOrders', async (req, res) => {
+    console.log("***routes/order/getAllOrders");
+    try{
+            orders = await Order.getAllOrders();
+            if(orders == null){
+                console.log("Geen orders gevonden");
+                return res.json({
+                    success: false,
+                    msg: 'Geen orders gevonden'})
+        }
+    }catch (e){
+        console.log("e: " + e);
+        return res.json({
+            success: false,
+            msg: e})
+    }
+    console.log("Orders gevonden");
+    return res.json(orders);
 });
- **/
 
 module.exports = router;

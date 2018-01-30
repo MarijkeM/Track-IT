@@ -18,6 +18,7 @@ import { AuthService } from './services/authService/auth.service'
 import { AuthGuard } from './guards/auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { OrderComponent } from './components/order/order.component';
+import {OrderService} from "./services/orderService/order.service";
 
 
 const appRoutes: Routes = [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     {path:'home',component:HomeComponent},
     {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
+    {path:'order',component:OrderComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
@@ -49,7 +51,7 @@ const appRoutes: Routes = [
       HttpClientModule,
       FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

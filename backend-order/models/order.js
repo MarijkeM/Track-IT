@@ -3,20 +3,20 @@ const Schema = mongoose.Schema;
 
 //Gebruiker schema
 const UserSchema = new Schema({
-    afzenderNaam:{type:String, required:true},
-    afzenderStraat:{type:String, required:true},
-    afzenderStad:{type:String, required:true},
-    afzenderLand:{type:String, required:true},
-    ontvangerNaam:{type:String, required:true},
-    ontvangerStraat:{type:String, required:true},
-    ontvangerStad:{type:String, required:true},
-    ontvangerPostcode:{type:String, required:true},
-    ontvangerLand:{type:String, required:true},
-    plaatsBestemdOntvangstStad:{type:String, required:true},
-    plaatsBestemdOntvangstLand:{type:String, required:true},
-    plaatsOntvangstStad:{type:String, required:true},
-    plaatsOntvangstLand:{type:String, required:true},
-    plaatsOntvangstDatum:{type:String, required:true},
+    afzenderNaam:{type:String, required:false},
+    afzenderStraat:{type:String, required:false},
+    afzenderStad:{type:String, required:false},
+    afzenderLand:{type:String, required:false},
+    ontvangerNaam:{type:String, required:false},
+    ontvangerStraat:{type:String, required:false},
+    ontvangerStad:{type:String, required:false},
+    ontvangerPostcode:{type:String, required:false},
+    ontvangerLand:{type:String, required:false},
+    plaatsBestemdOntvangstStad:{type:String, required:false},
+    plaatsBestemdOntvangstLand:{type:String, required:false},
+    plaatsOntvangstStad:{type:String, required:false},
+    plaatsOntvangstLand:{type:String, required:false},
+    plaatsOntvangstDatum:{type:String, required:false},
     aantalBijgevoegdeDocumenten:{type:String, required:false},
     merkenNummers:{type:String, required:false},
     aantalVerpakking:{type:String, required:false},
@@ -56,8 +56,8 @@ const UserSchema = new Schema({
     opvolgendeVervoederLand:{type:String, required:false},
     opmerkingenVervoerder:{type:String, required:false},
     specialeOvereenkomst:{type:String, required:false},
-    opgemaaktPlaats:{type:String, required:true},
-    opgemaaktDatum:{type:String, required:true},
+    opgemaaktPlaats:{type:String, required:false},
+    opgemaaktDatum:{type:String, required:false},
 });
 
 //Gebruiker exporteren de 'Order' gaat de naam zijn in de db
@@ -66,3 +66,8 @@ const Order = module.exports = mongoose.model('Order', UserSchema);
 module.exports.getOrderById = function(id, callback){
     Order.findById(id, callback);
 }
+
+module.exports.getAllOrders = function () {
+    console.log("***models/order/getAllOrders");
+    return Order.find();
+};
