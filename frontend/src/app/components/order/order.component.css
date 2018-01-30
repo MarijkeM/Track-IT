@@ -18,3 +18,19 @@
 .rechts {
     border-right: 2px solid;
 }
+
+.opmerking{
+    min-height: 300px;
+}
+
+.speciaal{
+    min-height: 150px;
+}
+
+.handtekening{
+    min-height: 200px;
+}
+
+.uren{
+    min-height: 75px;
+}
