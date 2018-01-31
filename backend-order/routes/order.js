@@ -28,6 +28,7 @@ router.get('/getAllOrders', async (req, res) => {
             msg: e})
     }
     console.log("Orders gevonden");
+    console.log(orders);
     return res.json(orders);
 });
 

@@ -15,6 +15,10 @@ export class OrderService {
     getAllOrders(){
         console.log("***order.service getAllOrders()");
 
-        return this.http.get<any>(GlobalVariable.base_url+'order/getAllOrders');
+        let headers = new HttpHeaders()
+            .set('Content-Type','application/json');
+
+        return this.http.get<any>(GlobalVariable.base_url+'order/getAllOrders',
+            {headers});
     }
 }

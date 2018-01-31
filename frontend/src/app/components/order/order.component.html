@@ -1,17 +1,19 @@
 <section class="jumbotron">
-  <div class="container">
-    <h1 class="jumbotron-heading"><strong>Orders</strong></h1>
-  </div>
-  <div class="container">
-    <div *ngFor="let order of orders">
-      <h5>order {{order.id}}</h5>
+    <div class="container">
+        <h1 class="jumbotron-heading"><strong>Orders</strong></h1>
     </div>
-  </div>
-</section>
-<section class="jumbotron">
     <div class="container">
-        <h1 class="jumbotron-heading"><strong>Selcteer uw order</strong></h1> </div>
-    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Choose your order</label>
+                <select name="Select order" class="form-control" id="exampleFormControlSelect1" [(ngModel)]="this.selectedOrderId">
+                    <option *ngFor="let order of orders; let i = index" [ngValue]="i">{{order.AfzenderNaam}}: orderId {{order.id}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="changeSelectedOrder()">Details</button>
+        </form>
+    </div>
+    <div class="container" *ngIf="selectedOrder!=null">
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
@@ -25,9 +27,13 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>AfzenderNaam
-                            <br> AfzenderStraat
-                            <br> AfzenderStad AfzenderPostcode, AfzenderLand</p>
+                        <p>
+                            {{selectedOrder.AfzenderNaam}}
+                            <br>
+                            {{selectedOrder.AfzenderStraat}}
+                            <br>
+                            {{selectedOrder.AfzenderStad}} {{selectedOrder.AfzenderPostcode}}, {{selectedOrder.AfzenderLand}}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -43,7 +49,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>Kappa 123</p>
+                        <p>{{selectedOrder.Vervoerderscode}} {{selectedOrder.Carriercode}}</p>
                     </div>
                 </div>
             </div>
@@ -63,9 +69,12 @@
                         <p></p>
                     </div>
                     <div class="col-md-10">
-                        <p>OntvangerNaam
-                            <br> OntvangerStraat
-                            <br> OntvangerStad OntvangerPostcode, OntvangerLand</p>
+                        <p>
+                            {{selectedOrder.OntvangerNaam}}
+                            <br>
+                            {{selectedOrder.OntvangerStraat}}
+                            <br>
+                            {{selectedOrder.OntvangerStad}} {{selectedOrder.OntvangerPostcode}}, {{selectedOrder.OntvangerLand}}</p>
                     </div>
                 </div>
             </div>
@@ -81,9 +90,12 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>VervoederNaam
-                            <br> VervoederStraat
-                            <br> VervoederStad VervoederPostcode, VervoederLand</p>
+                        <p>
+                            {{selectedOrder.VervoederNaam}}
+                            <br>
+                            {{selectedOrder.VervoederStraat}}
+                            <br>
+                            {{selectedOrder.VervoederStad}} {{selectedOrder.VervoederPostcode}}, {{selectedOrder.VervoederLand}}</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +115,7 @@
                         <p></p>
                     </div>
                     <div class="col-md-10">
-                        <p>PlaatsBestemdOntvangstStad, PlaatsBestemdOntvangstLand </p>
+                        <p>{{selectedOrder.PlaatsBestemdOntvangstStad}}, {{selectedOrder.PlaatsBestemdOntvangstLand}} </p>
                     </div>
                 </div>
             </div>
@@ -119,9 +131,12 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>OpvolgendeVervoederNaam
-                            <br> OpvolgendeVervoederStraat
-                            <br> OpvolgendeVervoederStad OpvolgendeVervoederPostcode, OpvolgendeVervoederLand</p>
+                        <p>
+                            {{selectedOrder.OpvolgendeVervoederNaam}}
+                            <br>
+                            {{selectedOrder.OpvolgendeVervoederStraat}}
+                            <br>
+                            {{selectedOrder.OpvolgendeVervoederStad}} {{selectedOrder.OpvolgendeVervoederPostcode}}, {{selectedOrder.OpvolgendeVervoederLand}}</p>
                     </div>
                 </div>
             </div>
@@ -133,16 +148,16 @@
                         <p>4</p>
                     </div>
                     <div class="col-md-11">
-                        <p>Plaats en datum van in ontvangstname (plaats, land, datum) | place and date of delivery (place, country, date)</p>
-                    </div>
+                    <p>Plaats en datum van in ontvangstname (plaats, land, datum) | place and date of delivery (place, country, date)</p>
+                </div>
                 </div>
                 <div class="row">
                     <div class="col-md-2">
                         <p></p>
                     </div>
                     <div class="col-md-10">
-                        <p>PlaatsOntvangstStad, PlaatsOntvangstLand
-                            <br> PlaatsOntvangstDatum </p>
+                        <p>{{selectedOrder.PlaatsOntvangstStad}}, {{selectedOrder.PlaatsOntvangstLand}}
+                            <br> {{selectedOrder.PlaatsOntvangstDatum}} </p>
                     </div>
                 </div>
                 <div class="row">
@@ -158,7 +173,7 @@
                         <p></p>
                     </div>
                     <div class="col-md-10">
-                        <p>AantalBijgevoegdeDocumenten </p>
+                        <p>{{selectedOrder.AantalBijgevoegdeDocumenten}} </p>
                     </div>
                 </div>
             </div>
@@ -174,7 +189,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>OpmerkingenVervoerder</p>
+                        <p>{{selectedOrder.OpmerkingenVervoerder}}</p>
                     </div>
                 </div>
             </div>
@@ -210,24 +225,24 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                <p>TypePallet</p>
+                <p>{{selectedOrder.TypePallet}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <p> MerkenNummers </p>
+                    <p>{{selectedOrder.MerkenNummers}}  </p>
                 </div>
                 <div class="col-md-2">
-                    <p> AantalVerpakking + "x " + WijzeVerpakking </p>
+                    <p> {{selectedOrder.AantalVerpakking}} + "x " + {{selectedOrder.WijzeVerpakking}} </p>
                 </div>
                 <div class="col-md-4">
-                    <p> AardDerGoederen </p>
+                    <p> {{selectedOrder.AardDerGoederen}} </p>
                 </div>
                 <div class="col-md-2">
-                    <p> StatistischNummer </p>
+                    <p> {{selectedOrder.StatistischNummer}} </p>
                 </div>
                 <div class="col-md-2">
-                    <p> BrutoGewicht | Volume </p>
+                    <p> {{selectedOrder.BrutoGewicht}} | {{selectedOrder.Volume}} </p>
                 </div>
             </div>
     </div>
@@ -244,7 +259,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>InstructiesAfzender
+                        <p>{{selectedOrder.InstructiesAfzender}}
                         </p>
                     </div>
                 </div>
@@ -259,7 +274,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>Frankeringsvoorschrift
+                        <p>{{selectedOrder.Frankeringsvoorschrift}}
                         </p>
                     </div>
                 </div>
@@ -274,7 +289,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>OpgemaaktPlaats, OpgemaaktDatum
+                        <p>{{selectedOrder.OpgemaaktPlaats}}, {{selectedOrder.OpgemaaktDatum}}
                         </p>
                     </div>
                 </div>
@@ -291,7 +306,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
-                        <p>SpecialeOvereenkomst
+                        <p>{{selectedOrder.SpecialeOvereenkomst}}
                         </p>
                     </div>
                 </div>

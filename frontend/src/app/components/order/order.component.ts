@@ -11,19 +11,28 @@ import {AuthService} from "../../services/authService/auth.service";
 })
 export class OrderComponent implements OnInit {
   orders:Object;
+  selectedOrder:any;
+  selectedOrderId:any;
 
   constructor(private orderService: OrderService,
-              private router:Router) { }
+              private router:Router) {
+      this.selectedOrder = null;
+      this.selectedOrderId = null;
+  }
 
   ngOnInit() {
       this.orderService.getAllOrders().subscribe(orders => {
           this.orders = orders;
-          console.log(this.orders);
       },
       err => {
           console.log(err);
           return false;
       });
+  }
+
+  changeSelectedOrder(){
+      console.log("changeSelectedOrder");
+      this.selectedOrder = this.orders[this.selectedOrderId];
   }
 
 }
