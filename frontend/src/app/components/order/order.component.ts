@@ -33,6 +33,7 @@ export class OrderComponent implements OnInit {
   changeSelectedOrder(){
       console.log("changeSelectedOrder");
       this.selectedOrder = this.orders[this.selectedOrderId];
+      console.log(JSON.stringify(this.selectedOrder));
   }
 
 }

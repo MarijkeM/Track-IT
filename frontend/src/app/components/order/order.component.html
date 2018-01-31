@@ -237,12 +237,12 @@
                 <p>{{selectedOrder.TypePallet}}</p>
             </div>
         </div>
-        <div class="row links rechts onder">
+        <div class="row links rechts">
             <div class="col-md-2">
                 <p>{{selectedOrder.MerkenNummers}} </p>
             </div>
             <div class="col-md-2">
-                <p> {{selectedOrder.AantalVerpakking}} + "x " + {{selectedOrder.WijzeVerpakking}} </p>
+                <p> {{selectedOrder.AantalVerpakking}} x {{selectedOrder.WijzeVerpakking}} </p>
             </div>
             <div class="col-md-4">
                 <p> {{selectedOrder.AardDerGoederen}} </p>
@@ -250,11 +250,53 @@
             <div class="col-md-2">
                 <p> {{selectedOrder.StatistischNummer}} </p>
             </div>
-            <div class="col-md-2">
-                <p> {{selectedOrder.BrutoGewicht}} | {{selectedOrder.Volume}} </p>
+            <div class="col-md-2" *ngIf="selectedOrder.BrutoGewicht!=0">
+                <p> {{selectedOrder.BrutoGewicht}}kg </p>
+            </div>
+            <div class="col-md-2" *ngIf="selectedOrder.Volume!=0">
+                <p> {{selectedOrder.Volume}}m³ </p>
             </div>
         </div>
-
+        <div class="row links rechts" *ngIf="selectedOrder.MerkenNummers1!=null">
+            <div class="col-md-2">
+                <p>{{selectedOrder.MerkenNummers1}} </p>
+            </div>
+            <div class="col-md-2">
+                <p> {{selectedOrder.AantalVerpakking1}} x {{selectedOrder.WijzeVerpakking1}} </p>
+            </div>
+            <div class="col-md-4">
+                <p> {{selectedOrder.AardDerGoederen1}} </p>
+            </div>
+            <div class="col-md-2">
+                <p> {{selectedOrder.StatistischNummer1}} </p>
+            </div>
+            <div class="col-md-2" *ngIf="selectedOrder.BrutoGewicht1!=0">
+                <p> {{selectedOrder.BrutoGewicht1}}kg </p>
+            </div>
+            <div class="col-md-2" *ngIf="selectedOrder.Volume1!=0">
+                <p> {{selectedOrder.Volume1}}m³ </p>
+            </div>
+        </div>
+        <div class="row links rechts" *ngIf="selectedOrder.MerkenNummers2!=null">
+            <div class="col-md-2">
+                <p>{{selectedOrder.MerkenNummers2}} </p>
+            </div>
+            <div class="col-md-2">
+                <p> {{selectedOrder.AantalVerpakking2}} x {{selectedOrder.WijzeVerpakking2}} </p>
+            </div>
+            <div class="col-md-4">
+                <p> {{selectedOrder.AardDerGoederen2}} </p>
+            </div>
+            <div class="col-md-2">
+                <p> {{selectedOrder.StatistischNummer2}} </p>
+            </div>
+            <div class="col-md-2" *ngIf="selectedOrder.BrutoGewicht2!=0">
+                <p> {{selectedOrder.BrutoGewicht2}}kg </p>
+            </div>
+            <div class="col-md-2" *ngIf="selectedOrder.Volume2!=0">
+                <p> {{selectedOrder.Volume2}}m³ </p>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-6 rand">
                 <div class="row">
