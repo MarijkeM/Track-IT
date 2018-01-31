@@ -20,6 +20,11 @@
     </ul>
     <ul class="navbar-nav navbar-right">
       <!--Als ingelogd-->
+      <li class="nav-item" *ngIf="authService.loggedIn()">
+        <span class="navbar-text welcome-message">
+          Welcome {{this.user.firstName}}
+        </span>
+      </li>
       <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']">
         <a class="nav-link"   [routerLink]="['/profile']"><i class="fas fa-user"></i> Profile</a>
       </li>

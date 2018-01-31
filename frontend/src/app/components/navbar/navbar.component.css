@@ -13,3 +13,7 @@ nav{
     border-bottom-width: 3px;
     border-bottom-color: #FF644C;
 }
+
+.welcome-message{
+    margin-right: 30px;
+}
