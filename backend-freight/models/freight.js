@@ -8,41 +8,43 @@ const Schema = mongoose.Schema;
 
 //Gebruiker schema
 const FreightSchema = new Schema({
-    driverId: {type: String, required: false},
-    truckNumber: {type: String, required: true},
-    orderId: [{type: String, required: true}],
+    driverId: {type: String, required: true},
+    truckId: {type: String, required: true},
+    orderIds: [{type: String, required: true}],
+    trailerId: {type: String, required: true},
 });
 
 //Gebruiker exporteren de 'Freight' gaat de naam zijn in de db
 const Freight = module.exports = mongoose.model('Freight', FreightSchema);
 
-module.exports.getAllFreights = function () {
+module.exports.getAllFreights = () => {
     return Freight.find();
 }
 
-module.exports.getFreightById = function (id, callback) {
-    Freight.findById(id, callback);
+module.exports.getFreightById = (freightId) => {
+    query = {_id: freightId};
+    return Freight.findById(query);
 }
 
-module.exports.getFreightsByTruckNumber = function (truckNumber) {
+module.exports.getFreightsByTruckNumber = (truckNumber) => {
     console.log("*model getFreightByTruckNumber");
     const query = {truckNumber: truckNumber};
     return Freight.find(query);
 }
 
-module.exports.getFreightsByDriverId = function (driverId) {
+module.exports.getFreightsByDriverId = (driverId) => {
     console.log("*model getFreightByDriverId");
     const query = {driverId: driverId};
     return Freight.find(query);
 }
 
-module.exports.getFreightsByOrderId = function (orderId) {
+module.exports.getFreightsByOrderId = (orderId) => {
     console.log("*model getFreightByorderId");
-    const query = {orderId: orderId};
+    const query = {orderIds: orderId};
     return Freight.find(query);
 }
 
-module.exports.addFreight = function (newFreight) {
+module.exports.addFreight = (newFreight) => {
     try {
         return (new Freight(newFreight)).save();
     } catch (e) {
@@ -53,10 +55,16 @@ module.exports.addFreight = function (newFreight) {
 module.exports.cancelFreight = (freightId) => {
     var query = {_id: freightId};
     try{
+        console.log("try");
         return Freight.remove(query);
     }catch (e){
         return e;
     }
+}
+
+module.exports.updateFreight = (freightId, newFreight) => {
+    var query = {_id:freightId};
+    return Freight.findOneAndUpdate(query, newFreight);
 }
 
 

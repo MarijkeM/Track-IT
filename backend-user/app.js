@@ -62,7 +62,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-
 //start server en toon in console venster
 app.listen(port, function () {
     console.log('Server is opgestart op poort '+port)

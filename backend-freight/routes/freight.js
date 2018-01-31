@@ -27,12 +27,28 @@ router.get('/allFreights'/*, passport.authenticate('jwt', {session:false})*/, as
     }
 });
 
-//alle vrachten van 1 persoon ophalen: /freight/allFreights
-router.get('/allFreightsTodo', passport.authenticate('jwt', {session:false}), async (req, res) => {
-    console.log("***routes/taks/allfreights freights van bepaalde user");
+//alle vrachten van 1 persoon ophalen: /freight/allFreightsDriver/:driverId
+router.get('/allFreightsforDriver/:driverId', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+    console.log("***routes/freight/allfreightsforDriver freights van bepaalde driver");
 
     try{
-        freights = await Freight.getFreightsTodo(req.user);
+        freights = await Freight.getFreightsByDriverId(req.params.driverId);
+        res.json(freights);
+    } catch (error){
+        console.log("error: " + error);
+        res.json({
+            success: false,
+            msg: 'Freights niet gevonden: ' + error
+        });
+    }
+});
+
+//alle vrachten van 1 persoon ophalen: /freight/allFreightsDriver/:driverId
+router.get('/allFreightsforOrder/:orderId', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+    console.log("***routes/taks/allfreights freights van bepaalde udriver");
+
+    try{
+        freights = await Freight.getFreightsByOrderId(req.params.orderId);
         res.json(freights);
     } catch (error){
         console.log("error: " + error);
@@ -61,85 +77,44 @@ router.get('/allFreightsDone', passport.authenticate('jwt', {session:false}), as
 
 
 //vracht toevoegen: /freight/vrachtToevoegen
-router.post('/vrachtToevoegen', passport.authenticate('jwt', {session:false}), async (req, res) => {
-    console.log("***routes/freight vracht toevoegen");
-    var statusBody = "";
-    var deadline = "";
-
-    if(!req.body.dateDeadline){
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
-
-        if(dd<10) {
-            dd = '0'+dd
-        }
-
-        if(mm<10) {
-            mm = '0'+mm
-        }
-
-        today = mm + '/' + dd + '/' + yyyy;
-        deadline = new Date(today);
-
-    }else{
-        deadline = req.body.dateDeadline;
-    }
-
-    if(req.body.status){
-        statusBody = req.body.status;
-
-        if(statusBody.toString() !== "Todo" && statusBody.toString() !== "Done" ){
-            statusBody = "Todo";
-        }
-    }else{
-        statusBody = "Todo"
-    }
+router.post('/addFreight', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+    console.log("***routes/freight/addFreight");
 
     let newFreight = new Freight({
-        title: req.body.title,
-        estimatedTime: req.body.estimatedTime,
-        user: req.user,
-        status: statusBody,
-        dateDeadline: deadline,
-        priority:req.body.priority
+        driverId: req.body.driverId,
+        truckId: req.body.truckId,
+        trailerId:req.body.trailerId,
+        orderIds: req.body.orderIds
     });
 
+    console.log("vracht: "+newFreight);
     try {
         await Freight.addFreight(newFreight);
 
         res.json({
             success: true,
-            msg: 'Taak toevoegen is gelukt'
+            msg: 'Freight is ready!'
         })
     } catch (e) {
         res.json({
             success: false,
-            msg: 'Taak toevoegen is mislukt: ' + e});
+            msg: 'Adding freight failed, please try again: ' + e});
     }
 });
 
-//vracht wijzigen: /freight/vrachtWijzigen/id
-router.put('/vrachtWijzigen/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
+//vracht wijzigen: /freight/modifyFreight/id
+router.put('/modifyFreight/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/freight/vrachtWijzigen/" + req.params.id);
     const freightId = req.params.id;
 
-    var update = ({
-        title: req.body.title,
-        estimatedTime: req.body.estimatedTime,
-        dateFinished: req.body.dateFinished,
-        user: req.body.user,
-        status: req.body.status,
-        dateDeadline: req.body.dateDeadline,
-        priority:req.body.priority
+    let updateFreight = new Freight({
+        driverId: req.body.driverId,
+        truckId: req.body.truckId,
+        trailerId:req.body.trailerId,
+        orderIds: req.body.orderIds
     });
 
-    console.log("een logje");
-    console.log("nieuwe vracht: " + JSON.stringify(update));
-    console.log("req.user._id: " + JSON.stringify(req.user._id));
-    /*console.log("users komen overeen is " + (JSON.stringify(freight.user) === JSON.stringify(req.user._id)));
-     */
+    console.log("nieuwe vracht: " + JSON.stringify(updateFreight));
 
     try {
         var freight = await Freight.findFreightById(freightId);
@@ -149,14 +124,14 @@ router.put('/vrachtWijzigen/:id', passport.authenticate('jwt', {session:false}),
                 success: false,
                 msg: 'Taak bestaat niet'
             });
-        }else if(update.user.toString() !=(req.user._id).toString()){
+        /*}else if(update.user.toString() !=(req.user._id).toString()){
 
             res.json({
                 success: false,
                 msg: 'Je kan de vracht niet aanpassen: '
-            });
+            });*/
         }else{
-            await Freight.updateFreight(freightId, update);
+            await Freight.updateFreight(freightId, updateFreight);
 
             res.json({
                 success: true,
@@ -170,42 +145,42 @@ router.put('/vrachtWijzigen/:id', passport.authenticate('jwt', {session:false}),
     }
 });
 
-//vracht verwijderen: /freight/vrachtVerwijderen/id
-router.delete('/vrachtVerwijderen/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
-    console.log("***routes/freight/vrachtVerwijderen/id vracht verwijderen");
+//vracht verwijderen: /freight/cancelFreight/id
+router.delete('/cancelFreight/:id', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+    console.log("***routes/freight/cancelFreight/id");
     console.log("id: " + req.params.id);
     const freightId = req.params.id;
 
     try{
-        freight = await Freight.findFreightById({_id: freightId});
-        console.log("vracht: " + JSON.stringify(freight));
+        freight = await Freight.getFreightById(freightId);
+        console.log("freight: " + JSON.stringify(freight));
 
         if(freight == null) {
             res.json({
                 success: false,
-                msg: 'Taak bestaat niet'
+                msg: "Freight doesn't exist"
             });
 
-        } else if(freight.user != req.user._id.toString()){
+        /*} else if(freight.user != req.user._id.toString()){
             let user1 = freight.user;
             let user2 = req.user._id;
             res.json({
                 success: false,
                 msg: 'Dit is niet jou vracht: '
             });
-
+*/
         }else{
-            await Freight.deleteFreight(freightId, req.user);
+            await Freight.cancelFreight(freightId);
             res.json({
                 success: true,
-                msg: 'Taak verwijderd'
+                msg: 'Freight is canceled'
             });
         }
 
     }catch(e){
         res.json({
             success: false,
-            msg: 'Taak verwijderen mislukt'
+            msg: 'Canceling freight not succeeded'
         });
     }
 });
