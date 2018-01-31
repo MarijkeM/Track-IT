@@ -6,16 +6,18 @@
         <form>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Choose your order</label>
-                <select name="Select order" class="form-control" id="exampleFormControlSelect1" [(ngModel)]="this.selectedOrderId">
-                    <option *ngFor="let order of orders; let i = index" [ngValue]="i">{{order.AfzenderNaam}}: orderId {{order.id}}</option>
+                <select name="Select order" class="form-control" id="exampleFormControlSelect1"
+                        [(ngModel)]="this.selectedOrderId">
+                    <option *ngFor="let order of orders; let i = index" [ngValue]="i">{{order.AfzenderNaam}}: orderId
+                        {{order.id}}
+                    </option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary" (click)="changeSelectedOrder()">Details</button>
         </form>
     </div>
-    <div class="container" *ngIf="selectedOrder!=null">
+    <div class="container crm" *ngIf="selectedOrder!=null">
         <div class="row">
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -33,12 +35,12 @@
                             <br>
                             {{selectedOrder.AfzenderStraat}}
                             <br>
-                            {{selectedOrder.AfzenderStad}} {{selectedOrder.AfzenderPostcode}}, {{selectedOrder.AfzenderLand}}
+                            {{selectedOrder.AfzenderStad}} {{selectedOrder.AfzenderPostcode}},
+                            {{selectedOrder.AfzenderLand}}
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -57,7 +59,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -77,11 +78,11 @@
                             <br>
                             {{selectedOrder.OntvangerStraat}}
                             <br>
-                            {{selectedOrder.OntvangerStad}} {{selectedOrder.OntvangerPostcode}}, {{selectedOrder.OntvangerLand}}</p>
+                            {{selectedOrder.OntvangerStad}} {{selectedOrder.OntvangerPostcode}},
+                            {{selectedOrder.OntvangerLand}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -99,13 +100,13 @@
                             <br>
                             {{selectedOrder.VervoederStraat}}
                             <br>
-                            {{selectedOrder.VervoederStad}} {{selectedOrder.VervoederPostcode}}, {{selectedOrder.VervoederLand}}</p>
+                            {{selectedOrder.VervoederStad}} {{selectedOrder.VervoederPostcode}},
+                            {{selectedOrder.VervoederLand}}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -120,11 +121,11 @@
                         <p></p>
                     </div>
                     <div class="col-md-10">
-                        <p>{{selectedOrder.PlaatsBestemdOntvangstStad}}, {{selectedOrder.PlaatsBestemdOntvangstLand}} </p>
+                        <p>{{selectedOrder.PlaatsBestemdOntvangstStad}},
+                            {{selectedOrder.PlaatsBestemdOntvangstLand}} </p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -142,23 +143,23 @@
                             <br>
                             {{selectedOrder.OpvolgendeVervoederStraat}}
                             <br>
-                            {{selectedOrder.OpvolgendeVervoederStad}} {{selectedOrder.OpvolgendeVervoederPostcode}}, {{selectedOrder.OpvolgendeVervoederLand}}</p>
+                            {{selectedOrder.OpvolgendeVervoederStad}} {{selectedOrder.OpvolgendeVervoederPostcode}},
+                            {{selectedOrder.OpvolgendeVervoederLand}}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
                         <p>4</p>
                     </div>
                     <div class="col-md-11">
-                    <p>Plaats en datum van in ontvangstname (plaats, land, datum) | place and date of delivery (place, country, date)</p>
+                        <p>Plaats en datum van in ontvangstname (plaats, land, datum) | place and date of delivery
+                            (place, country, date)</p>
+                    </div>
                 </div>
-                </div>
-                <div class="row">
                 <div class="row onder">
                     <div class="col-md-2">
                         <p></p>
@@ -168,7 +169,6 @@
                             <br> {{selectedOrder.PlaatsOntvangstDatum}} </p>
                     </div>
                 </div>
-                <div class="row">
                 <div class="row boven">
                     <div class="col-md-1">
                         <p>5</p>
@@ -186,7 +186,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -196,7 +195,6 @@
                         <p>Opmerkingen voor vervoerder | carrier's instructions</p>
                     </div>
                 </div>
-                <div class="row">
                 <div class="row opmerking">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
@@ -205,63 +203,59 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p> 6 Merken en nummers | Brands and numbers</p>
-                </div>
-                <div class="col-md-3">
-                    <p> 7 Aantal colli | Number of packages </p>
-                </div>
-                <div class="col-md-3">
-                    <p> 8 Wijze van verpakking | Method of packaging </p>
-                </div>
-                <div class="col-md-3">
-                    <p> 9 Aard van goederen | Nature of the goods </p>
-                </div>
+
+        <div class="row links rechts boven">
+            <div class="col-md-3">
+                <p> 6 Merken en nummers | Brands and numbers</p>
             </div>
-            <div class="row">
-            <div class="row links rechts">
-                <div class="col-md-3">
-                    <p> 10 Statisch nummer | Static number</p>
-                </div>
-                <div class="col-md-3">
-                    <p> 11 Bruto gewicht (kg) | Gross weight (kg) </p>
-                </div>
-                <div class="col-md-3">
-                    <p> 12 Volume (m³) | Volume (m³) </p>
-                </div>
-                <div class="col-md-3">
-                    
-                </div>
+            <div class="col-md-3">
+                <p> 7 Aantal colli | Number of packages </p>
             </div>
-            <div class="row">
-            <div class="row links rechts">
-                <div class="col-md-12">
+            <div class="col-md-3">
+                <p> 8 Wijze van verpakking | Method of packaging </p>
+            </div>
+            <div class="col-md-3">
+                <p> 9 Aard van goederen | Nature of the goods </p>
+            </div>
+        </div>
+        <div class="row links rechts">
+            <div class="col-md-3">
+                <p> 10 Statisch nummer | Static number</p>
+            </div>
+            <div class="col-md-3">
+                <p> 11 Bruto gewicht (kg) | Gross weight (kg) </p>
+            </div>
+            <div class="col-md-3">
+                <p> 12 Volume (m³) | Volume (m³) </p>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+        <div class="row links rechts">
+            <div class="col-md-12">
                 <p>{{selectedOrder.TypePallet}}</p>
-                </div>
             </div>
-            <div class="row">
-            <div class="row links rechts onder">
-                <div class="col-md-2">
-                    <p>{{selectedOrder.MerkenNummers}}  </p>
-                </div>
-                <div class="col-md-2">
-                    <p> {{selectedOrder.AantalVerpakking}} + "x " + {{selectedOrder.WijzeVerpakking}} </p>
-                </div>
-                <div class="col-md-4">
-                    <p> {{selectedOrder.AardDerGoederen}} </p>
-                </div>
-                <div class="col-md-2">
-                    <p> {{selectedOrder.StatistischNummer}} </p>
-                </div>
-                <div class="col-md-2">
-                    <p> {{selectedOrder.BrutoGewicht}} | {{selectedOrder.Volume}} </p>
-                </div>
+        </div>
+        <div class="row links rechts onder">
+            <div class="col-md-2">
+                <p>{{selectedOrder.MerkenNummers}} </p>
             </div>
-    </div>
+            <div class="col-md-2">
+                <p> {{selectedOrder.AantalVerpakking}} + "x " + {{selectedOrder.WijzeVerpakking}} </p>
+            </div>
+            <div class="col-md-4">
+                <p> {{selectedOrder.AardDerGoederen}} </p>
+            </div>
+            <div class="col-md-2">
+                <p> {{selectedOrder.StatistischNummer}} </p>
+            </div>
+            <div class="col-md-2">
+                <p> {{selectedOrder.BrutoGewicht}} | {{selectedOrder.Volume}} </p>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -271,7 +265,6 @@
                         <p>Instructies ontvanger | Instructions receiver</p>
                     </div>
                 </div>
-                <div class="row">
                 <div class="row onder opmerking">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
@@ -279,7 +272,6 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
                 <div class="row boven">
                     <div class="col-md-1">
                         <p>14</p>
@@ -288,7 +280,6 @@
                         <p>Frankeringsvoorschrift | Prepayment instructions</p>
                     </div>
                 </div>
-                <div class="row">
                 <div class="row onder">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
@@ -296,7 +287,6 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
                 <div class="row boven">
                     <div class="col-md-1">
                         <p>21</p>
@@ -313,7 +303,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
             <div class="col-md-6 rand">
                 <div class="row">
                     <div class="col-md-1">
@@ -323,7 +312,6 @@
                         <p>Speciale overeenkomst | Special agreements</p>
                     </div>
                 </div>
-                <div class="row">
                 <div class="row onder speciaal">
                     <div class="col-md-2"></div>
                     <div class="col-md-10">
@@ -331,69 +319,48 @@
                         </p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
                 <div class="row boven">
                     <div class="col-md-3 rechts onder">
                         <p>20</p>
                     </div>
-                    <div class="col-md-3">
                     <div class="col-md-3 rechts onder links">
                         <p>Aankomsttijd | Arrival time</p>
                     </div>
-                    <div class="col-md-3">
                     <div class="col-md-3 rechts onder links">
                         <p>Vertrektijd | Departure time</p>
                     </div>
-                    <div class="col-md-3">
                     <div class="col-md-3 onder links">
                         <p>Totaaltijd | Total time</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
                     <div class="col-md-3 boven rechts onder">
                         <p>laadadres | Sender's address</p>
                     </div>
-                    <div class="col-md-3">
-                        <p>witruimte</p>
                     <div class="col-md-3 rand uren">
-                        
+
                     </div>
-                    <div class="col-md-3">
-                        <p>witruimte</p>
                     <div class="col-md-3 rand uren">
-                        
+
                     </div>
-                    <div class="col-md-3">
-                        <p>witruimte</p>
                     <div class="col-md-3 links boven onder uren">
-                        
+
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
                 <div class="row onder">
                     <div class="col-md-3 boven rechts">
                         <p>losadres | Delivery's address</p>
                     </div>
-                    <div class="col-md-3">
-                        <p>witruimte</p>
                     <div class="col-md-3 boven links rechts uren">
-                        
+
                     </div>
-                    <div class="col-md-3">
-                        <p>witruimte</p>
                     <div class="col-md-3 boven links rechts uren">
-                        
+
                     </div>
-                    <div class="col-md-3">
-                        <p>witruimte</p>
                     <div class="col-md-3 boven links uren">
-                        
+
                     </div>
                 </div>
-                <div class="row">
                 <div class="row boven">
                     <div class="col-md-1">
                         <p>15</p>
@@ -411,8 +378,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row rand">
+            <div class="col-md-4 rechts">
                 <div class="row">
                     <div class="col-md-1">
                         <p>22</p>
@@ -421,12 +388,10 @@
                         <p>Handtekeing afzender | Signature sender</p>
                     </div>
                 </div>
-                <div class="row">
-                    <p>witruimte</p>
-                    
+                <div class="row handtekening">
+
                 </div>
             </div>
-            <div class="col-md-4">
             <div class="col-md-4 links rechts">
                 <div class="row">
                     <div class="col-md-1">
@@ -436,13 +401,10 @@
                         <p>Handtekeing ontvanger | Signature receiver</p>
                     </div>
                 </div>
-                <div class="row">
-                    <p>witruimte</p>
                 <div class="row handtekening">
-                
+
                 </div>
             </div>
-            <div class="col-md-4">
             <div class="col-md-4 links">
                 <div class="row">
                     <div class="col-md-1">
@@ -452,13 +414,12 @@
                         <p>Goederen ontvangen (plaats, datum) | Goods received (place, date)</p>
                     </div>
                 </div>
-                <div class="row">
-                    <p>witruimte</p>
                 <div class="row handtekening">
-                    
+
                 </div>
             </div>
         </div>
         <a href="javascript:genPDF()">Download PDF</a>
     </div>
+</section>
 
