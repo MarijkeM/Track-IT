@@ -1,0 +1,38 @@
+.rand {
+    border-style: solid;
+    border-width: 2px;
+}
+
+.onder{
+    border-bottom: 2px solid;
+}
+
+.boven{
+    border-top: 2px solid;
+}
+
+.links {
+    border-left: 2px solid;
+}
+
+.rechts {
+    border-right: 2px solid;
+}
+
+.opmerking{
+    min-height: 300px;
+}
+
+.speciaal{
+    min-height: 150px;
+}
+
+.handtekening{
+    min-height: 200px;
+}
+
+.uren{
+    min-height: 75px;
+}
+
+
