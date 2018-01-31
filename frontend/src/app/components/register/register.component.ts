@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       }
 
 
-    //User registreren via de auth service (die het weer haalt van routes/user.js)
+    //Freight registreren via de auth service (die het weer haalt van routes/user.js)
     this.authService.registerUser(user).subscribe(data => {
       if(data.success){
         this.flashmessage.show(data.msg,

@@ -32,7 +32,7 @@ const user = require('./routes/user');
 
 //poort nummer voor back end
 //const port = process.env.PORT || 8080;
-const port = 3000;
+const port = 3002;
 
 //CORS gebruiken
 app.use(cors());
@@ -67,6 +67,3 @@ app.get('*', (req, res) => {
 app.listen(port, function () {
     console.log('Server is opgestart op poort '+port)
 });
-
-
-

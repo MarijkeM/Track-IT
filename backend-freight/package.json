@@ -1,0 +1,32 @@
+{
+  "name": "Track-IT",
+  "version": "1.0.0",
+  "description": "App to ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "^4.13.7",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.6.2",
+    "@angular/compiler-cli": "^5.0.0"
+  },
+  "keywords": [
+    "Track",
+    "MEAN",
+    "Freight",
+    "Track-and-trace"
+  ],
+  "author": "Track-IT, team D3",
+  "license": "ISC"
+}
