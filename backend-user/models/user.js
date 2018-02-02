@@ -50,6 +50,19 @@ module.exports.comparePassword = function (opgegevenPaswoord, hashedPaswoord, ca
         callback(null, isMatch);
     })
 }
-{
 
+module.exports.updateUser = (userId, newUser) => {
+    var query = {_id:userId};
+    return User.findOneAndUpdate(query, newUser);
+}
+
+
+module.exports.cancelFreight = (userId) => {
+    var query = {_id: userId};
+    try{
+        console.log("try");
+        return User.remove(query);
+    }catch (e){
+        return e;
+    }
 }

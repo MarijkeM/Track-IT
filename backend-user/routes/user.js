@@ -132,4 +132,88 @@ router.get('/profiel', passport.authenticate('jwt', {session: false}), (req, res
     return res.json({user: req.user});
 });
 
+//user wijzigen: /user/modifyUser/id
+router.put('/modifyUser/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
+    console.log("***routes/user/modifyUser/" + req.params.id);
+    const userId = req.params.id;
+
+    let updateUser = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: req.body.password,
+        email: req.body.email,
+        role: req.body.role,
+    });
+
+    console.log("nieuwe user: " + JSON.stringify(updateUser));
+
+    try {
+        var user = await User.getUserById(userId);
+        console.log("modify user: " + user);
+
+        if(user == null){
+            res.json({
+                success: false,
+                msg: 'User bestaat niet'
+            });
+            /*}else if(update.user.toString() !=(req.user._id).toString()){
+                res.json({
+                    success: false,
+                    msg: 'Je kan de vracht niet aanpassen: '
+                });*/
+        }else{
+            await User.updateUser(userId, updateUser);
+
+            res.json({
+                success: true,
+                msg: 'User updaten is gelukt'
+            })
+        }
+    } catch (e) {
+        res.json({
+            success: false,
+            msg: 'User updaten is mislukt: ' + e});
+    }
+});
+
+//user verwijderen: /user/cancelUser/id
+router.delete('/cancelUser/:id', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+    console.log("***routes/user/cancelUser/id");
+    console.log("id: " + req.params.id);
+    const userId = req.params.id;
+
+    try{
+        user = await User.getUserById(userId);
+        console.log("user: " + JSON.stringify(user));
+
+        if(user == null) {
+            res.json({
+                success: false,
+                msg: "User doesn't exist"
+            });
+
+            /*} else if(freight.user != req.user._id.toString()){
+                let user1 = freight.user;
+                let user2 = req.user._id;
+                res.json({
+                    success: false,
+                    msg: 'Dit is niet jou vracht: '
+                });
+    */
+        }else{
+            await User.cancelFreight(userId);
+            res.json({
+                success: true,
+                msg: 'User is canceled'
+            });
+        }
+
+    }catch(e){
+        res.json({
+            success: false,
+            msg: 'Canceling User not succeeded'
+        });
+    }
+});
+
 module.exports = router;
