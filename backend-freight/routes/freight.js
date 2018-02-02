@@ -28,8 +28,8 @@ router.get('/allFreights'/*, passport.authenticate('jwt', {session:false})*/, as
 });
 
 //alle vrachten van 1 persoon ophalen: /freight/allFreightsDriver/:driverId
-router.get('/allFreightsforDriver/:driverId', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
-    console.log("***routes/freight/allfreightsforDriver freights van bepaalde driver");
+router.get('/allFreightsfromDriver/:driverId', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+    console.log("***routes/freight/allfreightsfromDriver freights van bepaalde driver");
 
     try{
         freights = await Freight.getFreightsByDriverId(req.params.driverId);
