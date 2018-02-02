@@ -148,8 +148,8 @@ router.put('/modifyUser/:id', passport.authenticate('jwt', {session:false}), asy
     console.log("nieuwe user: " + JSON.stringify(updateUser));
 
     try {
-        var user = await User.getUserById(userId);
-        console.log("modify user: " + user);
+        user = await User.getUserById(userId);
+        console.log("user: " + JSON.stringify(user));
 
         if(user == null){
             res.json({
@@ -201,7 +201,7 @@ router.delete('/cancelUser/:id', /*passport.authenticate('jwt', {session:false})
                 });
     */
         }else{
-            await User.cancelFreight(userId);
+            await User.cancelUser(userId);
             res.json({
                 success: true,
                 msg: 'User is canceled'

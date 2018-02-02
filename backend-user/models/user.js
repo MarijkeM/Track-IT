@@ -15,8 +15,10 @@ const UserSchema = new Schema({
 //Gebruiker exporteren de 'User' gaat de naam zijn in de db
 const User = module.exports = mongoose.model('User', UserSchema);
 
-module.exports.getUserById = function (id, callback) {
-    User.findById(id, callback);
+module.exports.getUserById = function (userId) {
+    console.log("getUserById");
+    query = {_id: userId};
+    return User.findById(query);
 }
 
 module.exports.getUserByEmail = function (email) {
@@ -57,7 +59,7 @@ module.exports.updateUser = (userId, newUser) => {
 }
 
 
-module.exports.cancelFreight = (userId) => {
+module.exports.cancelUser = (userId) => {
     var query = {_id: userId};
     try{
         console.log("try");
