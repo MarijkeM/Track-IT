@@ -55,7 +55,6 @@ module.exports.addFreight = (newFreight) => {
 module.exports.cancelFreight = (freightId) => {
     var query = {_id: freightId};
     try{
-        console.log("try");
         return Freight.remove(query);
     }catch (e){
         return e;
