@@ -26,4 +26,5 @@ a:hover, .link:hover{
 
 .link:hover{
     color: #CC503D!important;
+    text-decoration: underline;
 }

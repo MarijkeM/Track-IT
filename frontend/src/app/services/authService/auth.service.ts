@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map'; //map operator om met observables te werken
 import { tokenNotExpired } from 'angular2-jwt'
-import { GlobalVariable } from '../global'
+import { GlobalVariable } from '../globalUser'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 

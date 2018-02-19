@@ -20,6 +20,8 @@ import { AuthGuardDriver } from './guards/auth.driver.guard'
 import { AuthGuardClient } from './guards/auth.client.guard'
 import { AuthGuardAdmin } from './guards/auth.admin.guard'
 import { FooterComponent } from './components/footer/footer.component';
+import { OrderComponent } from './components/order/order.component';
+import {OrderService} from "./services/orderService/order.service";
 
 
 const appRoutes: Routes = [
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
     {path:'home',component:HomeComponent},
     {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
+    {path:'order',component:OrderComponent},
 ];
 
 @NgModule({
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     ProfileComponent,
     FooterComponent,
+    OrderComponent,
   ],
   imports: [
       BrowserModule,
@@ -50,6 +54,7 @@ const appRoutes: Routes = [
       HttpClientModule,
       FlashMessagesModule.forRoot()
   ],
+
   providers: [ValidateService, AuthService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient],
   bootstrap: [AppComponent]
 })

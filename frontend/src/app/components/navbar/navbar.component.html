@@ -7,19 +7,24 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto navbar-left">
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link"[routerLink]="['/tasks']">Order</a>
+        <a class="nav-link"[routerLink]="['/order']">Order</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/thoughts']">Freight</a>
+        <a class="nav-link" [routerLink]="['/freight']">Freight</a>
       </li>
       <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/good-events']">Tracking</a>
+        <a class="nav-link" [routerLink]="['/tracking']">Tracking</a>
       </li>
 
 
     </ul>
     <ul class="navbar-nav navbar-right">
       <!--Als ingelogd-->
+      <li class="nav-item" *ngIf="authService.loggedIn()">
+        <span class="navbar-text welcome-message">
+          Welcome {{this.user.firstName}}
+        </span>
+      </li>
       <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']">
         <a class="nav-link"   [routerLink]="['/profile']"><i class="fas fa-user"></i> Profile</a>
       </li>
