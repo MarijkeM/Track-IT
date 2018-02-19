@@ -14,11 +14,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   registerUser(user){
-    console.log("registreer user");
+    //console.log("register user");
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
 
-    return this.http.post<any>(GlobalVariable.base_url+'user/registreren',
+    return this.http.post<any>(GlobalVariable.base_url+'user/register',
                           user,
                           {headers});
 
@@ -33,7 +33,7 @@ export class AuthService {
     let headers = new HttpHeaders()
         .set('Content-Type','application/json');
 
-      return this.http.post<any>(GlobalVariable.base_url+'user/authenticeren',
+      return this.http.post<any>(GlobalVariable.base_url+'user/authenticate',
           user,
           {headers});
   }
@@ -46,7 +46,7 @@ export class AuthService {
         .append('Content-Type','application/json');
 
 
-    return this.http.get<any>(GlobalVariable.base_url+'user/profiel',
+    return this.http.get<any>(GlobalVariable.base_url+'user/profile',
                             {headers});
   }
 

@@ -11,8 +11,8 @@ const User = require('../models/user');
 
 
 //Registreer: /user/registreren
-router.post('/registreren', async(req, res) => {
-        console.log("***routes/user registreren");
+router.post('/register', async(req, res) => {
+        console.log("***routes/user/register");
 
         let newUser = new User({
             firstName: req.body.firstName,
@@ -36,12 +36,12 @@ router.post('/registreren', async(req, res) => {
                     if (user) {
                         res.json({
                             success: true,
-                            msg: "Registreren gelukt"
+                            msg: "Registration successful"
                         })
                     } else {
                         res.json({
                             success: true,
-                            msg: "Registreren mislukt, verkeerde rol"
+                            msg: "Error, please try again"
                         })
                     }
                 }
@@ -54,7 +54,7 @@ router.post('/registreren', async(req, res) => {
             } else {
                 res.json({
                     success: false,
-                    msg: "Gebruiker bestaat al"
+                    msg: "User already exists"
                 })
             }
         }
@@ -62,7 +62,7 @@ router.post('/registreren', async(req, res) => {
             (e) {
             res.json({
                 success: false,
-                msg: 'Freight toevoegen mislukt: ' + e
+                msg: 'Adding freight failed: ' + e
             });
         }
     }
@@ -71,12 +71,12 @@ router.post('/registreren', async(req, res) => {
 
 
 //Authenticatie/inloggen: /user/authenticeren
-router.post('/authenticeren', async(req, res) => {
+router.post('/authenticate', async(req, res) => {
     //als persoon inlogt, geeft die de volgende gegevens door
     const email = req.body.email;
     const password = req.body.password;
 
-    console.log("***routes/user authenticeren");
+    console.log("***routes/user/authenticate");
 
     //nakijken of de user bestaat
     try {
@@ -85,13 +85,13 @@ router.post('/authenticeren', async(req, res) => {
         if (user == null) {
             return res.json({
                 success: false,
-                msg: 'Gebruiker niet gevonden'
+                msg: 'User not found'
             })
         }
     } catch (e) {
         return res.json({
             success: false,
-            msg: 'Gebruiker niet gevonden'
+            msg: 'User not found'
         })
     }
 
@@ -116,19 +116,19 @@ router.post('/authenticeren', async(req, res) => {
                     email: user.email,
                     role: user.role
                 },
-                msg: 'Je bent ingelogd.'
+                msg: "You're not logged in"
             });
         } else {
-            return res.json({success: false, msg: 'Verkeerd paswoord'});
+            return res.json({success: false, msg: 'Wrong password'});
         }
     });
 });
 
 
-//Profiel: /user/profiel
-router.get('/profiel', passport.authenticate('jwt', {session: false}), (req, res) => {
-    console.log("***routes/user/profiel");
-    console.log("user waarvan het profiel genomen wordt: " + req.user);
+//Profiel: /user/profile
+router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res) => {
+    console.log("***routes/user/profile");
+    console.log("user profile: " + req.user);
     return res.json({user: req.user});
 });
 
