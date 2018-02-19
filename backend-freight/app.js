@@ -28,11 +28,12 @@ const app = express();
 
 //dit gaat naar de map routes en daaronder de file user
 const user = require('./routes/user');
+const freight = require('./routes/freight');
 
 
 //poort nummer voor back end
 //const port = process.env.PORT || 8080;
-const port = 3000;
+const port = 3001;
 
 //CORS gebruiken
 app.use(cors());
@@ -51,7 +52,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 //'/user" moet overeenkomen met de js file onder routes
-app.use('/user', user);
+app.use('/freight', freight);
 
 //route van de index
 app.get('/', function (req,res) {
@@ -59,13 +60,12 @@ app.get('/', function (req,res) {
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 //start server en toon in console venster
 app.listen(port, function () {
     console.log('Server is opgestart op poort '+port)
 });
-
 
 

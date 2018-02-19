@@ -29,10 +29,11 @@ export class RegisterComponent implements OnInit {
     console.log("Op registreren geklikt");
 
     const user = {
-      firstName: this.firstName, //de eerste firstName is zelf gekozen, de laatste komt van de form
+      firstName: this.firstName, //de eerste firstName is zelf gekozen (maar moet overeenkomen met model, de laatste komt van de form
       lastName: this.lastName,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role: "client"
     };
 
     /*testen of alle velden zijn ingevuld*/
@@ -52,7 +53,7 @@ export class RegisterComponent implements OnInit {
       }
 
 
-    //User registreren via de auth service (die het weer haalt van routes/user.js)
+    //Freight registreren via de auth service (die het weer haalt van routes/user.js)
     this.authService.registerUser(user).subscribe(data => {
       if(data.success){
         this.flashmessage.show(data.msg,

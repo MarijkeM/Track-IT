@@ -9,15 +9,17 @@
   },
   "dependencies": {
     "bcryptjs": "*",
-    "beepbeep": "^1.2.1",
     "body-parser": "*",
     "cors": "*",
     "express": "*",
     "jsonwebtoken": "*",
-    "jwt-decode": "^2.2.0",
     "mongoose": "^4.13.7",
     "passport": "*",
     "passport-jwt": "*"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.6.2",
+    "@angular/compiler-cli": "^5.0.0"
   },
   "keywords": [
     "Track",

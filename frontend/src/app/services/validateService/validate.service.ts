@@ -7,7 +7,7 @@ export class ValidateService {
   constructor() { }
 
   validateRegister(user){
-    console.log("in validateRegister in validateService");
+    //console.log("validateRegister in validateService");
     if(user.firstName == null || user.lastName == null || user.email == null || user.password == null){
       return false;
     }else{

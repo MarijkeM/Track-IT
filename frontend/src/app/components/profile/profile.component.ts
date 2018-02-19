@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     console.log("onInit profile.component.ts");
     this.authService.getProfile().subscribe(profile => {
-      console.log("profiel:" + JSON.stringify(profile));
+      console.log("profile:" + JSON.stringify(profile));
       this.user = profile.user;
       console.log(this.user);
     },
@@ -26,5 +26,4 @@ export class ProfileComponent implements OnInit {
       return false;
     });
   }
-
 }

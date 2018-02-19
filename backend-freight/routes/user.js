@@ -11,8 +11,8 @@ const User = require('../models/user');
 
 
 //Registreer: /user/registreren
-router.post('/register', async(req, res) => {
-        console.log("***routes/user/register");
+router.post('/registreren', async(req, res) => {
+        console.log("***routes/user registreren");
 
         let newUser = new User({
             firstName: req.body.firstName,
@@ -36,12 +36,12 @@ router.post('/register', async(req, res) => {
                     if (user) {
                         res.json({
                             success: true,
-                            msg: "Registration successful"
+                            msg: "Registreren gelukt"
                         })
                     } else {
                         res.json({
                             success: true,
-                            msg: "Error, please try again"
+                            msg: "Registreren mislukt, niet alle gegevens zijn correct ingegeven"
                         })
                     }
                 }
@@ -54,7 +54,7 @@ router.post('/register', async(req, res) => {
             } else {
                 res.json({
                     success: false,
-                    msg: "User already exists"
+                    msg: "Gebruiker bestaat al"
                 })
             }
         }
@@ -62,7 +62,7 @@ router.post('/register', async(req, res) => {
             (e) {
             res.json({
                 success: false,
-                msg: 'Adding freight failed: ' + e
+                msg: 'Freight toevoegen mislukt: ' + e
             });
         }
     }
@@ -71,12 +71,12 @@ router.post('/register', async(req, res) => {
 
 
 //Authenticatie/inloggen: /user/authenticeren
-router.post('/authenticate', async(req, res) => {
+router.post('/authenticeren', async(req, res) => {
     //als persoon inlogt, geeft die de volgende gegevens door
     const email = req.body.email;
     const password = req.body.password;
 
-    console.log("***routes/user/authenticate");
+    console.log("***routes/user authenticeren");
 
     //nakijken of de user bestaat
     try {
@@ -85,13 +85,13 @@ router.post('/authenticate', async(req, res) => {
         if (user == null) {
             return res.json({
                 success: false,
-                msg: 'User not found'
+                msg: 'Gebruiker niet gevonden'
             })
         }
     } catch (e) {
         return res.json({
             success: false,
-            msg: 'User not found'
+            msg: 'Gebruiker niet gevonden'
         })
     }
 
@@ -116,20 +116,21 @@ router.post('/authenticate', async(req, res) => {
                     email: user.email,
                     role: user.role
                 },
-                msg: "You're not logged in"
+                msg: 'Je bent ingelogd.'
             });
         } else {
-            return res.json({success: false, msg: 'Wrong password'});
+            return res.json({success: false, msg: 'Verkeerd paswoord'});
         }
     });
 });
 
 
-//Profiel: /user/profile
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res) => {
-    console.log("***routes/user/profile");
-    console.log("user profile: " + req.user);
-    return res.json({user: req.user});
+//Profiel: /user/profiel
+router.get('/profiel', passport.authenticate('jwt', {session: false}), (req, res) => {
+    service.getProfile(req.user);
+    console.log("***routes/user/profiel");
+    console.log("user waarvan het profiel genomen wordt: " + req.user);
+    return res.json(service.getProfile(req.user));
 });
 
 module.exports = router;
