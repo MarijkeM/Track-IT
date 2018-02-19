@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
 import { GlobalVariable } from '../globalOrder';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from '..//authService/auth.service';
+import { AuthService } from '../authService/auth.service';
 
 @Injectable()
 export class OrderService {

@@ -55,7 +55,7 @@ const appRoutes: Routes = [
       FlashMessagesModule.forRoot()
   ],
 
-  providers: [ValidateService, AuthService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient],
+  providers: [ValidateService, AuthService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

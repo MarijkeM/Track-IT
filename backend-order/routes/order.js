@@ -205,20 +205,20 @@ router.put('/modifyOrder/:id', /*passport.authenticate('jwt', {session:false}),*
             if (order == null) {
                 res.json({
                     success: false,
-                    msg: 'Order bestaat niet'
+                    msg: 'Order doesn't exist
                 });
             } else {
                 await Order.updateOrder(orderId, updateOrder);
 
                 res.json({
                     success: true,
-                    msg: 'Order updaten is gelukt'
+                    msg: 'Update order succeeded'
                 })
             }
         } catch (e) {
             res.json({
                 success: false,
-                msg: 'Order updaten is mislukt: ' + e
+                msg: 'Update order failed: ' + e
             });
         }
 });

@@ -32,7 +32,7 @@ const order = require('./routes/order');
 
 //poort nummer voor back end
 //const port = process.env.PORT || 8080;
-const port = 3001;
+const port = 3002;
 
 //CORS gebruiken
 app.use(cors());
