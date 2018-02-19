@@ -59,6 +59,15 @@ export class AuthService {
     return tokenNotExpired('id_token');
   }
 
+  loggedInAs(role){
+    if(tokenNotExpired()){
+      if(this.user.role == role){
+        return true;
+      }
+    }
+    return false;
+  }
+
   storeUserData(token, user){
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));

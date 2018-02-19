@@ -41,7 +41,7 @@ router.post('/registreren', async(req, res) => {
                     } else {
                         res.json({
                             success: true,
-                            msg: "Registreren mislukt, verkeerde rol"
+                            msg: "Registreren mislukt, niet alle gegevens zijn correct ingegeven"
                         })
                     }
                 }
@@ -127,9 +127,10 @@ router.post('/authenticeren', async(req, res) => {
 
 //Profiel: /user/profiel
 router.get('/profiel', passport.authenticate('jwt', {session: false}), (req, res) => {
+    service.getProfile(req.user);
     console.log("***routes/user/profiel");
     console.log("user waarvan het profiel genomen wordt: " + req.user);
-    return res.json({user: req.user});
+    return res.json(service.getProfile(req.user));
 });
 
 module.exports = router;

@@ -16,6 +16,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
 import { AuthGuard } from './guards/auth.guard';
+import { AuthGuardDriver } from './guards/auth.driver.guard'
+import { AuthGuardClient } from './guards/auth.client.guard'
+import { AuthGuardAdmin } from './guards/auth.admin.guard'
 import { FooterComponent } from './components/footer/footer.component';
 
 
@@ -47,7 +50,7 @@ const appRoutes: Routes = [
       HttpClientModule,
       FlashMessagesModule.forRoot()
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
