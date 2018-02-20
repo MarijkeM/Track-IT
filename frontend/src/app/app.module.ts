@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TrackingComponent } from './components/tracking/tracking.component';
 
 import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
@@ -22,7 +23,7 @@ import { AuthGuardAdmin } from './guards/auth.admin.guard'
 import { FooterComponent } from './components/footer/footer.component';
 import { OrderComponent } from './components/order/order.component';
 import {OrderService} from "./services/orderService/order.service";
-import { TrackingComponent } from './tracking/tracking.component';
+
 
 
 const appRoutes: Routes = [
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
     {path:'order',component:OrderComponent},
+    {path:'tracking',component:TrackingComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({

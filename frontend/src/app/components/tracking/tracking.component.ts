@@ -10,6 +10,8 @@ export class TrackingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+ 
+      }
   }
 
 }

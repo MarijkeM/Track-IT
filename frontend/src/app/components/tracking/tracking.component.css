@@ -1,0 +1,25 @@
+#map {
+    height: 500px;
+    width: 100%;
+    background-color: grey;
+    color: red;
+    font-size: 25pt;
+}
+
+.titel {
+    color: #4C9976;
+    font-weight: bold;
+}
+
+.order {
+    border: none;
+    background-color: white;
+    width: 100%;
+    font-weight: bold;
+    padding-bottom: 5pt;
+    padding-top: 5pt;
+}
+
+.tekst {
+    margin-bottom: 0px;
+}
