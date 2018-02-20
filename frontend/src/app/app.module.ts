@@ -22,6 +22,7 @@ import { AuthGuardAdmin } from './guards/auth.admin.guard'
 import { FooterComponent } from './components/footer/footer.component';
 import { OrderComponent } from './components/order/order.component';
 import {OrderService} from "./services/orderService/order.service";
+import { UserManagementComponent } from './components/user-management/user-management.component';
 
 
 const appRoutes: Routes = [
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
     {path:'order',component:OrderComponent},
-];
+    {path:'user-management',component:UserManagementComponent/*, canActivate:[AuthGuardAdmin]*/}
+    ];
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     FooterComponent,
     OrderComponent,
+    UserManagementComponent,
   ],
   imports: [
       BrowserModule,

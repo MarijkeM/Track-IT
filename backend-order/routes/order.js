@@ -98,7 +98,6 @@ router.put('/modifyOrder/:id', /*passport.authenticate('jwt', {session:false}),*
             msg: 'Update order failed: ' + e
         });
     }
-
 });
 
 //order verwijderen: /order/cancelOrder/id

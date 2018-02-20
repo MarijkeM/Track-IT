@@ -12,20 +12,23 @@ const UserSchema = new Schema({
     role: {type: String, enum: ['client', 'driver', 'admin'], default: 'client'}
 });
 
-//Gebruiker exporteren de 'Freight' gaat de naam zijn in de db
-const User = module.exports = mongoose.model('User', UserSchema);
+UserSchema.statics.getAllUsers = function () {
+    return User.find();
+};
 
-module.exports.getUserById = function (id, callback) {
-    User.findById(id, callback);
+UserSchema.statics.getUserById = function (userId, callback) {
+    query = {_id: userId};
+    return User.findById(query, callback);
 }
 
-module.exports.getUserByEmail = function (email) {
+
+UserSchema.statics.getUserByEmail = function (email) {
     console.log("getUserByEmail");
     const query = {email: email};
     return User.findOne(query);
 }
 
-module.exports.addUser = function (newUser) {
+UserSchema.statics.addUser = function (newUser) {
     try {
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -42,7 +45,7 @@ module.exports.addUser = function (newUser) {
     }
 }
 
-module.exports.comparePassword = function (opgegevenPaswoord, hashedPaswoord, callback) {
+UserSchema.statics.comparePassword = function (opgegevenPaswoord, hashedPaswoord, callback) {
     //je geeft een err en een res en hier heet dat err en isMatch, dat had ook pipo kunnen heten
     //maar als res(ultaat) geeft compare true of false terug
     bcrypt.compare(opgegevenPaswoord, hashedPaswoord, (err, isMatch) => {
@@ -50,3 +53,19 @@ module.exports.comparePassword = function (opgegevenPaswoord, hashedPaswoord, ca
         callback(null, isMatch);
     })
 }
+
+UserSchema.statics.cancelUser = (userId) => {
+    var query = {_id: userId};
+    try{
+        return User.remove(query);
+    }catch (e){
+        return e;
+    }
+}
+
+UserSchema.statics.updateUser = (userId, updatedUser) => {
+    var query = {_id:userId};
+    return User.findOneAndUpdate(query, updatedUser)
+}
+
+const User = module.exports = mongoose.model('User', UserSchema);

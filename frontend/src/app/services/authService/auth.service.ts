@@ -61,7 +61,7 @@ export class AuthService {
 
   loggedInAs(role){
     if(tokenNotExpired()){
-      if(this.user.role == role){
+      if(this.user.role.valueOf() === role.valueOf()){
         return true;
       }
     }
@@ -81,5 +81,39 @@ export class AuthService {
     localStorage.clear();
   }
 
+    getAllUsers(){
+        console.log("***auth.service getAllUsers()");
+        this.loadToken();
+        let headers = new HttpHeaders()
+            .set('Authorization',this.authToken)
+            .append('Content-Type','application/json');
 
+
+        return this.http.get<any>(GlobalVariable.base_url+'user/getAllUsers',
+            {headers});
+    }
+
+    modifyUser(user){
+    console.log(user);
+        this.loadToken();
+
+        let headers = new HttpHeaders()
+            .set('Authorization',this.authToken)
+            .append('Content-Type','application/json');
+
+        return this.http.put<any>(GlobalVariable.base_url+'user/modifyUser/'+user._id,
+            user,
+            {headers});
+    }
+
+    deleteUser(userId){
+        this.loadToken();
+
+        let headers = new HttpHeaders()
+            .set('Authorization',this.authToken)
+            .append('Content-Type','application/json');
+
+        return this.http.delete<any>(GlobalVariable.base_url+'user/cancelUser/'+userId,
+            {headers});
+    }
 }

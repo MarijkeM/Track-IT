@@ -9,8 +9,29 @@ const config = require('../config/database');
 
 const User = require('../models/user');
 
+//Order: /order/getAllUsers
+router.get('/getAllUsers', passport.authenticate('jwt', {session: false}), async (req, res) => {
+    console.log("***routes/order/getAllUsers");
+    try {
+        users = await User.getAllUsers();
+        if (users == null) {
+            return res.json({
+                success: false,
+                msg: 'Geen users gevonden'
+            })
+        }
+    } catch (e) {
+        console.log("e: " + e);
+        return res.json({
+            success: false,
+            msg: e
+        })
+    }
+    console.log("users gevonden");
+    return res.json(users);
+});
 
-//Registreer: /user/registreren
+//Registreer: /user/register
 router.post('/register', async(req, res) => {
         console.log("***routes/user/register");
 
@@ -31,19 +52,10 @@ router.post('/register', async(req, res) => {
                     User.addUser(newUser);
 
                 if (message == 1) {
-                    user = await
-                        User.getUserByEmail(newUser.email);
-                    if (user) {
-                        res.json({
-                            success: true,
-                            msg: "Registration successful"
-                        })
-                    } else {
-                        res.json({
-                            success: true,
-                            msg: "Error, please try again"
-                        })
-                    }
+                    res.json({
+                        success: true,
+                        msg: "Registration successful"
+                    })
                 }
                 else {
                     res.json({
@@ -130,6 +142,57 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
     console.log("***routes/user/profile");
     console.log("user profile: " + req.user);
     return res.json({user: req.user});
+});
+
+//user verwijderen: /user/cancelUser/id
+router.delete('/cancelUser/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
+    console.log("***routes/user/cancelUser/id");
+    console.log("id: " + req.params.id);
+    const userId = req.params.id;
+
+    try {
+        user = await User.getUserById(userId);
+        console.log("user: " + JSON.stringify(user));
+
+        if (user == null) {
+            res.json({
+                success: false,
+                msg: "User doesn't exist"
+            });
+        } else {
+            await User.cancelUser(userId);
+            res.json({
+                success: true,
+                msg: 'User is canceled'
+            });
+        }
+
+    } catch (e) {
+        res.json({
+            success: false,
+            msg: 'Canceling User not succeeded'
+        });
+    }
+});
+
+//user wijzigen: /user/modifyUser/id
+router.put('/modifyUser/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
+    console.log("***routes/user/modifyUser/" + req.params.id);
+
+    try{
+        let user = await User.getUserById(req.params.id);
+        user.set(req.body);
+        await user.save();
+        res.json({
+            success: true,
+            msg: 'Updated user succeeded'
+        })
+    }catch (err){
+        res.json({
+            success: false,
+            msg: 'Update user failed: ' + e
+        });
+    }
 });
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//Gebruiker schema
+//Order schema
 const OrderSchema = new Schema({
     AfzenderNaam:{type:String, required:false},
     AfzenderStraat:{type:String, required:false},
