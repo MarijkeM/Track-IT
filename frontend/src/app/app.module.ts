@@ -22,6 +22,7 @@ import { AuthGuardAdmin } from './guards/auth.admin.guard'
 import { FooterComponent } from './components/footer/footer.component';
 import { OrderComponent } from './components/order/order.component';
 import {OrderService} from "./services/orderService/order.service";
+import { TrackingComponent } from './tracking/tracking.component';
 
 
 const appRoutes: Routes = [
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     FooterComponent,
     OrderComponent,
+    TrackingComponent,
   ],
   imports: [
       BrowserModule,
