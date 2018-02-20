@@ -133,94 +133,22 @@ router.post('/addOrder', /*passport.authenticate('jwt', {session:false}),*/ asyn
 
 //order wijzigen: /order/modifyOrder/id
 router.put('/modifyOrder/:id', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
-        console.log("***routes/order/modifyOrder/" + req.params.id);
-        const orderId = req.params.id;
+    console.log("***routes/order/modifyOrder/" + req.params.id);
 
-        let updateOrder = Order({
-            DriverId: req.body.driverId,
-            TruckId: req.body.truckId,
-            TrailerId: req.body.trailerId,
-            AfzenderNaam: req.body.afzenderNaam,
-            AfzenderStraat: req.body.afzenderStraat,
-            AfzenderStad: req.body.afzenderStad,
-            AfzenderLand: req.body.afzenderLand,
-            OntvangerNaam: req.body.ontvangerNaam,
-            OntvangerStraat: req.body.ontvangerStraat,
-            OntvangerStad: req.body.ontvangerStad,
-            OntvangerPostcode: req.body.ontvangerPostcode,
-            OntvangerLand: req.body.ontvangerLand,
-            PlaatsBestemdOntvangstStad: req.body.plaatsBestemdOntvangstStad,
-            PlaatsBestemdOntvangstLand: req.body.plaatsBestemdOntvangstLand,
-            PlaatsOntvangstStad: req.body.plaatsOntvangstStad,
-            PlaatsOntvangstLand: req.body.plaatsOntvangstLand,
-            PlaatsOntvangstDatum: req.body.plaatsOntvangstDatum,
-            AantalBijgevoegdeDocumenten: req.body.aantalBijgevoegdeDocumenten,
-            MerkenNummers: req.body.merkenNummers,
-            AantalVerpakking: req.body.aantalVerpakking,
-            TypePallet: req.body.typePallet,
-            WijzeVerpakking: req.body.wijzeVerpakking,
-            AardDerGoederen: req.body.aardDerGoederen,
-            StatistischNummer: req.body.statistischNummer,
-            BrutoGewicht: req.body.brutoGewicht,
-            Volume: req.body.volume,
-            MerkenNummers1: req.body.merkenNummers1,
-            AantalVerpakking1: req.body.aantalVerpakking1,
-            TypePallet1: req.body.typePallet1,
-            WijzeVerpakking1: req.body.wijzeVerpakking1,
-            AardDerGoederen1: req.body.aardDerGoederen1,
-            StatistischNummer1: req.body.statistischNummer1,
-            BrutoGewicht1: req.body.brutoGewicht1,
-            Volume1: req.body.volume1,
-            MerkenNummers2: req.body.merkenNummers2,
-            AantalVerpakking2: req.body.aantalVerpakking2,
-            TypePallet2: req.body.typePallet2,
-            WijzeVerpakking2: req.body.wijzeVerpakking2,
-            AardDerGoederen2: req.body.aardDerGoederen2,
-            StatistischNummer2: req.body.statistischNummer2,
-            BrutoGewicht2: req.body.brutoGewicht2,
-            Volume2: req.body.volume2,
-            InstructiesAfzender: req.body.instructiesAfzender,
-            Frankeringsvoorschrift: req.body.frankeringsvoorschrift,
-            VervoederNaam: req.body.vervoederNaam,
-            VervoederStraat: req.body.vervoederStraat,
-            VervoederStad: req.body.vervoederStad,
-            VervoederPostcode: req.body.vervoederPostcode,
-            VervoederLand: req.body.vervoederLand,
-            OpvolgendeVervoederNaam: req.body.opvolgendeVervoederNaam,
-            OpvolgendeVervoederStraat: req.body.opvolgendeVervoederStraat,
-            OpvolgendeVervoederStad: req.body.opvolgendeVervoederStad,
-            OpvolgendeVervoederPostcode: req.body.opvolgendeVervoederPostcode,
-            OpvolgendeVervoederLand: req.body.opvolgendeVervoederLand,
-            OpmerkingenVervoerder: req.body.opmerkingenVervoerder,
-            SpecialeOvereenkomst: req.body.specialeOvereenkomst,
-            OpgemaaktPlaats: req.body.opgemaaktPlaats,
-            OpgemaaktDatum: req.body.opgemaaktDatum,
+    try{
+        let order = await Order.getOrderById(req.params.id);
+        order.set(req.body);
+        await order.save();
+        res.json({
+            success: true,
+            msg: 'Updated order succeeded'
+        })
+    }catch (err){
+        res.json({
+            success: false,
+            msg: 'Update order failed: ' + e
         });
-
-        console.log("nieuwe order: " + JSON.stringify(order));
-
-        try {
-            var order = await Order.getOrderById(orderId);
-
-            if (order == null) {
-                res.json({
-                    success: false,
-                    msg: "Order does'nt exist"
-                });
-            } else {
-                await Order.updateOrder(orderId, updateOrder);
-
-                res.json({
-                    success: true,
-                    msg: 'Update order succeeded'
-                })
-            }
-        } catch (e) {
-            res.json({
-                success: false,
-                msg: 'Update order failed: ' + e
-            });
-        }
+    }
 });
 
 //order verwijderen: /order/cancelOrder/id

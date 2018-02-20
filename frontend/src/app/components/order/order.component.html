@@ -5,8 +5,8 @@
     <div class="container">
         <form>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Choose your order</label>
-                <select name="Select order" class="form-control" id="exampleFormControlSelect1"
+                <label for="selectOrder">Choose your order</label>
+                <select name="Select order" class="form-control" id="selectOrder"
                         [(ngModel)]="this.selectedOrderId">
                     <option *ngFor="let order of orders; let i = index" [ngValue]="i">{{order.AfzenderNaam}}: orderId
                         {{order.id}}

@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 //Gebruiker schema
 const UserSchema = new Schema({
+    DriverId:{type:String, required:false},
+    TruckId:{type:String, required:false},
+    TrailerId:{type:String, required:false},
     AfzenderNaam:{type:String, required:false},
     AfzenderStraat:{type:String, required:false},
     AfzenderStad:{type:String, required:false},

@@ -1,0 +1,64 @@
+<section class="jumbotron">
+    <div class="container">
+        <h1 class="jumbotron-heading"><strong>User Management</strong></h1>
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <label for="selectUser">Select a user</label>
+            <select multiple name="SelectUser" class="form-control" id="selectUser"
+                    [(ngModel)]="this.selectedUserIndex">
+                <option *ngFor="let user of users; let i = index" [ngValue]="i">{{user.email}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#userDetailsModal"
+                (click)="changeSelectedUser()">Show Details
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="userDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">User details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="Email">Email address</label>
+                                <input type="email" class="form-control" id="Email" [value]="this.selectedUser.email"
+                                       (keyup)="this.selectedUser.email = $event.target.value;">
+                            </div>
+                            <div class="form-group">
+                                <label for="Firstname">Firstname</label>
+                                <input type="firstname" class="form-control" id="Firstname"
+                                       [value]="this.selectedUser.firstName"
+                                       (keyup)="this.selectedUser.firstName = $event.target.value;">
+                            </div>
+                            <div class="form-group">
+                                <label for="Lastname">Lastname</label>
+                                <input type="lastname" class="form-control" id="Lastname" name="lastName"
+                                       [value]="this.selectedUser.lastName"
+                                       (keyup)="this.selectedUser.lastName = $event.target.value;">
+                            </div>
+                            <div class="form-group">
+                                <label for="Role">Role</label>
+                                <input type="role" class="form-control" id="Role" [value]="this.selectedUser.role"
+                                       (keyup)="this.selectedUser.role = $event.target.value;">
+                            </div>
+                        </form>
+                    </div>
+                    <flash-messages></flash-messages>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="updateUser()">Save changes</button>
+                        <button type="button" class="btn btn-danger" (click)="deleteUser()">Delete User</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

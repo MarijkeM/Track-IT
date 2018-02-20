@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       lastName: this.lastName,
       email: this.email,
       password: this.password,
-      role: "client"
+      role: "admin"
     };
 
     /*testen of alle velden zijn ingevuld*/
