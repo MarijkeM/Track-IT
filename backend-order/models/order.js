@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-//Gebruiker schema
-const UserSchema = new Schema({
-    DriverId:{type:String, required:false},
-    TruckId:{type:String, required:false},
-    TrailerId:{type:String, required:false},
+//Order schema
+const OrderSchema = new Schema({
     AfzenderNaam:{type:String, required:false},
     AfzenderStraat:{type:String, required:false},
     AfzenderStad:{type:String, required:false},
@@ -63,28 +60,13 @@ const UserSchema = new Schema({
     OpgemaaktDatum:{type:String, required:false},
 });
 
-//Gebruiker exporteren de 'Order' gaat de naam zijn in de db
-const Order = module.exports = mongoose.model('Order', UserSchema);
 
-module.exports.getAllOrders = function () {
+OrderSchema.statics.getAllOrders = function () {
     console.log("***models/order/getAllOrders");
     return Order.find();
 };
 
-module.exports.getOrderById = (orderId) => {
-    query = {_id: orderId};
-    return Order.findById(query);
-}
-
-module.exports.addOrder = (newOrder) => {
-    try {
-        return (new Order(newOrder)).save();
-    } catch (e) {
-        return e;
-    }
-}
-
-module.exports.cancelOrder = (orderId) => {
+OrderSchema.statics.cancelOrder = (orderId) => {
     var query = {_id: orderId};
     try{
         console.log("try");
@@ -94,7 +76,10 @@ module.exports.cancelOrder = (orderId) => {
     }
 }
 
-module.exports.updateOrder = (orderId, updatedOrder) => {
+OrderSchema.statics.updateOrder = (orderId, updatedOrder) => {
     var query = {_id:orderId};
     return Order.findOneAndUpdate(query, updatedOrder)
 }
+
+
+const Order = module.exports = mongoose.model('Order', OrderSchema);

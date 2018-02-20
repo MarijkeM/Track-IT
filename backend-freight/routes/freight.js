@@ -12,7 +12,7 @@ const User = require('../models/user');
 
 
 //alle vrachten van 1 persoon ophalen: /freight/allFreights
-router.get('/allFreights'/*, passport.authenticate('jwt', {session:false})*/, async (req, res) => {
+router.get('/allFreights', passport.authenticate('jwt', {session:false}), async (req, res) => {
     console.log("***routes/freight/allfreights");
 
     try{
@@ -22,7 +22,7 @@ router.get('/allFreights'/*, passport.authenticate('jwt', {session:false})*/, as
         console.log("error: " + error);
         res.json({
             success: false,
-            msg: 'Freights niet gevonden: ' + error
+            msg: 'Freights not found: ' + error
         });
     }
 });
@@ -38,7 +38,7 @@ router.get('/allFreightsfromDriver/:driverId', /*passport.authenticate('jwt', {s
         console.log("error: " + error);
         res.json({
             success: false,
-            msg: 'Freights niet gevonden: ' + error
+            msg: 'Freights not found: ' + error
         });
     }
 });
@@ -54,7 +54,7 @@ router.get('/allFreightsforOrder/:orderId', /*passport.authenticate('jwt', {sess
         console.log("error: " + error);
         res.json({
             success: false,
-            msg: 'Freights niet gevonden: ' + error
+            msg: 'Freights not found: ' + error
         });
     }
 });
@@ -70,7 +70,7 @@ router.get('/allFreightsDone', passport.authenticate('jwt', {session:false}), as
         console.log("error: " + error);
         res.json({
             success: false,
-            msg: 'Freights niet gevonden: ' + error
+            msg: 'Freights not found: ' + error
         });
     }
 });
@@ -87,7 +87,7 @@ router.post('/addFreight', /*passport.authenticate('jwt', {session:false}),*/ as
         orderIds: req.body.orderIds
     });
 
-    console.log("vracht: "+newFreight);
+    console.log("freight: "+newFreight);
     try {
         await Freight.addFreight(newFreight);
 
@@ -114,7 +114,7 @@ router.put('/modifyFreight/:id', passport.authenticate('jwt', {session:false}), 
         orderIds: req.body.orderIds
     });
 
-    console.log("nieuwe vracht: " + JSON.stringify(updateFreight));
+    console.log("New freight: " + JSON.stringify(updateFreight));
 
     try {
         var freight = await Freight.findFreightById(freightId);
@@ -122,7 +122,7 @@ router.put('/modifyFreight/:id', passport.authenticate('jwt', {session:false}), 
         if(freight == null){
             res.json({
                 success: false,
-                msg: 'Taak bestaat niet'
+                msg: "Freight doesn't exist"
             });
         /*}else if(update.user.toString() !=(req.user._id).toString()){
 
@@ -135,13 +135,13 @@ router.put('/modifyFreight/:id', passport.authenticate('jwt', {session:false}), 
 
             res.json({
                 success: true,
-                msg: 'Taak updaten is gelukt'
+                msg: 'Update freight succeeded'
             })
         }
     } catch (e) {
         res.json({
             success: false,
-            msg: 'Taak updaten is mislukt: ' + e});
+            msg: 'Updating freight failed: ' + e});
     }
 });
 
@@ -158,7 +158,7 @@ router.delete('/cancelFreight/:id', /*passport.authenticate('jwt', {session:fals
         if(freight == null) {
             res.json({
                 success: false,
-                msg: "Freight doesn't exist"
+                msg: "Can't find freight"
             });
 
         /*} else if(freight.user != req.user._id.toString()){
@@ -180,7 +180,7 @@ router.delete('/cancelFreight/:id', /*passport.authenticate('jwt', {session:fals
     }catch(e){
         res.json({
             success: false,
-            msg: 'Canceling freight not succeeded'
+            msg: 'Canceling freight failed: ' + e
         });
     }
 });
