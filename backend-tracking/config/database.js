@@ -15,6 +15,6 @@ mongoose.set("debug",true);//op true zetten voor debuggen
 
 
 module.exports = {
-    database:'mongodb://TrackIT:Agilians@ds213118.mlab.com:13118/tracking',//de naam van de database in mongo
+    database:'mongodb://TrackIT:Agilians@ds213118.mlab.com:13118/tracking_service',//de naam van de database in mongo
     secret:'fPQXkacYu6s89Di4VPOZKZx7lXxHdwqjUNe4yihZ9xn2pDrByrreLYBdElXqRtc'//voor passport nodig
 }
