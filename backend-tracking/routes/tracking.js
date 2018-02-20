@@ -10,6 +10,7 @@ const config = require('../config/database');
 const User = require('../models/user');
 const Tracking = require('../models/tracking')
 
+
 //alle vrachten van 1 persoon ophalen: /tracking/allTrackings
 router.get('/allTrackings', /*passport.authenticate('jwt', {session:false}),*/ async(req, res) => {
     console.log("***routes/tracking/alltrackings");
@@ -17,29 +18,38 @@ router.get('/allTrackings', /*passport.authenticate('jwt', {session:false}),*/ a
     try {
         let trackings = await Tracking.getAllTrackings();
         res.json(trackings);
-    } catch (e) {
-        errorResponse(res, e, 'Trackings not found')
+    } catch (error) {
+        console.log("error: " + error);
+        res.json({
+            success: false,
+            msg: 'Trackings not found: ' + error
+        });
     }
 });
 
 //alle vrachten van 1 persoon ophalen: /tracking/allTrackingsforTracking/:freightId
 router.get('/trackingById/:id', /*passport.authenticate('jwt', {session:false}),*/ async(req, res) => {
     console.log("***routes/tracking/trackingbyId/" + req.params.id + " tracking");
-    let tracking = new Tracking();
 
     try {
         let id = req.params.id;
-        tracking = await Tracking.findById(id);
+        let tracking = await Tracking.findById(id);
 
-        if (tracking) {
+        if(tracking){
             res.json(tracking);
-        } else {
-            errorResponse(res, 'Tracking not found', 'Tracking not found')
+        }else{
+            res.json({
+                success: false,
+                msg: 'Tracking not found'
+            });
         }
 
-    } catch (e) {
-        console.log("tracking:" + tracking)
-        errorResponse(res, e, 'Tracking not found')
+    } catch (error) {
+        console.log("error: " + error);
+        res.json({
+            success: false,
+            msg: 'Tracking not found'
+        });
     }
 });
 
@@ -50,10 +60,15 @@ router.get('/getTrackingByFreightId/:freightId', /*passport.authenticate('jwt', 
     try {
         trackings = await Tracking.getTrackingByFreightId(req.params.freightId);
         res.json(trackings);
-    } catch (e) {
-        errorResponse(res, e, 'Tracking not found');
+    } catch (error) {
+        console.log("error: " + error);
+        res.json({
+            success: false,
+            msg: 'Tracking not found'
+        });
     }
 });
+
 
 //vracht toevoegen: /tracking/vrachtToevoegen
 router.post('/addTracking', /*passport.authenticate('jwt', {session:false}),*/ async(req, res) => {
@@ -65,10 +80,17 @@ router.post('/addTracking', /*passport.authenticate('jwt', {session:false}),*/ a
 
         console.log("Tracking: " + newTracking);
         await Tracking.addTracking(newTracking);
-        successResponse("Let's start tracking!")
 
+        res.json({
+            success: true,
+            msg: "Let's start tracking!"
+        })
     } catch (e) {
-        errorResponse(res, e, "This freight is already tracked or something else went wrong.")
+        console.log("error: " + e);
+        res.json({
+            success: false,
+            msg: 'This freight is already tracked or something else went wrong '
+        });
     }
 });
 
@@ -81,12 +103,19 @@ router.put('/updateTracking/:id'/*, passport.authenticate('jwt', {session:false}
         let tracking = await Tracking.findById(trackingId);
         tracking.set(req.body);
         await tracking.save();
-        successResponse(res, "You're tracking is updated")
-
+        res.json({
+            success: true,
+            msg: 'Update of tracking succeeded'
+        })
     } catch (e) {
-        errorResponse(res, e, "Updating tracking failed")
+        console.log("error: " + e);
+        res.json({
+            success: false,
+            msg: "Update of tracking failed"
+        });
     }
 });
+
 
 //vracht verwijderen: /tracking/deleteTracking/id
 router.delete('/deleteTracking/:id', /*passport.authenticate('jwt', {session:false}),*/ async(req, res) => {
@@ -100,15 +129,25 @@ router.delete('/deleteTracking/:id', /*passport.authenticate('jwt', {session:fal
         console.log("tracking: " + JSON.stringify(tracking));
 
         if (tracking == null) {
-            errorResponse(res, "Tracking doesn't exist", "Tracking doesn't exist")
+            res.json({
+                success: false,
+                msg: "Tracking doesn't exist"
+            });
 
         } else {
             await Tracking.deleteTracking(trackingId);
-            successResponse(res, 'Tracking is successfully deleted');
+            res.json({
+                success: true,
+                msg: 'Tracking is successfully deleted'
+            });
         }
 
     } catch (e) {
-        errorResponse(res, e, "Deleting tracking failed");
+        console.log("error: " + e)
+        res.json({
+            success: false,
+            msg: 'Deleting tracking failed'
+        });
     }
 });
 
@@ -124,31 +163,26 @@ router.delete('/deleteTrackingByFreightId/:id', /*passport.authenticate('jwt', {
         console.log("tracking: " + JSON.stringify(tracking));
 
         if (tracking == null) {
-            errorResponse("Tracking doesn't exist", "Tracking doesn't exist")
+            res.json({
+                success: false,
+                msg: "Tracking doesn't exist"
+            });
 
         } else {
             await Tracking.deleteTracking(freightId);
-            successResponse(res, 'Tracking is successfully deleted')
+            res.json({
+                success: true,
+                msg: 'Tracking is successfully deleted'
+            });
         }
 
     } catch (e) {
-        errorResponse(res, e, 'Could not delete tracking')
+        console.log("error: " + e)
+        res.json({
+            success: false,
+            msg: 'Could not delete tracking'
+        });
     }
 });
-
-function errorResponse(res, error, message) {
-    console.log("error: " + error)
-    res.json({
-        success: false,
-        msg: message
-    });
-}
-
-function successResponse(res, message) {
-    res.json({
-        success: true,
-        msg: message
-    });
-}
 
 module.exports = router;
