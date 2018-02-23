@@ -26,8 +26,8 @@ import { OrderService } from "./services/orderService/order.service";
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from '../environments/firebase.config';
-import { TrackingComponent } from './components/tracking/tracking.component';
-
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 const appRoutes: Routes = [
@@ -53,6 +53,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     FooterComponent,
     OrderComponent,
+    TrackingComponent,
+    UserManagementComponent
   ],
   imports: [
       BrowserModule,
@@ -61,7 +63,9 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       HttpClientModule,
       FlashMessagesModule.forRoot(),
-      AngularFireModule.initializeApp(firebaseConfig)
+      AngularFireModule.initializeApp(firebaseConfig.firebase, 'rfid-trailer'),
+      AngularFireDatabaseModule,
+      AngularFireAuthModule
   ],
 
   providers: [ValidateService, AuthService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient, OrderService],
