@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TrackingComponent } from './components/tracking/tracking.component';
 
 import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
@@ -28,6 +29,7 @@ import { firebaseConfig } from '../environments/firebase.config';
 import { TrackingComponent } from './components/tracking/tracking.component';
 
 
+
 const appRoutes: Routes = [
     {path:'',component:HomeComponent},
     {path:'register',component:RegisterComponent},
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     {path:'dashboard',component:DashboardComponent, canActivate:[AuthGuard]},
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
     {path:'order',component:OrderComponent},
+    {path:'tracking',component:TrackingComponent, canActivate:[AuthGuard]},
     {path:'user-management',component:UserManagementComponent/*, canActivate:[AuthGuardAdmin]*/}
     ];
 
@@ -50,8 +53,6 @@ const appRoutes: Routes = [
     ProfileComponent,
     FooterComponent,
     OrderComponent,
-    UserManagementComponent,
-    TrackingComponent,
   ],
   imports: [
       BrowserModule,
