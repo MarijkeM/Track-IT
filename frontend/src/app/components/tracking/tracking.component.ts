@@ -20,13 +20,16 @@ export class TrackingComponent implements OnInit {
     }
 
     ngOnInit() {
+        // Firebase in console
         this.db.list('/').valueChanges().subscribe(console.log);
         this.db.list('/TRAILER_1/GPS').valueChanges().subscribe(console.log);
+
+        // Firebase in observable
         this.topics = this.db.list('/TRAILER_1').valueChanges();
         this.gpsCoordinates = this.db.list('/TRAILER_1/GPS').valueChanges();
 
         var mapProp = {
-            center: new google.maps.LatLng(51.5793, 4.8143),
+            center: new google.maps.LatLng(51.3084, 4.8907),
             zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
