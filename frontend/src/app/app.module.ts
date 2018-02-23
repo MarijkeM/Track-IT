@@ -21,8 +21,11 @@ import { AuthGuardClient } from './guards/auth.client.guard'
 import { AuthGuardAdmin } from './guards/auth.admin.guard'
 import { FooterComponent } from './components/footer/footer.component';
 import { OrderComponent } from './components/order/order.component';
-import {OrderService} from "./services/orderService/order.service";
+import { OrderService } from "./services/orderService/order.service";
 import { UserManagementComponent } from './components/user-management/user-management.component';
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from '../environments/firebase.config';
+import { TrackingComponent } from './components/tracking/tracking.component';
 
 
 const appRoutes: Routes = [
@@ -48,6 +51,7 @@ const appRoutes: Routes = [
     FooterComponent,
     OrderComponent,
     UserManagementComponent,
+    TrackingComponent,
   ],
   imports: [
       BrowserModule,
@@ -55,7 +59,8 @@ const appRoutes: Routes = [
       ReactiveFormsModule,
       RouterModule.forRoot(appRoutes),
       HttpClientModule,
-      FlashMessagesModule.forRoot()
+      FlashMessagesModule.forRoot(),
+      AngularFireModule.initializeApp(firebaseConfig)
   ],
 
   providers: [ValidateService, AuthService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient, OrderService],
