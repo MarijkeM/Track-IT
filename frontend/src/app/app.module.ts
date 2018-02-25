@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TrackingComponent } from './components/tracking/tracking.component';
+import { HomeDriverComponent } from './components/home-driver/home-driver.component';
 
 import { ValidateService } from './services/validateService/validate.service'
 import { AuthService } from './services/authService/auth.service'
@@ -30,6 +31,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
+
 const appRoutes: Routes = [
     {path:'',component:HomeComponent},
     {path:'register',component:RegisterComponent},
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     {path:'profile',component:ProfileComponent, canActivate:[AuthGuard]},
     {path:'order',component:OrderComponent},
     {path:'tracking',component:TrackingComponent, canActivate:[AuthGuard]},
-    {path:'user-management',component:UserManagementComponent/*, canActivate:[AuthGuardAdmin]*/}
+    {path:'user-management',component:UserManagementComponent/*, canActivate:[AuthGuardAdmin]*/},
+    {path:'homeDriver',component:HomeDriverComponent, canActivate:[AuthGuard]}
     ];
 
 @NgModule({
@@ -54,7 +57,8 @@ const appRoutes: Routes = [
     FooterComponent,
     OrderComponent,
     TrackingComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    HomeDriverComponent
   ],
   imports: [
       BrowserModule,
