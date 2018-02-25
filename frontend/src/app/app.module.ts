@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -67,6 +69,7 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       HttpClientModule,
       FlashMessagesModule.forRoot(),
+      NgbModule.forRoot(),
       AngularFireModule.initializeApp(firebaseConfig.firebase, 'rfid-trailer'),
       AngularFireDatabaseModule,
       AngularFireAuthModule

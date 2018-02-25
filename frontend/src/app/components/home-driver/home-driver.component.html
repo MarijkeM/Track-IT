@@ -10,7 +10,7 @@
                 <p class="tekst">TO:</p>
                 <p class="tekst">ETA:</p>
                 <p class="tekst">Goods: </p>
-                <button class="linkcmr" (click)="openModal('custom-modal-2')">More info</button>
+                <button class="linkcmr" (click)="open(content)">More info</button>
             </div>
         </div>
         <div class="row">
@@ -21,7 +21,7 @@
                 <p class="tekst">TO:</p>
                 <p class="tekst">ETA:</p>
                 <p class="tekst">Goods: </p>
-                <button class="linkcmr" (click)="openModal('custom-modal-2')">More info</button>
+                <button class="linkcmr" (click)="open(content)">More info</button>
             </div>
         </div>
         <div class="row">
@@ -32,11 +32,26 @@
                 <p class="tekst">TO:</p>
                 <p class="tekst">ETA:</p>
                 <p class="tekst">Goods: </p>
-                <button class="linkcmr" (click)="openModal('custom-modal-2')">More info</button>
+                <button class="linkcmr" (click)="open(content)">More info</button>
             </div>
         </div>
         
 
         
     </div>
+    
+    <ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
 </section>
