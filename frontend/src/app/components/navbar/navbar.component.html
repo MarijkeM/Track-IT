@@ -22,11 +22,14 @@
       <!--Als ingelogd-->
       <li class="nav-item" *ngIf="this.authService.loggedIn()">
         <span class="navbar-text welcome-message">
-          Welcome {{this.user.firstName}}
+          Welcome {{this.user?.firstName}}
         </span>
       </li>
       <li class="nav-item" *ngIf="this.authService.loggedIn()" [routerLinkActive]="['active']">
-        <a class="nav-link"   [routerLink]="['/profile']"><i class="fas fa-user"></i> Profile</a>
+        <a class="nav-link" [routerLink]="['/profile']"><i class="fas fa-user"></i> Profile</a>
+      </li>
+      <li class="nav-item" *ngIf="this.authService.loggedInAs('admin')" [routerLinkActive]="['active']">
+        <a class="nav-link"   [routerLink]="['/user-management']"><i class="fas fa-user"></i> Manage users</a>
       </li>
       <li class="nav-item" *ngIf="this.authService.loggedIn()">
         <a class="nav-link" href="#" (click)="onLogoutClick()"><i class="fas fa-sign-out-alt"></i> Sign out</a>
@@ -40,6 +43,5 @@
         <a class="nav-link" [routerLink]="['/register']"><i class="fas fas fa-user-plus"></i> Register</a>
       </li>
     </ul>
-
   </div>
 </nav>
