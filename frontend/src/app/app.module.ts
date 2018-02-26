@@ -35,7 +35,6 @@ const appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'home', component: HomeComponent},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     {path: 'order', component: OrderComponent, canActivate: [AuthGuard]},
     {path: 'tracking', component: TrackingComponent, canActivate: [AuthGuard]},

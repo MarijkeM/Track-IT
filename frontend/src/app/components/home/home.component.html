@@ -9,32 +9,42 @@
         <div class="container">
             <div class="row">
                 <div class="card-group">
-                                        <div class="card mb-4 box-shadow">
+                    <div *ngIf="this.authService.loggedInAs('driver')" class="card mb-4 box-shadow">
                         <img class="card-img-top" src="../../assets/images/freight.jpg" alt="Trucker">
                         <div class="card-body">
-                            <h4 class="card-title">Freight</h4>
+                            <a [routerLink]="['/homeDriver']">  <h4 class="card-title">Manage your way</h4></a>
+                            <p class="card-text">Take a look at the freights you are going to carry</p>
+                        </div>
+                        <div class="card-footer">
+                            <a [routerLink]="['/homeDriver']" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                    <div *ngIf="!this.authService.loggedInAs('driver')" class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="../../assets/images/freight.jpg" alt="Trucker">
+                        <div class="card-body">
+                            <a [routerLink]="['/order']"> <h4 class="card-title">Freight</h4></a>
                             <p class="card-text">The freight module manages all information about a specific truck and
                                 it's cargo.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a [routerLink]="['/order']" class="btn btn-primary">View</a>
                         </div>
                     </div>
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top" src="../../assets/images/tracking.jpg" alt="Track">
                         <div class="card-body">
-                            <h4 class="card-title">Tracking</h4>
+                            <a [routerLink]="['/tracking']" ><h4 class="card-title">Tracking</h4></a>
                             <p class="card-text">The tracking module will manage the information about the whereabouts
                                 of a single truck. This information will be used to track the truck.</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a [routerLink]="['/tracking']" class="btn btn-primary">View</a>
                         </div>
                     </div>
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top" src="../../assets/images/order.jpg" alt="Order">
                         <div class="card-body">
-                            <h4 class="card-title">Profile</h4>
+                            <a [routerLink]="['/profile']"><h4 class="card-title">Profile</h4></a>
                             <p class="card-text">Take a look at your profile.</p>
                         </div>
                         <div class="card-footer">
