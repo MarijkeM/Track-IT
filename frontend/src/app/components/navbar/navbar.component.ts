@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
       this.authService.getProfile().subscribe(profile => {
               console.log("profiel:" + JSON.stringify(profile));
               this.user = profile.user;
+              this.authService.setUser(profile.user)
           },
           err => {
               console.log(err);
@@ -36,5 +37,4 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['login']);
     return false;
   }
-
 }

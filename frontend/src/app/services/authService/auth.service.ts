@@ -3,12 +3,13 @@ import 'rxjs/add/operator/map'; //map operator om met observables te werken
 import {tokenNotExpired} from 'angular2-jwt';
 import {GlobalVariable} from '../globalUser';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {User} from '../../models/user.model'
 
 
 @Injectable()
 export class AuthService {
     authToken: any;
-    user: any;
+    user: User;
 
 
     constructor(private http: HttpClient) {}
@@ -33,6 +34,9 @@ export class AuthService {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json');
 
+        console.log("user is juist aangemeld: " + user);
+        this.user = user;
+
         return this.http.post<any>(GlobalVariable.base_url + 'user/authenticate',
             user,
             {headers});
@@ -45,9 +49,13 @@ export class AuthService {
             .set('Authorization', this.authToken)
             .append('Content-Type', 'application/json');
 
-
         return this.http.get<any>(GlobalVariable.base_url + 'user/profile',
             {headers});
+
+    }
+
+    setUser(user){
+        this.user = user;
     }
 
     loadToken() {
@@ -60,9 +68,12 @@ export class AuthService {
     }
 
     loggedInAs(role) {
-        if (tokenNotExpired()) {
-            if (this.user.role.valueOf() === role.valueOf()) {
-                return true;
+
+        if (tokenNotExpired('id_token')) {
+            if (this.user.role) {
+                if(this.user.role == role){
+                    return true;
+                }
             }
         }
         return false;
@@ -73,6 +84,7 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(user));
         this.authToken = token;
         this.user = user;
+        console.log("user:" + JSON.stringify(this.user))
     }
 
     logout() {
