@@ -17,13 +17,16 @@ import {HomeDriverComponent} from './components/home-driver/home-driver.componen
 
 import {ValidateService} from './services/validateService/validate.service'
 import {AuthService} from './services/authService/auth.service'
+import {FreightService} from './services/freightService/freight.service'
+import {OrderService} from "./services/orderService/order.service";
+
 import {AuthGuard} from './guards/auth.guard';
 import {AuthGuardDriver} from './guards/auth.driver.guard'
 import {AuthGuardClient} from './guards/auth.client.guard'
 import {AuthGuardAdmin} from './guards/auth.admin.guard'
 import {FooterComponent} from './components/footer/footer.component';
 import {OrderComponent} from './components/order/order.component';
-import {OrderService} from "./services/orderService/order.service";
+
 import {UserManagementComponent} from './components/user-management/user-management.component';
 import {AngularFireModule} from 'angularfire2';
 import {firebaseConfig} from '../environments/firebase.config';
@@ -69,7 +72,7 @@ const appRoutes: Routes = [
         AngularFireAuthModule
     ],
 
-    providers: [ValidateService, AuthService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient, OrderService],
+    providers: [ValidateService, AuthService, FreightService, AuthGuard, AuthGuardDriver, AuthGuardAdmin, AuthGuardClient, OrderService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
