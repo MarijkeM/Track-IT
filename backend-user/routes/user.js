@@ -128,7 +128,7 @@ router.post('/authenticate', async(req, res) => {
                     email: user.email,
                     role: user.role
                 },
-                msg: "You're not logged in"
+                msg: "You're logged in"
             });
         } else {
             return res.json({success: false, msg: 'Wrong password'});

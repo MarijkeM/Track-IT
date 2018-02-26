@@ -34,7 +34,6 @@ export class AuthService {
         let headers = new HttpHeaders()
             .set('Content-Type', 'application/json');
 
-        console.log("user is juist aangemeld: " + user);
         this.user = user;
 
         return this.http.post<any>(GlobalVariable.base_url + 'user/authenticate',
