@@ -1,0 +1,56 @@
+.titel {
+    color: #4C9976;
+    font-weight: bold;
+}
+
+.order {
+    border: none;
+    background-color: white;
+    width: 100%;
+    font-weight: bold;
+    padding-bottom: 5pt;
+    padding-top: 5pt;
+}
+
+.linkcmr{
+    color: #FF644C;
+    border: none;
+    color:inherit;
+    background-color: inherit;
+    
+    text-decoration-line: underline;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.tekst {
+    margin-bottom: 0px;
+}
+
+.icon {
+    font-size: 32px;
+    color: #4C9976;
+    
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+    padding-left: 25px;
+    margin-bottom: 25px;
+}
+
+.iconFlag {
+    font-size: 32px;
+    color: black;
+    padding-left: 50px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    margin-bottom: 25px;
+}
+
+
+.panel{
+    margin-bottom: 10px;
+}
