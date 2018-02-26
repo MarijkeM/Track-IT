@@ -36,9 +36,13 @@ export class AuthService {
 
         this.user = user;
 
-        return this.http.post<any>(GlobalVariable.base_url + 'user/authenticate',
-            user,
-            {headers});
+        try{
+            return this.http.post<any>(GlobalVariable.base_url + 'user/authenticate',
+                user,
+                {headers});
+        }catch (err){
+            return err;
+        }
     }
 
     getProfile() {
@@ -67,7 +71,6 @@ export class AuthService {
     }
 
     loggedInAs(role) {
-
         if (tokenNotExpired('id_token')) {
             if (this.user.role) {
                 if(this.user.role == role){

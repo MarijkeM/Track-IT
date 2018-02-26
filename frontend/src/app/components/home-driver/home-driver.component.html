@@ -1,7 +1,7 @@
 <section class="jumbotron">
     <div class="container">
-        <h2 class="titel" *ngIf="this.authService.loggedIn()">Welcome {{this.user.firstName}}</h2>
-        <p><strong>todo today:</strong></p>
+        <h2 class="titel" *ngIf="this.authService.loggedIn()">Welcome {{this.user?.firstName}}</h2>
+        <p><strong>To do today:</strong></p>
         <div class="row">
             <button class="order accordion" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">OrderID/Naam</button>
             <div class="panel collapse" id="multiCollapseExample1">

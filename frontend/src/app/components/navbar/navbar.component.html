@@ -1,47 +1,53 @@
 <nav id="nav" class="navbar box-shadow navbar-expand-md">
-  <a class="navbar-brand" [routerLink]="['/']"><i class="fas fa-home"></i></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-    <i class="fas fa-bars navbar-toggler-icon"></i><!--<span class="navbar-toggler-icon"></span>-->
-  </button>
+    <a class="navbar-brand" [routerLink]="['/']"><i class="fas fa-home"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+        <i class="fas fa-bars navbar-toggler-icon"></i><!--<span class="navbar-toggler-icon"></span>-->
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto navbar-left">
-      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a class="nav-link"[routerLink]="['/order']">Order</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/freight']">Freight</a>
-      </li>
-      <li class="nav-item" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/tracking']">Tracking</a>
-      </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto navbar-left">
+            <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/order']">Order</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/freight']">Freight</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/tracking']">Tracking</a>
+            </li>
 
 
-    </ul>
-    <ul class="navbar-nav navbar-right">
-      <!--Als ingelogd-->
-      <li class="nav-item" *ngIf="this.authService.loggedIn()">
+        </ul>
+        <ul class="navbar-nav navbar-right">
+            <!--Als ingelogd-->
+            <li class="nav-item" *ngIf="this.user">
         <span class="navbar-text welcome-message">
-          Welcome {{this.user?.firstName}}
+            <b>Welcome {{this.user?.firstName}}</b>
         </span>
-      </li>
-      <li class="nav-item" *ngIf="this.authService.loggedIn()" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/profile']"><i class="fas fa-user"></i> Profile</a>
-      </li>
-      <li class="nav-item" *ngIf="this.authService.loggedInAs('admin')" [routerLinkActive]="['active']">
-        <a class="nav-link"   [routerLink]="['/user-management']"><i class="fas fa-user"></i> Manage users</a>
-      </li>
-      <li class="nav-item" *ngIf="this.authService.loggedIn()">
-        <a class="nav-link" href="#" (click)="onLogoutClick()"><i class="fas fa-sign-out-alt"></i> Sign out</a>
-      </li>
+            </li>
+            <li class="nav-item" *ngIf="this.user" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/profile']">
+                    <i class="fas fa-user"></i> Profile</a>
+            </li>
+            <li class="nav-item" *ngIf="this.user?.role == 'admin'" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/user-management']">
+                    <i class="fas fa-users"></i> Manage users</a>
+            </li>
+            <li class="nav-item" *ngIf="this.user">
+                <a class="nav-link" href="#" (click)="onLogoutClick()">
+                    <i class="fas fa-sign-out-alt"></i> Sign out</a>
+            </li>
 
-      <!--Als uitgelogd-->
-      <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']">
-        <a class="nav-link"  [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Sign in</a>
-      </li>
-      <li class="nav-item" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']">
-        <a class="nav-link" [routerLink]="['/register']"><i class="fas fas fa-user-plus"></i> Register</a>
-      </li>
-    </ul>
-  </div>
+            <!--Als uitgelogd-->
+            <li class="nav-item" *ngIf="!this.user" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/login']">
+                    <i class="fas fa-sign-in-alt"></i> Sign in</a>
+            </li>
+            <li class="nav-item" *ngIf="!this.user" [routerLinkActive]="['active']">
+                <a class="nav-link" [routerLink]="['/register']">
+                    <i class="fas fas fa-user-plus"></i> Register</a>
+            </li>
+        </ul>
+    </div>
 </nav>

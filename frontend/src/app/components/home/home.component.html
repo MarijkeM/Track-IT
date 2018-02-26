@@ -9,22 +9,23 @@
         <div class="container">
             <div class="row">
                 <div class="card-group">
-                    <div *ngIf="this.authService.loggedInAs('driver')" class="card mb-4 box-shadow">
+                    <div *ngIf="this.user?.role == 'driver'" class="card mb-4 box-shadow">
                         <img class="card-img-top" src="../../assets/images/freight.jpg" alt="Trucker">
                         <div class="card-body">
-                            <a [routerLink]="['/homeDriver']">  <h4 class="card-title">Manage your way</h4></a>
-                            <p class="card-text">Take a look at the freights you are going to carry</p>
+                            <a [routerLink]="['/home-driver']">
+                                <h4 class="card-title">Manage your freight</h4></a>
+                            <p class="card-text">Take a look at the freights you are going to carry.</p>
                         </div>
                         <div class="card-footer">
-                            <a [routerLink]="['/homeDriver']" class="btn btn-primary">View</a>
+                            <a [routerLink]="['/home-driver']" class="btn btn-primary">View</a>
                         </div>
                     </div>
-                    <div *ngIf="!this.authService.loggedInAs('driver')" class="card mb-4 box-shadow">
+                    <div *ngIf="!this.user?.role == 'driver'" class="card mb-4 box-shadow">
                         <img class="card-img-top" src="../../assets/images/freight.jpg" alt="Trucker">
                         <div class="card-body">
-                            <a [routerLink]="['/order']"> <h4 class="card-title">Freight</h4></a>
-                            <p class="card-text">The freight module manages all information about a specific truck and
-                                it's cargo.</p>
+                            <a [routerLink]="['/order']"
+                            ><h4 class="card-title">Shipping documents</h4></a>
+                            <p class="card-text">This will show you the shipping documents for the deliveries.</p>
                         </div>
                         <div class="card-footer">
                             <a [routerLink]="['/order']" class="btn btn-primary">View</a>
@@ -33,7 +34,8 @@
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top" src="../../assets/images/tracking.jpg" alt="Track">
                         <div class="card-body">
-                            <a [routerLink]="['/tracking']" ><h4 class="card-title">Tracking</h4></a>
+                            <a [routerLink]="['/tracking']">
+                                <h4 class="card-title">Tracking</h4></a>
                             <p class="card-text">The tracking module will manage the information about the whereabouts
                                 of a single truck. This information will be used to track the truck.</p>
                         </div>
@@ -44,7 +46,8 @@
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top" src="../../assets/images/order.jpg" alt="Order">
                         <div class="card-body">
-                            <a [routerLink]="['/profile']"><h4 class="card-title">Profile</h4></a>
+                            <a [routerLink]="['/profile']">
+                                <h4 class="card-title">Profile</h4></a>
                             <p class="card-text">Take a look at your profile.</p>
                         </div>
                         <div class="card-footer">

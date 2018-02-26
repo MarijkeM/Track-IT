@@ -39,7 +39,7 @@ const appRoutes: Routes = [
     {path: 'order', component: OrderComponent, canActivate: [AuthGuard]},
     {path: 'tracking', component: TrackingComponent, canActivate: [AuthGuard]},
     {path: 'user-management', component: UserManagementComponent, canActivate: [AuthGuardAdmin]},
-    {path: 'homeDriver', component: HomeDriverComponent, canActivate: [AuthGuardDriver]}
+    {path: 'home-driver', component: HomeDriverComponent, canActivate: [AuthGuardDriver]}
 ];
 
 @NgModule({

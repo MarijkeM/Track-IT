@@ -18,7 +18,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
       this.authService.getProfile().subscribe(profile => {
-              console.log("profiel:" + JSON.stringify(profile));
               this.user = profile.user;
               this.authService.setUser(profile.user)
           },
@@ -32,7 +31,7 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.flashMessage.show('You are logged out', {
       cssClass:'alert-success',
-      timeout: 3000
+      timeout: 4000
     });
     this.router.navigate(['login']);
     return false;
