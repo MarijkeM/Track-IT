@@ -22,11 +22,9 @@ export class RegisterComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    console.log("register component geladen");
   }
 
   onRegisterSubmit(){
-    console.log("Op registreren geklikt");
 
     const user = {
       firstName: this.firstName, //de eerste firstName is zelf gekozen (maar moet overeenkomen met model, de laatste komt van de form
@@ -38,20 +36,17 @@ export class RegisterComponent implements OnInit {
 
     /*testen of alle velden zijn ingevuld*/
     if(!this.validateService.validateRegister(user)){
-      console.log("Niet alle velden zijn ingevuld");
-      this.flashmessage.show("Gelieve alle velden in te vullen",
+      this.flashmessage.show("Fill in all fields please",
           {cssClass:'alert-danger m-3',timeout:3000});
       return false;
     }
 
     /*testen of e-mail juiste vorm is*/
       if(!this.validateService.validateEmail(user.email)){
-        console.log("E-mail is niet correct");
-        this.flashmessage.show("E-mailadres is niet correct",
+        this.flashmessage.show("E-mail is not correct",
             {cssClass:'alert-danger m-3',timeout:3000});
         return false;
       }
-
 
     //Freight registreren via de auth service (die het weer haalt van routes/user.js)
     this.authService.registerUser(user).subscribe(data => {
@@ -65,9 +60,6 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/register']);
       }
     });
-
-
-
   }
 
 }

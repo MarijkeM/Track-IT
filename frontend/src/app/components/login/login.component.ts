@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("Login component is ingeladen");
     }
 
     onLoginSubmit() {
