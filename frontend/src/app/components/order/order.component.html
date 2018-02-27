@@ -9,7 +9,7 @@
                 <select name="Select order" class="form-control" id="selectOrder"
                         [(ngModel)]="this.selectedOrderId">
                     <option *ngFor="let order of orders; let i = index" [ngValue]="i">{{order.AfzenderNaam}}: orderId
-                        {{order.id}}
+                        {{order._id}}
                     </option>
                 </select>
             </div>
@@ -17,6 +17,7 @@
         </form>
     </div>
     <div class="container crm" *ngIf="selectedOrder!=null">
+        <div id="cmr">
         <div class="row">
             <div class="col-md-6 rand">
                 <div class="row">
