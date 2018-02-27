@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="card-group">
                     <div *ngIf="this.user?.role == 'driver'" class="card mb-4 box-shadow">
-                        <img class="card-img-top" src="../../assets/images/rsz_container.jpg" alt="Trucker">
+                        <img class="card-img-top" src="../../assets/images/container.jpg" alt="Containers">
                         <div class="card-body">
                             <a [routerLink]="['/home-driver']">
                                 <h4 class="card-title">Manage your freight</h4></a>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div *ngIf="!this.authService.loggedInAs('driver')" class="card mb-4 box-shadow">
-                        <img class="card-img-top" src="../../assets/images/tracking.jpg" alt="Track">
+                        <img class="card-img-top" src="../../assets/images/tracking.jpg" alt="A boy looking at a map">
                         <div class="card-body">
                             <a [routerLink]="['/tracking']">
                                 <h4 class="card-title">Tracking</h4></a>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" src="../../assets/images/order.jpg" alt="Order">
+                        <img class="card-img-top" src="../../assets/images/profile.jpg" alt="Two hands typing">
                         <div class="card-body">
                             <a [routerLink]="['/profile']">
                                 <h4 class="card-title">Profile</h4></a>
