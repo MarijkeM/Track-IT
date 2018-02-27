@@ -12,7 +12,7 @@ const User = require('../models/user');
 
 
 //alle vrachten van 1 persoon ophalen: /freight/allFreights
-router.get('/allFreights', passport.authenticate('jwt', {session:false}), async (req, res) => {
+router.get('/allFreights', async (req, res) => {
     console.log("***routes/freight/allfreights");
 
     try{
@@ -28,7 +28,7 @@ router.get('/allFreights', passport.authenticate('jwt', {session:false}), async 
 });
 
 //alle vrachten van 1 persoon ophalen: /freight/allFreightsDriver/:driverId
-router.get('/allFreightsfromDriver/:driverId', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+router.get('/allFreightsfromDriver/:driverId', async (req, res) => {
     console.log("***routes/freight/allfreightsfromDriver freights van bepaalde driver");
 
     try{
@@ -44,7 +44,7 @@ router.get('/allFreightsfromDriver/:driverId', /*passport.authenticate('jwt', {s
 });
 
 //alle vrachten van 1 persoon ophalen: /freight/allFreightsDriver/:driverId
-router.get('/allFreightsforOrder/:orderId', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+router.get('/allFreightsforOrder/:orderId', async (req, res) => {
     console.log("***routes/taks/allfreights freights van bepaalde udriver");
 
     try{
@@ -60,7 +60,7 @@ router.get('/allFreightsforOrder/:orderId', /*passport.authenticate('jwt', {sess
 });
 
 //alle vrachten van 1 persoon ophalen: /freight/allFreights
-router.get('/allFreightsDone', passport.authenticate('jwt', {session:false}), async (req, res) => {
+router.get('/allFreightsDone', async (req, res) => {
     console.log("***routes/taks/allfreights vrachten van bepaalde user");
 
     try{
@@ -77,7 +77,7 @@ router.get('/allFreightsDone', passport.authenticate('jwt', {session:false}), as
 
 
 //vracht toevoegen: /freight/vrachtToevoegen
-router.post('/addFreight', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+router.post('/addFreight', async (req, res) => {
     console.log("***routes/freight/addFreight");
 
     let newFreight = new Freight({
@@ -103,7 +103,7 @@ router.post('/addFreight', /*passport.authenticate('jwt', {session:false}),*/ as
 });
 
 //vracht wijzigen: /freight/modifyFreight/id
-router.put('/modifyFreight/:id', passport.authenticate('jwt', {session:false}), async (req, res) => {
+router.put('/modifyFreight/:id', async (req, res) => {
     console.log("***routes/freight/vrachtWijzigen/" + req.params.id);
     const freightId = req.params.id;
 
@@ -124,12 +124,7 @@ router.put('/modifyFreight/:id', passport.authenticate('jwt', {session:false}), 
                 success: false,
                 msg: "Freight doesn't exist"
             });
-        /*}else if(update.user.toString() !=(req.user._id).toString()){
 
-            res.json({
-                success: false,
-                msg: 'Je kan de vracht niet aanpassen: '
-            });*/
         }else{
             await Freight.updateFreight(freightId, updateFreight);
 
@@ -146,7 +141,7 @@ router.put('/modifyFreight/:id', passport.authenticate('jwt', {session:false}), 
 });
 
 //vracht verwijderen: /freight/cancelFreight/id
-router.delete('/cancelFreight/:id', /*passport.authenticate('jwt', {session:false}),*/ async (req, res) => {
+router.delete('/cancelFreight/:id', async (req, res) => {
     console.log("***routes/freight/cancelFreight/id");
     console.log("id: " + req.params.id);
     const freightId = req.params.id;
@@ -161,14 +156,6 @@ router.delete('/cancelFreight/:id', /*passport.authenticate('jwt', {session:fals
                 msg: "Can't find freight"
             });
 
-        /*} else if(freight.user != req.user._id.toString()){
-            let user1 = freight.user;
-            let user2 = req.user._id;
-            res.json({
-                success: false,
-                msg: 'Dit is niet jou vracht: '
-            });
-*/
         }else{
             await Freight.cancelFreight(freightId);
             res.json({
