@@ -55,6 +55,4 @@ export class OrderComponent implements OnInit {
             doc.save(id + '_CMR.pdf');
         });
     }
-
-
 }
