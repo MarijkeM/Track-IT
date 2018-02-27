@@ -31,11 +31,11 @@
 
 .icon {
     font-size: 32px;
-    color: #4C9976;
+    color: black;
     
     padding-top: 20px;
     padding-bottom: 10px;
-    padding-right: 50px;
+    padding-right: 25px;
     padding-left: 25px;
     margin-bottom: 25px;
 }
@@ -43,7 +43,7 @@
 .iconFlag {
     font-size: 32px;
     color: black;
-    padding-left: 50px;
+    padding-left: 25px;
     padding-top: 20px;
     padding-bottom: 10px;
     padding-right: 25px;
@@ -53,4 +53,17 @@
 
 .panel{
     margin-bottom: 10px;
+}
+
+#inladen{
+    visibility: hidden;
+    
+}
+
+#vertrek{
+    visibility: hidden
+}
+
+#aankomst{
+    visibility: hidden
 }
