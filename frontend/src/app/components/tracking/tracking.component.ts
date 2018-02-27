@@ -45,7 +45,7 @@ export class TrackingComponent implements OnInit {
                 this.time = new Date(this.timestamp);
                 this.location = d[d.length.valueOf() - 2].valueOf();
                 this.mode = this.location["Mode"];
-                this.coordinatesArray = this.location["GPS"].split(',');
+                this.coordinatesArray = this.location["GPS"].split(/' '|","|\n|\t/);
                 this.lattitude = this.coordinatesArray[0];
                 this.longitude = this.coordinatesArray[1];
                 return true;
