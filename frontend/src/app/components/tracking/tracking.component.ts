@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
 import {} from '@types/googlemaps';
+import {OrderService} from '../../services/orderService/order.service';
 
 @Component({
     selector: 'app-tracking',
@@ -19,11 +20,17 @@ export class TrackingComponent implements OnInit {
     coordinatesArray: any;
     @ViewChild('gmap') gmapElement: any;
     map: google.maps.Map;
+    user: any;
+    orders: Object
 
-    constructor(public db: AngularFireDatabase) {
+    constructor(public db: AngularFireDatabase,
+    private orderService: OrderService) {
     }
 
     async ngOnInit() {
+        this.user = localStorage.getItem('user');
+        this.getOrders();
+
         try {
             await this.connectionFirebase();
         }
@@ -32,6 +39,17 @@ export class TrackingComponent implements OnInit {
         }
 
         this.initializeMap(51.3084, 4.8907);
+    }
+
+    getOrders(){
+        this.orderService.getAllOrders().subscribe(orders => {
+                this.orders = orders;
+            },
+            err => {
+                console.log(err);
+                return false;
+            });
+        console.log("orders bij tracking: " + JSON.stringify(this.orders))
     }
 
     connectionFirebase() {
