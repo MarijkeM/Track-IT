@@ -31,11 +31,10 @@ export class FreightService {
       let headers = new HttpHeaders()
           .set('Content-Type','application/json');
 
-      return this.http.get<any>(GlobalVariable.base_url+'freight/allFreightsfromDriver/'+orderId,
+      return this.http.get<any>(GlobalVariable.base_url+'freight/allFreightsfromOrder/'+orderId,
           {headers});
     }
     return null;
-
 
   }
 }
