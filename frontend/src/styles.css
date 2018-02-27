@@ -22,6 +22,7 @@ a:hover, .link:hover{
 
 .link{
     color: #FF644C!important;
+    cursor: pointer;
 }
 
 .link:hover{
