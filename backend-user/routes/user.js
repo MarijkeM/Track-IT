@@ -78,8 +78,7 @@ router.post('/register', async(req, res) => {
             });
         }
     }
-)
-;
+);
 
 
 //Authenticatie/inloggen: /user/authenticeren
