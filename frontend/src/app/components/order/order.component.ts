@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {AuthService} from "../../services/authService/auth.service";
 import * as html2canvas from "html2canvas";
 import * as jsPDF from 'jspdf';
+import {User} from '../../models/user.model'
+import {tokenNotExpired} from 'angular2-jwt';
 
 
 @Component({
@@ -15,6 +17,7 @@ export class OrderComponent implements OnInit {
     orders: Object;
     selectedOrder: any;
     selectedOrderId: any;
+    user: any;
 
     constructor(private orderService: OrderService,
                 private router: Router) {
@@ -23,6 +26,7 @@ export class OrderComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.user = JSON.parse(localStorage.getItem('user'));
         this.orderService.getAllOrders().subscribe(orders => {
                 this.orders = orders;
             },

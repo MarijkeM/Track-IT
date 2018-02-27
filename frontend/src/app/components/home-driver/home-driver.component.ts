@@ -25,23 +25,15 @@ export class HomeDriverComponent implements OnInit {
 
 
     ngOnInit() {
-        this.authService.getProfile().subscribe(profile => {
-            console.log("gebruiker: " + JSON.stringify(profile.user));
-                this.user = profile.user;
-                this.authService.setUser(profile.user);
-                console.log(profile.user._id);
-                this.getFreights(profile.user._id)
-            },
-            err => {
-                console.log(err);
-                return false;
-            });
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.getFreights(this.user.id)
     }
 
-    getFreights(driverId){
+    getFreights(driverId) {
         console.log("getFreights");
         this.freightService.getFreightsFromDriver(driverId).subscribe(freights => {
-                this.freights = freights.freight;
+                console.log("observable" + JSON.stringify(freights));
+                this.freights = freights;
                 console.log("freigts:" + JSON.stringify(this.freights));
             },
             err => {
@@ -67,7 +59,6 @@ export class HomeDriverComponent implements OnInit {
             return `with: ${reason}`;
         }
     }
-
 
 
 }

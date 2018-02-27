@@ -46,7 +46,7 @@ export class AuthService {
     }
 
     getProfile() {
-        console.log("***auth.service getProfile()");
+        //console.log("***auth.service getProfile()");
         this.loadToken();
         let headers = new HttpHeaders()
             .set('Authorization', this.authToken)
@@ -71,7 +71,7 @@ export class AuthService {
 
     loggedInAs(role) {
         if (tokenNotExpired('id_token')) {
-            console.log("auth.service, logged in as, gebruiker is: " + JSON.stringify(this.user))
+           // console.log("auth.service, logged in as, gebruiker is: " + JSON.stringify(this.user))
             if (this.user) {
                 if(this.user.role == role){
                     return true;

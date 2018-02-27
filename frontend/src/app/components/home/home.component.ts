@@ -7,18 +7,12 @@ import { AuthService } from '../../services/authService/auth.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  user:Object;
+  user:any;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.getProfile().subscribe(profile => {
-          this.user = profile.user;
-        },
-        err => {
-          console.log(err);
-          return false;
-        });
+      this.user = JSON.parse(localStorage.getItem('user'));
   }
 
 }
