@@ -55,15 +55,14 @@
     margin-bottom: 10px;
 }
 
-#inladen{
-    visibility: hidden;
-    
+.whiteBackground{
+    background-color: white;
 }
 
-#vertrek{
-    visibility: hidden
+.action{
+    cursor: pointer;
 }
 
-#aankomst{
-    visibility: hidden
+.progress{
+    background-color: white;
 }
