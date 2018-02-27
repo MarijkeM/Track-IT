@@ -48,7 +48,7 @@ export class OrderComponent implements OnInit {
 
             var img = canvas.toDataURL("image/png");
             doc.addImage(img, 'JPEG', 0, 1, width, height);
-            doc.save(id + '_crm.pdf');
+            doc.save(id + '_CMR.pdf');
         });
     }
 
