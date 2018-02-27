@@ -18,18 +18,12 @@ export class NavbarComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(){
-
+        this.user = JSON.parse(localStorage.getItem('user'));
     }
 
     ngOnInit() {
-        this.authService.getProfile().subscribe(profile => {
-                this.user = profile.user;
-                this.authService.setUser(profile.user)
-            },
-            err => {
-                console.log(err);
-                return false;
-            });
+        this.user = JSON.parse(localStorage.getItem('user'));
+        console.log("user van localstorage: " + this.user)
     }
 
     onLogoutClick() {
