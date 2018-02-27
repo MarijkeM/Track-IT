@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/authService/auth.service';
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {ValidateService} from "../../services/validateService/validate.service";
 
 @Component({
     selector: 'app-user-management',
@@ -13,9 +14,10 @@ export class UserManagementComponent implements OnInit {
     selectedUser: any;
     selectedUserIndex: any;
 
-    constructor(private authService: AuthService,
-                private router: Router,
-                private flashMessage: FlashMessagesService) {
+    constructor(private validateService: ValidateService,
+                private flashmessage: FlashMessagesService,
+                private authService: AuthService,
+                private router: Router,) {
     }
 
     ngOnInit() {
@@ -42,16 +44,21 @@ export class UserManagementComponent implements OnInit {
     }
 
     updateUser() {
-        console.log(this.selectedUser);
+        /*testen of e-mail juiste vorm is*/
+        if(!this.validateService.validateEmail(this.selectedUser.email)){
+            this.flashmessage.show("E-mail is not correct",
+                {cssClass:'alert-danger m-3',timeout:3000});
+            return false;
+        }
         this.authService.modifyUser(this.selectedUser).subscribe(data => {
             if (data.success) {
-                this.flashMessage.show(data.msg,
+                this.flashmessage.show(data.msg,
                     {
                         cssClass: 'alert-success m-3',
                         timeout: 3000
                     });
             } else {
-                this.flashMessage.show(data.msg,
+                this.flashmessage.show(data.msg,
                     {
                         cssClass: 'alert-danger m-3',
                         timeout: 3000
@@ -64,13 +71,13 @@ export class UserManagementComponent implements OnInit {
         this.authService.deleteUser(this.selectedUser._id).subscribe(data => {
             if (data.success) {
                 this.getAllUsers();
-                this.flashMessage.show(data.msg,
+                this.flashmessage.show(data.msg,
                     {
                         cssClass: 'alert-success m-3',
                         timeout: 3000
                     });
             } else {
-                this.flashMessage.show(data.msg,
+                this.flashmessage.show(data.msg,
                     {
                         cssClass: 'alert-danger m-3',
                         timeout: 3000
