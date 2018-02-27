@@ -1,11 +1,11 @@
 <section class="jumbotron">
     <div class="container">
-        <h1 class="jumbotron-heading"><strong>Orders</strong></h1>
+        <h1 class="jumbotron-heading"><strong>Shipping documents</strong></h1>
     </div>
     <div class="container">
         <form>
             <div class="form-group">
-                <label for="selectOrder">Choose your order</label>
+                <label for="selectOrder">Choose the order</label>
                 <select name="Select order" class="form-control" id="selectOrder"
                         [(ngModel)]="this.selectedOrderId">
                     <option *ngFor="let order of orders; let i = index" [ngValue]="i">{{order.AfzenderNaam}}: orderId

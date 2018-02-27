@@ -13,10 +13,29 @@ export class FreightService {
   getFreightsFromDriver(driverId){
     console.log("***freight.service getFreightsFromDriver()");
 
-    let headers = new HttpHeaders()
-        .set('Content-Type','application/json');
+    if(this.authService.loggedIn()){
+      let headers = new HttpHeaders()
+          .set('Content-Type','application/json');
 
-    return this.http.get<any>(GlobalVariable.base_url+'freight/allFreightsfromDriver/'+driverId,
-        {headers});
+      return this.http.get<any>(GlobalVariable.base_url+'freight/allFreightsfromDriver/'+driverId,
+          {headers});
+    }
+
+    return null;
+  }
+
+  getFreightsFromOrder(orderId){
+    console.log("***freight.service getFreightsFromOrder()");
+
+    if(this.authService.loggedIn()){
+      let headers = new HttpHeaders()
+          .set('Content-Type','application/json');
+
+      return this.http.get<any>(GlobalVariable.base_url+'freight/allFreightsfromDriver/'+orderId,
+          {headers});
+    }
+    return null;
+
+
   }
 }

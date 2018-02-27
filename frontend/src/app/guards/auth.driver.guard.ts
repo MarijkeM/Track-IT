@@ -13,7 +13,9 @@ export class AuthGuardDriver implements CanActivate{
     }
 
     canActivate(){
+        console.log("ingelogd als driver?: " + this.authService.loggedInAs("driver"))
         if(this.authService.loggedInAs("driver")){
+
             return true;
         }else{
             this.router.navigate(['/login']);

@@ -54,7 +54,6 @@ export class AuthService {
 
         return this.http.get<any>(GlobalVariable.base_url + 'user/profile',
             {headers});
-
     }
 
     setUser(user){
@@ -72,7 +71,8 @@ export class AuthService {
 
     loggedInAs(role) {
         if (tokenNotExpired('id_token')) {
-            if (this.user.role) {
+            console.log("auth.service, logged in as, gebruiker is: " + JSON.stringify(this.user))
+            if (this.user) {
                 if(this.user.role == role){
                     return true;
                 }

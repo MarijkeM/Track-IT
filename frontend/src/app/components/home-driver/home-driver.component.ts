@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/authService/auth.service'
+import {FreightService} from '../../services/freightService/freight.service'
 import {Router} from '@angular/router';
 import {FlashMessagesService} from 'angular2-flash-messages'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -11,10 +12,12 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./home-driver.component.css']
 })
 export class HomeDriverComponent implements OnInit {
-    user: Object;
+    freights: any[];
+    user: any;
     closeResult: string;
 
     constructor(private authService: AuthService,
+                private freightService: FreightService,
                 private router: Router,
                 private flashMessage: FlashMessagesService,
                 private modalService: NgbModal) {
@@ -23,7 +26,23 @@ export class HomeDriverComponent implements OnInit {
 
     ngOnInit() {
         this.authService.getProfile().subscribe(profile => {
+            console.log("gebruiker: " + JSON.stringify(profile.user));
                 this.user = profile.user;
+                this.authService.setUser(profile.user);
+                console.log(profile.user._id);
+                this.getFreights(profile.user._id)
+            },
+            err => {
+                console.log(err);
+                return false;
+            });
+    }
+
+    getFreights(driverId){
+        console.log("getFreights");
+        this.freightService.getFreightsFromDriver(driverId).subscribe(freights => {
+                this.freights = freights.freight;
+                console.log("freigts:" + JSON.stringify(this.freights));
             },
             err => {
                 console.log(err);
@@ -48,5 +67,7 @@ export class HomeDriverComponent implements OnInit {
             return `with: ${reason}`;
         }
     }
+
+
 
 }

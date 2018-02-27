@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     }
 
     onLoginSubmit() {
-        console.log("onLoginSubmit()");
         const user = {
             email: this.email,
             password: this.password
